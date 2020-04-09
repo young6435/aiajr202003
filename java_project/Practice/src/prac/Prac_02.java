@@ -8,7 +8,7 @@ public class Prac_02 {
 		int code = (int)ch; 		// ch에 저장된 값을 int형으로 변환 하여 저장한다.
 		System.out.println(ch);
 		System.out.println(code);
-		
+		System.out.println("===========");
 	}
 
 }

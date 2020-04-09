@@ -10,6 +10,8 @@ public class Prac_01 {
 		int num2=(int)ch2;		//ch2를 int형으로 바꿔서 num2에 저장한다.
 		System.out.println("문자 A의 유니코드 값: "+num1);
 		System.out.println("문자 Z의 유니코드 값: "+num2);
+		System.out.println("===========");
+		
 		
 	}
 

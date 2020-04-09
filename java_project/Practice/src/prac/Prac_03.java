@@ -8,6 +8,7 @@ public class Prac_03 {
 		char ch = (char)code;	//code를 char형으로 변환해서 char형 ch에 저장.
 		System.out.println(code);
 		System.out.println(ch);
+		System.out.println("===========");
 		
 	}
 
