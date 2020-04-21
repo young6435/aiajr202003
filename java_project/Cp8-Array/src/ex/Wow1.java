@@ -3,31 +3,27 @@ package ex;
 public class Wow1 {
 
 	public static int miniValue(int[] arr) {
+		int min = arr[0];
 		for(int i=0; i<arr.length; i++) {
-			int mini = arr[0];
-			if(mini > arr[i]) {
-			mini = arr[i];
-			
+			if(min > arr[i]) {
+				min = arr[i];
 			}
-			
+		
 		}
-		return mini;
+		return min;
 	}
+	
+	
 	
 	public static int maxValue(int[] arr) {
+		int max = arr[0];
 		for(int i=0; i<arr.length; i++) {
-			int max = arr[0];
 			if(max < arr[i]) {
-			max = arr[i];
-			
+				max = arr[i];
 			}
-			
 		}
 		return max;
-		
 	}
-	
-
-	
-
+			
+		
 }
