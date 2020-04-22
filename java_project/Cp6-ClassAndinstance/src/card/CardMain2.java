@@ -34,8 +34,8 @@ public class CardMain2 {
 				
 				System.out.println("카드는 "+ c.kind +"이고,");
 				System.out.println("숫자는 "+ c.number +"이고,");
-				System.out.println("높이는 "+ c.height +"이고,");
-				System.out.println("넓이는 "+ c.width +"입니다.");
+				System.out.println("높이는 "+ c.height +"이고,");		// card.height 써도됨.
+				System.out.println("넓이는 "+ c.width +"입니다.");	// card.width 써도됨.
 			}
 		}
 			
