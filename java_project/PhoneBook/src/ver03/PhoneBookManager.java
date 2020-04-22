@@ -47,7 +47,7 @@ public class PhoneBookManager {
 		
 	}
 	
-	void addInfo() {
+	void addInfo() {					// 메서드 오버로딩 한거다. 2개.
 		
 		// 배열에 요소 대입
 		pBooks[cnt] = createInstance();
@@ -58,7 +58,7 @@ public class PhoneBookManager {
 	}
 	
 	
-	// 사용자의 입력데이로 PhoneInfor 객체를 생성
+	// 사용자의 입력데이터로 PhoneInfor 객체를 생성
 	PhoneInfor createInstance() {
 		
 		PhoneInfor info = null;
@@ -85,7 +85,7 @@ public class PhoneBookManager {
 		
 		return info;		
 		
-	}
+	}		// createInstance 메서드 끝.
 	
 
 	
@@ -100,17 +100,17 @@ public class PhoneBookManager {
 		
 		
 		
-	}
+	}	// showAllData 메서드 끝.
 	
 	
 	// 배열에서 이름을 기준으로 검색후 index 값을 반환
 	int searchIndex(String name) {
 		
-		int searchIndex = -1;
+		int searchIndex = -1;		// 기본으로 데이터에 이름이 없다고 가정한다.
 		
 		// 사용자가 입력한 이름으로 배열에 요소를 검색 -> index
 		for(int i=0; i<cnt; i++) {
-			if(pBooks[i].checkName(name)) {
+			if(pBooks[i].checkName(name)) {		// boolean 메서드다. 똑같은 이름이 있는지 없는지.
 				searchIndex = i;
 				break;
 			}
@@ -118,7 +118,7 @@ public class PhoneBookManager {
 		
 		return searchIndex;
 		
-	}
+	}		// searchIndex 메서드 끝.
 	
 	
 	
@@ -133,13 +133,13 @@ public class PhoneBookManager {
 		int searchIndex = searchIndex(name);
 		
 		
-		if(searchIndex<0) {
+		if(searchIndex<0) {		// 0보다 작다는게 데이터가 없는거다.
 			System.out.println("찾으시는 이름의 데이터가 존재하지 않습니다.");
 		} else {
 			pBooks[searchIndex].showInfo();
 		}
 		
-	}
+	}	// searchInfo 메서드 끝.
 	
 	
 	// 삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
@@ -164,27 +164,16 @@ public class PhoneBookManager {
 			
 			// 삭제 : 검색한 index 부터 저장된 위치까지 왼쪽으로 시프트
 			for(int i=searchIndex; i<cnt-1; i++) {
-				pBooks[i]=pBooks[i+1];
-			}
+				pBooks[i]=pBooks[i+1];					// i+1은 i기준으로 오른쪽에 있는 인덱스자리다.
+			}											// (오른쪽에 있던걸 왼쪽으로 옮겨서 대입하는거다.
 			
 			
 			// 저장된 정보의 개수를 -1
-			cnt--;
+			cnt--;						// 삭제했으니까 1개 뺀다.
 			
 			System.out.println("요청하신 이름의 정보를 삭제했습니다.");
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-	}
-	
-	
-	
+	}		// deleteInfo 메서드 끝.
 	
 }
