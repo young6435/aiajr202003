@@ -34,13 +34,9 @@ public class Array04 {
 			ball[j] = temp;
 		}
 		
-		temp = ball[0];
-		ball[0] = ball[1];
-		ball[1] = temp;
-		
 		// 숫자6개 출력.
 		for(int i=0; i<6; i++) {
-			System.out.println(ball[i]);
+			System.out.print(ball[i]+", ");
 		}
 		
 	}
