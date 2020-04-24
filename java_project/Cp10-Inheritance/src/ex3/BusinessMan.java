@@ -17,8 +17,8 @@ public class BusinessMan extends Man {
 	void tellYourInfor() {
 		//super.tellYourName();		// 조상으로 접근해서 들어간다.
 		tellYourName();
-		System.out.println("나의 직장 이름은 " +company+" 입니다.");
-		System.out.println("나의 직급은 "+position+" 입니다. ");
+		System.out.println("나의 직장 이름은 " +company+" 입니다.");		// this.company 가능.
+		System.out.println("나의 직급은 "+position+" 입니다. ");		// this.position 가능.
 	
 	}
 	

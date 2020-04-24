@@ -13,7 +13,7 @@ public class HighFriend extends Friend {
 	@Override
 	void showData() {			// 부모꺼 오버라이딩.
 		
-		showBasicInfo();   		// 부모꺼 3개에다가 직업 더한다.
+		showBasicInfo();   		// 부모꺼 기본3개에다가 직업 더한다.
 		System.out.println("직업 : " + work);
 	}
 	

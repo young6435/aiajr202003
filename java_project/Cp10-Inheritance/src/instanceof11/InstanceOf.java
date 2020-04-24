@@ -6,20 +6,20 @@ public class InstanceOf {
 		Box box1 = new Box();
 		PaperBox box2 = new PaperBox();
 		GoldPaperBox box3 = new GoldPaperBox();
-		wrapBox(box1);		// 밑에 메서드호출.
-		wrapBox(box2);
-		wrapBox(box3);
+		wrapBox(box1);		// 밑에 메서드호출.		// simple wrap 호출된다.
+		wrapBox(box2);							// paper wrap 호출된다.
+		wrapBox(box3);							// paper wrap 호출된다.
 	}
 
 	public static void wrapBox(Box box) {
 		
-		box.wrap();
-//		if (box instanceof GoldPaperBox)
-//			((GoldPaperBox) box).goldWrap();
-//		else if (box instanceof PaperBox)
-//			((PaperBox) box).paperWrap();
-//		else
-//			box.simpleWrap();
+		//box.wrap();
+		if (box instanceof GoldPaperBox)
+			((GoldPaperBox) box).goldWrap();
+		else if (box instanceof PaperBox)
+			((PaperBox) box).paperWrap();
+		else
+			box.simpleWrap();
 	}
 
 }

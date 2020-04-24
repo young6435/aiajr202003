@@ -15,7 +15,7 @@ public class FriendInfoHandler {
 	
 	Scanner kb; 
 	
-	// 초기화 : 저장공간(사이즈) 크기를 받아서 배열 생성.
+	// 초기화 : 저장공간(사이즈) 크기를 받아서 배열 생성.	// 생성자.
 	FriendInfoHandler(int num){				// main에서 10을 줄꺼다.
 		myFriends = new Friend[num];		// 배열크기 10으로 만들어진다.
 		numOfFriend = 0;					// 처음에는 친구 저장안됐으니까 0으로한다.
@@ -39,8 +39,8 @@ public class FriendInfoHandler {
 	// 타입별로 필요한 데이터가 있다.
 	void addFriend(int choice) {		// ui에서 번호 누른거.
 		
-			// 불필요한 객체가 생성되는걸 막는다.
-										// Scanner kb = new Scanner(System.in); 객체가 계속 생성된다.
+			
+		// Scanner kb = new Scanner(System.in); 객체가 계속 생성된다. 그래서 위에 생성자에다가 넣었다.
 		// 기본정보 받기.
 		System.out.println("이름을 입력해주세요.");
 		String name = kb.nextLine();

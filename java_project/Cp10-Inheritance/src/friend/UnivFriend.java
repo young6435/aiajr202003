@@ -17,7 +17,7 @@ public class UnivFriend extends Friend {
 	@Override
 	void showData() {			// 부모꺼 오버라이딩.
 		
-		showBasicInfo();		// 부모꺼 3개에다가 전공,학년 더한다.
+		showBasicInfo();		// 부모꺼 기본3개에다가 전공,학년 더한다.
 		System.out.println("전공 : " + major);
 		System.out.println("학년 : " + grade);
 	}

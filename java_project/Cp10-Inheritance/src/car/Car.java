@@ -22,25 +22,19 @@ public class Car {
 			
 			fe1.water();
 			car = fe1;					// car = (Car)fe1;    생략가능.
-			// car.water();				// 사용불가능.
+			// car.water();				// 사용불가능. water는 자식꺼에 있어서 못쓴다. car가 부모다.
 			
-			fe2 = (Fireengine)car;		// fe2 = car; 생략 불가능
+			fe2 = (Fireengine)car;		// fe2 = car; 생략 불가능.
 			
 			
-			if(car instanceof Ambulance){
-				am = (Ambulance)car;		
+			if(car instanceof Ambulance){	// 부모가 자식으로 형변환 안된다. 
+				am = (Ambulance)car;		// 자식이 부모로 형변환 가능하다.
 				am.siren();
+				
 				
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-		}
+		}	// main 메소드 끝.
 		
 }		
 
