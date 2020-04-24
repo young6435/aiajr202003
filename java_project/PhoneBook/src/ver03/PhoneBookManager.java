@@ -20,6 +20,7 @@ public class PhoneBookManager {
 	// 입력된 친구의 정보 개수 --> 입력된 배열의 요소 개수
 	// 1. 참조할 때 반복의 횟수
 	// 2. 새로운 객체를 저장할때 index 로 사용
+	
 	int cnt;
 	
 	Scanner sc;
@@ -29,7 +30,7 @@ public class PhoneBookManager {
 		// 배열 초기화
 		pBooks = new PhoneInfor[100];
 		// 저장개수 초기화
-		cnt = 0;
+		cnt = 0;							// 전화번호부에 저장되면 카운트 1씩 올라간다.
 		// Scanner 객체 초기화
 		sc = new Scanner(System.in);
 	}
@@ -40,7 +41,7 @@ public class PhoneBookManager {
 	void addInfo(PhoneInfor info) {
 		
 		// 배열에 요소 대입
-		pBooks[cnt] = info;
+		pBooks[cnt] = info;		// 배열 0번지에 친구를 저장한다.
 		
 		// 등록된 정보의 개수를 증가
 		cnt++;
@@ -78,9 +79,9 @@ public class PhoneBookManager {
 		
 		// 사용자의 입력 데이터에 따라 인스턴스 생성 방법을 구분
 		if(birthday==null||birthday.trim().isEmpty()) {
-			info = new PhoneInfor(name, phoneNumber);
+			info = new PhoneInfor(name, phoneNumber);				// 둘 중에 한개 객체 생성.
 		} else {
-			info = new PhoneInfor(name, phoneNumber, birthday); 
+			info = new PhoneInfor(name, phoneNumber, birthday); 	
 		}		
 		
 		return info;		
@@ -106,12 +107,13 @@ public class PhoneBookManager {
 	// 배열에서 이름을 기준으로 검색후 index 값을 반환
 	int searchIndex(String name) {
 		
-		int searchIndex = -1;		// 기본으로 데이터에 이름이 없다고 가정한다.
+		int searchIndex = -1;		// 기본으로 데이터에 이름이 없다고 가정한다.	0이면 저장된게 있으니까.
 		
 		// 사용자가 입력한 이름으로 배열에 요소를 검색 -> index
-		for(int i=0; i<cnt; i++) {
+		for(int i=0; i<cnt; i++) {				// 저장된거 중에 찾아야 되니까. cnt로 한다. 배열전체가 아니라.
 			if(pBooks[i].checkName(name)) {		// boolean 메서드다. 똑같은 이름이 있는지 없는지.
-				searchIndex = i;
+				searchIndex = i;				// 이름이 true가 되면 그자리 인덱스 번호가 
+												// 저장되서 반환된다.
 				break;
 			}
 		}
@@ -158,12 +160,12 @@ public class PhoneBookManager {
 		// 재정리 2번이 삭제되었다면 3번 이후 데이터들의 주소 값이 -1 처리되어 재저장.
 		
 		
-		if(searchIndex<0) {
+		if(searchIndex<0) {		// -1이면 저장된게 없는거다.
 			System.out.println("찾으시는 이름의 데이터가 존재하지 않습니다.");
 		} else {
 			
 			// 삭제 : 검색한 index 부터 저장된 위치까지 왼쪽으로 시프트
-			for(int i=searchIndex; i<cnt-1; i++) {
+			for(int i=searchIndex; i<cnt-1; i++) {		// cnt는 내가 저장한 개수.
 				pBooks[i]=pBooks[i+1];					// i+1은 i기준으로 오른쪽에 있는 인덱스자리다.
 			}											// (오른쪽에 있던걸 왼쪽으로 옮겨서 대입하는거다.
 			
