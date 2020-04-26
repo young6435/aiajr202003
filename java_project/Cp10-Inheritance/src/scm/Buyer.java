@@ -8,7 +8,7 @@ public class Buyer {
 	Product[] item; 		// 구매시에 담을 제품 배열.
 	int numOfProduct = 0;	// 구매 제품 개수.
 	
-	Buyer(){				// 객체 생성한다.
+	Buyer(){				// 객체 생성한다. 
 		this.money = 1000;
 		this.bonusPoint = 0;
 		this.item = new Product[10];
@@ -43,7 +43,7 @@ public class Buyer {
 		
 		String itemList = "";		// 구매 제품의 이름 목록.
 		for(int i=0; i<numOfProduct; i++) {		// 구매한 제품 목록만 보면되니까. 배열전체가 아니다.
-			itemList += item[i] + ", ";
+			itemList += item[i] + ", ";			// 배열이름이 item.
 			
 			// itemList = itemList + (item[i] + ", ");
 			sum += item[i].price;

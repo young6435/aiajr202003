@@ -4,7 +4,7 @@ package scm;
 public class Product {
 	
 	final int price;			// 제품가격.
-	final int bonusPoint; 	// 제품의 포인트.
+	final int bonusPoint; 		// 제품의 포인트.
 	
 	Product(int price){
 		

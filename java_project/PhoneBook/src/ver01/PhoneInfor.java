@@ -32,7 +32,7 @@ public class PhoneInfor {
 	PhoneInfor(String name, String phoneNumber){
 //		this.name = name;
 //		this.phoneNumber = phoneNumber;
-//		this(name, phoneNumber, null);	// 다른 생성자를 호출한다. null은 기본값으로 들어간다.
+//		this(name, phoneNumber, null);			// 다른 생성자를 호출한다. null은 기본값으로 들어간다.
 		this(name, phoneNumber, "입력값이 없습니다.");
 	}
 	

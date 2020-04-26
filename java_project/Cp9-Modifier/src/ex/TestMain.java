@@ -9,6 +9,7 @@ public class TestMain {
 		
 		Member member = new Member();
 		
+		//member.setName("멍청이");
 		System.out.println(member.getName());
 	}
 

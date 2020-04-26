@@ -28,7 +28,7 @@ public class PhoneBookManager {
 	
 	PhoneInfor creatInstance() {
 		
-		PhoneInfor info = null;			// 초기화 한거다.
+		PhoneInfor info = null;		// 초기화 한거다.  info에 값 저장해서 PhoneInfor 생성자 만들꺼다.
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -40,7 +40,7 @@ public class PhoneBookManager {
 		System.out.println("전화번호를 입력해주세요. >> ");
 		String phoneNumber = sc.nextLine();
 		
-		System.out.println("생일을 입력해주세요, >> ");
+		System.out.println("생일을 입력해주세요. >> ");
 		String birthday = sc.nextLine();
 		
 		// 사용자의 입력 데이터에 따라 인스턴스 생성 방법을 구분.

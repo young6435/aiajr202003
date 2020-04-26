@@ -17,33 +17,35 @@ public class ScmMain {
 		// int sum = tv.price + com.price + aud.price;		// 원래는 이렇게 하나씩 더해야 되는거다. 
 		
 		Product p1 = tv;	// 상위클래스 타입으로 형변환 됐다. 	//Product p1 = (Product)tv;
-		Product p2 = com;
-		Product p3 = aud;
+		Product p2 = com;		
+		Product p3 = aud;	
 		
 		// 상위 클래스 타입의 배열 생성.
-		Product[] products = new Product[3];
-		products[0] = new Tv(100);
-		products[1] = new Computer(200);
-		products[2] = new Audio(300);
+		Product[] products = new Product[3];	
+		products[0] = new Tv(100);				
+		products[1] = new Computer(200);		
+		products[2] = new Audio(300);			
 		
 		
 		// products[0].display();				// 이거 사용못한다.
 		// 명시적인 형변환. 상위타입의 변수 => 하위타입의 변수.
-		((Tv)products[0]).display();
-		
+		((Tv)products[0]).display();			// product에 display 메서드가 없다. Tv에 있다.
+												// 그래서 Tv로 타입변환 해야된다.
 		
 		
 		// instanceof 연산자 => p1 instanceof Computer ==> true/false 
 		// 참조변수가 참조하는 인스턴스를 특정 클래스 타입으로 
 		//						형변환 가능한지 여부를 확인.
 		if(products[0] instanceof Computer) {
-			((Computer)products[0]).programming();
+			((Computer)products[0]).programming();		// 이거 실행안됨.
+			
 		}
 	
 		// 전달 하는 배열에 컴퓨터가 있다면 프로그래밍을 하겠다.
 		for(int i=0; i<products.length; i++) {
 			if(products[i] instanceof Computer) {
-				((Computer)products[i]).programming();
+				((Computer)products[i]).programming();		//이거 실행됨.	
+															//products[1]이 computer이다.
 			}
 		}
 		
@@ -62,11 +64,6 @@ public class ScmMain {
 //		}
 //		System.out.println("전체 제품의 가격의 합은 : " + sumOfPrice);
 //		System.out.println("전체 제품의 포인트의 합은 : " + sumOfPoint);
-		
-		
-		
-		
-		
 		
 		
 		// 구매자가 제품을 구매하는 시뮬레이션.

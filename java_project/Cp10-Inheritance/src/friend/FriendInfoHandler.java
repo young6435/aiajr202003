@@ -27,9 +27,9 @@ public class FriendInfoHandler {
 	// 2. 사용자에게 데이터를 받아 사용자 요청에 맞는 인스턴스 생성.
 	
 	// 1. 배열에 저장하는 기능.
-	void addFriendInfo(Friend f) {			// f대신에 다른거 써도 된다.
+	void addFriendInfo(Friend f) {			// f대신에 다른거 써도 된다. 밑에서 friend객체 만든거 들어온다.
 		// 배열에 저장
-		myFriends[numOfFriend] = f;  		// 배열의 0번지부터 들어간다. 위에서 0으로 저장해서.
+		myFriends[numOfFriend] = f;  		// 객체만든게 배열의 0번지부터 들어간다. 위에서 0으로 저장해서.
 		numOfFriend++;						// 이거 안하면 0번지에만 계속 저장된다.
 		
 	}
@@ -57,7 +57,7 @@ public class FriendInfoHandler {
 			String work = kb.nextLine();
 			
 			// HighFriend 인스턴스 생성.
-			friend = new HighFriend(name, phoneNum, addr, work);
+			friend = new HighFriend(name, phoneNum, addr, work);	//배열에 객체생성해서 넣을꺼다.
 		
 		} else {
 			// 2 일때 정보 받기.
@@ -69,7 +69,7 @@ public class FriendInfoHandler {
 			
 			// UnivFriend 인스턴스 생성.
 			friend = new UnivFriend(name, phoneNum, addr, major, Integer.parseInt(grade));
-			
+																// 배열에 객체생성해서 넣을꺼다.
 		}
 		
 		// addFriendInfo 호출.
@@ -77,11 +77,6 @@ public class FriendInfoHandler {
 									// 위에서 객체 생성된게 friend 이다.
 		
 	}
-	
-	
-	
-	
-	
 	
 	
 	// 친구정보의 기본 정보 출력 기능.

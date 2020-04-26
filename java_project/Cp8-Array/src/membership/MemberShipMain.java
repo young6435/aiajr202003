@@ -24,7 +24,7 @@ public class MemberShipMain {
 //		members[4].showInfo();
 //		members[5].showInfo();
 		
-		for(int i=0; i<members.length; i++) {
+		for(int i=0; i<members.length; i++) {		// 여기부분 주석처리하고 해봐라.
 			System.out.println(members[i]);
 			System.out.println("===========================");
 		}
