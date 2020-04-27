@@ -6,7 +6,7 @@ package friend;
   	 기본 속성과 기능을 구성.
  */
 
-public class Friend {
+public abstract class Friend {		// 추상화 할때 써봄.
 	
 	String name;		// 친구의 이름.
 	String phoneNum;	// 친구의 전화번호.
@@ -27,11 +27,14 @@ public class Friend {
 		
 	}
 
-	// 상속의 목적으로 오버라이딩 할 메서드.		//고등학교친구 , 대학교친구 껄로 출력할꺼다.
-	void showData() {
-		// 기본 데이터와 하위클래스의 데이터를 출력하도록 오버라이딩 한다.
-	}
-
+//	// 상속의 목적으로 오버라이딩 할 메서드.		//고등학교친구 , 대학교친구 껄로 출력할꺼다.
+//	void showData() {
+//		// 기본 데이터와 하위클래스의 데이터를 출력하도록 오버라이딩 한다.
+//	}
+		
+	
+	// 추상화 메서드 생성.
+	abstract void showData();
 	
 
 }
