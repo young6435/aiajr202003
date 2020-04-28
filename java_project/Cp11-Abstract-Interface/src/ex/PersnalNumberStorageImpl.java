@@ -1,7 +1,10 @@
 package ex;
 
-public class PersnalNumberStorageImpl extends PersnalNumberstorage {
 
+// public class PersnalNumberStorageImpl extends PersonalNumberStorage {
+public class PersnalNumberStorageImpl implements PersnalNumber {
+
+	
 	PersnalNumInfo[] perArr;
 	int numOfPerInfo;
 	
@@ -21,10 +24,11 @@ public class PersnalNumberStorageImpl extends PersnalNumberstorage {
 	public String searchName(String perNum) {
 		
 		for(int i=0; i<numOfPerInfo; i++) {
-			if(perArr[i].getNumber().equals(perNum)){
+			if(perArr[i].getNumber().equals(perNum)) {
 				return perArr[i].getName();
 			}
 		}
+		
 		
 		
 		return null;

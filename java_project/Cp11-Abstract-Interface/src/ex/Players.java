@@ -1,6 +1,6 @@
 package ex;
 
-public class AudioPlayer extends Player {
+public class Players extends Player {
 
 	@Override
 	void play(int pos) {
