@@ -38,7 +38,7 @@ public class PhoneBookManager {
 	
 	// 저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
 	// 배열에 PhoneInfor 타입의 참조값을 저장
-	void addInfo(PhoneInfor info) {
+	void addInfo(PhoneInfor info) {		// 이름, 전화번호, 생일을 쓸거라서 PhoneInfo 타입으로 받는다.
 		
 		// 배열에 요소 대입
 		pBooks[cnt] = info;		// 배열 0번지에 친구를 저장한다.
