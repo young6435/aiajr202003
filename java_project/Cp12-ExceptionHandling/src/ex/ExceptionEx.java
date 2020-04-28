@@ -8,13 +8,13 @@ public class ExceptionEx {
 
 		try {
 
-			int age = readAge();
+			int age = readAge();					// 밑에 메서드 있다.
 			
 			
 
 			System.out.println("나이는 " + age + "세 입니다.");
 
-		} catch (AgeInputException e) {
+		} catch (AgeInputException e) {				// 여기서 실행되는거다. AgeInputException 타입이 같다.
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 
@@ -25,6 +25,7 @@ public class ExceptionEx {
 		System.out.println("프로그램이 정상 종료되었습니다.");
 
 	}
+	
 
 	static int readAge() throws AgeInputException {
 
@@ -39,7 +40,7 @@ public class ExceptionEx {
 			// Exception e = new Exception("고의로 발생 시킴");
 			AgeInputException e = new AgeInputException();
 
-			throw e; // 장제적으로 예외 발생 지점
+			throw e; // 강제적으로 예외 발생 지점
 		}
 		
 		

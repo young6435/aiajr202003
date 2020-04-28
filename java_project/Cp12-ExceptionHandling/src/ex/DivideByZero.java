@@ -18,7 +18,8 @@ public class DivideByZero {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 			
-			return;
+			return;			// return 으로 끝나도 finally는 실행한다.	
+							// "프로그램을 종료 합니다."는 실행 안된다. (에러 났을때).
 
 		} finally {
 			System.out.println("무조건 실행하는 finally 블록");
