@@ -2,7 +2,7 @@ package ver05;
 
 public interface Info {
 
-	// public abstract void showData();
-	void showData();
+	// public abstract 생략
+	void showAllInfo();
 	
 }

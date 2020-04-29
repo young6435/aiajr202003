@@ -1,7 +1,7 @@
 package ver05;
 
 // 상속을 위한 기본 클래스 구성.
-public class PhoneInfo {
+public abstract class PhoneInfo implements Info {		// 추상클래스라서 인스턴스 생성못한다.
 
 	String name;				// 친구의 이름.	
 	String phoneNumber;			// 친구의 전화번호.
@@ -25,12 +25,16 @@ public class PhoneInfo {
 	}
 	
 	
+	// 2020.04.29
+	// 수정 내용 : interface 구현으로 메서드 오버라이딩 생략.
+	// 			 phoneInfo 클래스 => 추상클래스
+	
 	
 	// 전체 정보 출력 메서드.
-	void showAllInfo() {
-		// 상속 후 오버라이딩을 통해 재구성할꺼다.
-		showBasicInfo();
-	}
+//	void showAllInfo() {
+//		// 상속 후 오버라이딩을 통해 재구성할꺼다.
+//		showBasicInfo();
+//	}
 
 
 
