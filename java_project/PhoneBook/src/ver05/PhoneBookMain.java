@@ -8,10 +8,8 @@ public class PhoneBookMain {
 
 	public static void main(String[] args) {
 		
-		//PhoneBookManager manager = new PhoneBookManager(100);		// 100개 짜리 배열생성.
-		
+		//PhoneBookManager manager = new PhoneBookManager(100);
 		PhoneBookManager manager = PhoneBookManager.getInstance();
-		
 		
 		while(true) {
 			
@@ -20,40 +18,37 @@ public class PhoneBookMain {
 			int select = 0;
 			
 			try {
-				select = manager.kb.nextInt();		// 내가누른 숫자가 select에 저장된다.
-			
+				select = manager.kb.nextInt();
+				
 				// 정상 범위는 1~6
 				// MenuNum.INSERT ~ MenuNum.EXIT
 				if(!(select >= MenuNum.INSERT && select <= MenuNum.EXIT)) {
 					
-					BadNumberException e = new BadNumberException("메뉴 범위를 벗어나는 번호입니다.\n다시 확인후 입력해 주세요");
+					BadNumberException e = new BadNumberException("잘못된 메뉴입력");
 					
-					// 강제적인 예외 발생
+					// 강재적인 예외 발생
 					throw e;
+					
+				}
 				
-				}	
-			
-			}catch(InputMismatchException e){
+				
+			} catch (InputMismatchException e) {
 				System.out.println("잘못된 메뉴 입력입니다. \n확인하시고 다시 입력해주세요.");
 				//manager.kb.nextLine();
 				continue;
-			
-			}catch(BadNumberException e) {
-				System.out.println("메뉴 범위를 벗어난 숫자 입력입니다.\n 다시 확인후 입력해 주세요.");
-				continue;
-			}
-			
-			catch(Exception e) {
+			} catch (BadNumberException e) {
+				System.out.println("메뉴 범위를 벗어난 숫자 입력입니다.\n다시 확인 후 입력해주세요.");
+				continue;				
+			} catch (Exception e) {
 				System.out.println("잘못된 메뉴 입력입니다. \n확인하시고 다시 입력해주세요.");
 				//manager.kb.nextLine();
 				continue;
-			}
-			
-			finally {
+			} finally {
 				manager.kb.nextLine();
 			}
 			
 			//manager.kb.nextLine();
+			
 			
 			switch(select) {
 			case MenuNum.INSERT:
@@ -71,15 +66,17 @@ public class PhoneBookMain {
 			case MenuNum.PRINT_ALL:
 				manager.showAllInfo();
 				break;
-			case MenuNum.EXIT: 
-				System.out.println("프로그램을 종료 합니다.");
+			case MenuNum.EXIT:
+				System.out.println("프로그램을 종료합니다.");
 				return;
 			}
 			
 			
 			
 		}
-		
+
 	}
 
 }
+
+

@@ -2,7 +2,7 @@ package ver04;
 
 import java.util.Scanner;
 
-// Phoneinfo 타입의 배열로 친구들의 정보를 저장, 수정, 삭제, 검색, 출력 한다.
+// PhoneInfo 타입의 배열로 친구들의 정보를 저장, 수정, 삭제, 검색, 출력 한다.
 public class PhoneBookManager {
 
 	// 1. 배열 선언.
@@ -55,7 +55,7 @@ public class PhoneBookManager {
 		// 2번 방법.
 		int select = Integer.parseInt(kb.nextLine());
 		
-		if(!(select>0 && select<5)) {
+		if(!(select>0 && select<5)) {	// 범위설정하는거 잘보기.
 			System.out.println("정상적인 메뉴 선택이 아닙니다.\n메뉴를 다시 선택해 주세요.");
 		}
 		
@@ -73,7 +73,7 @@ public class PhoneBookManager {
 		String email = kb.nextLine();
 		
 		
-		PhoneInfo info = null;
+		PhoneInfo info = null;		// switch 에서 만든 객체 넣을꺼다.
 		
 		switch(select) {
 		case 1:
@@ -81,7 +81,7 @@ public class PhoneBookManager {
 			info = new PhoneInfo(name, phoneNumber, addr, email);
 			break;
 		
-		case 2:
+		case 2:													// 대학친구니까 기본에다가 +2개.
 			System.out.println("전공(학과)를 입력해 주세요.");
 			String major = kb.nextLine();
 			
@@ -92,7 +92,7 @@ public class PhoneBookManager {
 			info = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
 			break;
 		
-		case 3:
+		case 3:													// 회사친구니까 기본에다가 +3개.
 			System.out.println("회사 이름을 입력해 주세요.");
 			String company = kb.nextLine();
 			
@@ -106,7 +106,7 @@ public class PhoneBookManager {
 			info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
 		
-		case 4:
+		case 4:													// 동호회친구니까 기본에다가 +2개.
 			System.out.println("동호회 이름을 입력해 주세요.");
 			String cafeName = kb.nextLine();
 			
