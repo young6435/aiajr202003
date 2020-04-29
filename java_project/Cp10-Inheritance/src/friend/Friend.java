@@ -6,7 +6,8 @@ package friend;
   	 기본 속성과 기능을 구성.
  */
 
-public abstract class Friend {		// 추상화 할때 써봄.
+public abstract class Friend {		// 추상화 할때 써봄. 밑에	abstract 클래스 가지고 있다.
+									// 그래서 abstract 붙여야된다. 
 	
 	String name;		// 친구의 이름.
 	String phoneNum;	// 친구의 전화번호.

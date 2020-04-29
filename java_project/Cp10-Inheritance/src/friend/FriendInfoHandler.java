@@ -19,7 +19,7 @@ public class FriendInfoHandler {
 	FriendInfoHandler(int num){				// main에서 10을 줄꺼다.
 		myFriends = new Friend[num];		// 배열크기 10으로 만들어진다.
 		numOfFriend = 0;					// 처음에는 친구 저장안됐으니까 0으로한다.
-		kb = new Scanner(System.in);
+		kb = new Scanner(System.in);		// Scanner 로 입력받는다.
 	}
 	
 	// 친구정보를 저장하는 기능.
@@ -38,7 +38,7 @@ public class FriendInfoHandler {
 	// HighFriend / UnivFriend 2가지 타입이 있다.
 	// 타입별로 필요한 데이터가 있다.
 	void addFriend(int choice) {		// ui에서 번호 누른거.
-		
+										// 고딩친구면 1번, 대학친구면 2번.
 			
 		// Scanner kb = new Scanner(System.in); 객체가 계속 생성된다. 그래서 위에 생성자에다가 넣었다.
 		// 기본정보 받기.
@@ -60,7 +60,7 @@ public class FriendInfoHandler {
 			friend = new HighFriend(name, phoneNum, addr, work);	//배열에 객체생성해서 넣을꺼다.
 		
 		} else {
-			// 2 일때 정보 받기.
+			// choice == 2 일때 정보 받기.
 			System.out.println("전공을 입력해주세요.");
 			String major = kb.nextLine();
 			System.out.println("학년을 숫자로 입력해주세요.");

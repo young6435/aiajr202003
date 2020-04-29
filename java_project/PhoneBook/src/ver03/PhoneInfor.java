@@ -48,7 +48,7 @@ public class PhoneInfor {
 	// name 속성값과 전달받은 문자열을 비교해서 결과 반환
 	boolean checkName(String name) {
 		return this.name.equals(name);		// 매개변수로 받은거(찾을 이름)랑 
-											// 저장되어있는 이름하고 똑같은지를 반환한다.
-	}
+			// 앞 name = 배열안에 있는것	.		// 저장되어있는 이름하고 똑같은지를 반환한다.
+	}		// 뒤 name = 찾을 이름.
 	
 }

@@ -9,8 +9,8 @@ import java.util.Scanner;
 저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
 검색 : 이름을 기준으로 데이터를 찾아서 해당 데이터의 정보를 출력
 삭제 : 이름을 기준으로 데이터를 찾아서 해당 데이터를 삭제
-데이터 삭제 후 남아있는 데이터 처리는 데이터를 빈 공란이 없이 순차적으로
-재정리 2번이 삭제되었다면 3번 이후 데이터들의 주소 값이 -1 처리되어 재저장.
+데이터 삭제 후 남아있는 데이터 처리는 데이터를 빈 공란이 없이 순차적으로 재정리 한다. 
+2번이 삭제되었다면 3번 이후 데이터들의 주소 값이 -1(한칸 앞으로 당겨짐) 처리되어 재저장.
 */
 public class PhoneBookManager {
 	
@@ -21,14 +21,14 @@ public class PhoneBookManager {
 	// 1. 참조할 때 반복의 횟수
 	// 2. 새로운 객체를 저장할때 index 로 사용
 	
-	int cnt;
+	int cnt;		// numOfFriend 같은거다. 숫자 셀 때 쓴다.
 	
 	Scanner sc;
 	
 	
-	public PhoneBookManager() {		
+	public PhoneBookManager() {		// 생성자.
 		// 배열 초기화
-		pBooks = new PhoneInfor[100];
+		pBooks = new PhoneInfor[100];		// 전화번호부 100개 짜리 만든다.
 		// 저장개수 초기화
 		cnt = 0;							// 전화번호부에 저장되면 카운트 1씩 올라간다.
 		// Scanner 객체 초기화
@@ -51,8 +51,8 @@ public class PhoneBookManager {
 	void addInfo() {					// 메서드 오버로딩 한거다. 2개.
 		
 		// 배열에 요소 대입
-		pBooks[cnt] = createInstance();
-		
+		pBooks[cnt] = createInstance();		// 위에처럼 매개변수가 없어서,
+											// createInstance 호출하면  info 들어온다.
 		// 등록된 정보의 개수를 증가
 		cnt++;
 		
@@ -118,7 +118,7 @@ public class PhoneBookManager {
 			}
 		}
 		
-		return searchIndex;
+		return searchIndex;		// 배열에서 index번호 반환.
 		
 	}		// searchIndex 메서드 끝.
 	
@@ -138,7 +138,7 @@ public class PhoneBookManager {
 		if(searchIndex<0) {		// 0보다 작다는게 데이터가 없는거다.
 			System.out.println("찾으시는 이름의 데이터가 존재하지 않습니다.");
 		} else {
-			pBooks[searchIndex].showInfo();
+			pBooks[searchIndex].showInfo();		// pBooks에서 찾은 index 번호 보여준다.
 		}
 		
 	}	// searchInfo 메서드 끝.

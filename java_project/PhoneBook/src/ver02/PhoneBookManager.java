@@ -47,9 +47,9 @@ public class PhoneBookManager {
 		if(birthday == null || birthday.trim().isEmpty()) {			//trim은 양쪽에 공백제거.
 			info = new PhoneInfor(name, phoneNumber);
 		}else {
-			info = new PhoneInfor(name, phoneNumber, birthday);
+			info = new PhoneInfor(name, phoneNumber, birthday);		
 		}
-		
+		// 둘 중에 생성자가 만들어져서 호출한 곳으로 보내진다. PhoneBookMain 이쪽으로 간다.
 		return info;
 	}
 
