@@ -18,7 +18,7 @@ public class Buyer {
 	void buy(Product p) {				// Product 타입을 상속받으니까 가능하다.
 		
 		// 구매 상품의 금액과 나(바이어)의 보유금액을 비교해서 구매 여부 처리.
-		if(money < p.price) {
+		if(money < p.price) {		// 내 돈이 제품값보다 적을때.
 			System.out.println("잔액이 부족해서 구매할 수 없습니다.");
 			return;
 		}
@@ -43,7 +43,7 @@ public class Buyer {
 		
 		String itemList = "";		// 구매 제품의 이름 목록.
 		for(int i=0; i<numOfProduct; i++) {		// 구매한 제품 목록만 보면되니까. 배열전체가 아니다.
-			itemList += item[i] + ", ";			// 배열이름이 item.
+			itemList += item[i] + ", ";			// 배열이름이 item. 쭉 나열해야되니까 콤마 찍은거다.
 			
 			// itemList = itemList + (item[i] + ", ");
 			sum += item[i].price;
@@ -51,7 +51,7 @@ public class Buyer {
 		
 		
 		}
-		System.out.println("구매 목록  ===================");
+		System.out.println("=========== 구매 목록  ===========");
 		System.out.println("구매하신 제품은 ");
 		System.out.println(itemList+"입니다.");
 		System.out.println("구매하신 제품들의 총 금액은 " + sum +" 입니다.");

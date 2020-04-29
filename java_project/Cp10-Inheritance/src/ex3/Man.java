@@ -10,6 +10,7 @@ public class Man {
 	
 	void tellYourName() {
 		System.out.println("나의 이름은 "+name+" 입니다.");
+		
 	}
 	
 	

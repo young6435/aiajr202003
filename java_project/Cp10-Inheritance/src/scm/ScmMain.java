@@ -5,7 +5,7 @@ public class ScmMain {
 	public static void main(String[] args) {
 		
 		// 상속관계에서 "다형성"		// 상속도 클래스를 만드는 방법중에 하나다.
-		// 상위클래스 타입의 참조변수 = 하위클래스의 인스턴스
+		// 상위클래스 타입의 참조변수  = 하위클래스의 인스턴스
 		Product p = new Tv(100);
 		//System.out.println(p1);
 		
@@ -71,7 +71,7 @@ public class ScmMain {
 		Buyer buyer = new Buyer();
 		
 		// 제품 생성.
-		Tv product1 = new Tv(200);
+		Tv product1 = new Tv(200);					// 200원. 가격,포인트 설정된다.
 		Computer product2 = new Computer(250);
 		Audio product3 = new Audio(100);
 		
