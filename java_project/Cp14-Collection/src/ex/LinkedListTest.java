@@ -2,6 +2,7 @@ package ex;				// ArrayList 와 사용방법이 같다.
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class LinkedListTest {
@@ -27,10 +28,12 @@ public class LinkedListTest {
 	
 		
 		// 데이터의 저장.   저장한(입력한) 순서대로 들어간다.
-		list.add(new Integer(20));
-		//list.add(20); 가능 	// Auto Boxing.
-		list.add(new Integer(10));
 		list.add(new Integer(30));
+		//list.add(20); 가능 	// Auto Boxing.
+		list.add(new Integer(20));
+		list.add(new Integer(10));
+		list.add(0);
+//		list.add(1);  // 이거 있으면 에러난다.
 	
 		// 데이터의 참조
 		System.out.println("저장된 데이터를 확인 합니다.");
@@ -42,10 +45,20 @@ public class LinkedListTest {
 		System.out.println("=============================");
 		
 		// 데이터의 삭제
-		list.remove(1);		// 1번지값 "10" 삭제되고, 내부적으로 쉬프트해서 2번지값 "30"을 당긴다.
+//		list.remove(1);		// 1번지값 "10" 삭제되고, 내부적으로 쉬프트해서 2번지값 "30"을 당긴다.
 		System.out.println("데이터 삭제 후 데이터를 확인합니다.");
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i));
+//		for(int i=0; i<list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
+		
+		System.out.println("Iterator를 이용한 모든 요소 출력.");
+		
+		Iterator<Integer> itr = list.iterator();
+		
+		while(itr.hasNext()) {
+			
+			int num = itr.next();				// 변수(num)에 받아놓고 써야된다.
+			System.out.println(itr.next());
 		}
 		
 	
