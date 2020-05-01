@@ -73,10 +73,10 @@ public class PhoneBookMain {
 			
 			
 			
-		}
+		}	// while문 종료.
 
-	}
+	}		// 메인 메서드 종료.
 
-}
+} 	// class 종료.
 
 

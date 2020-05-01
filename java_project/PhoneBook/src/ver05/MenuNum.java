@@ -1,6 +1,6 @@
 package ver05;
 
-public interface MenuNum {
+public interface MenuNum {		// interface 다.
 
 /*	
 	 1. 친구 정보 입력

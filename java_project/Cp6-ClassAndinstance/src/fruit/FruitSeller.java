@@ -50,7 +50,7 @@ public class FruitSeller {		// 사과장수.
 		numOfApple -= num;		//numOfApple = numOfApple - num;	
 		myMoney += money;		//myMoney = myMoney + money;
 		
-		return num;
+		return num;		// 사과 개수 반환.
 	}
 	
 	void saleResult() {

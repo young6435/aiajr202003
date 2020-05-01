@@ -41,8 +41,8 @@ public class PhoneBookManager {
 	}
 	
 	// 2.2 사용자로 부터 받은 데이터로 인스턴스 생성.
-	void createInfo() {
-		
+	void createInfo() {		// 메뉴에서 1. 친구정보입력 누르고 들어온상태.
+							
 		System.out.println(" 1.일반  2.대학  3.회사  4.동호회 ");
 		
 		System.out.println("입력하고자 하는 번호를 입력해주세요.");
@@ -224,7 +224,7 @@ public class PhoneBookManager {
 			System.out.println("이메일을 입력해 주세요.");
 			String email = kb.nextLine();
 			
-			PhoneInfo info = null;
+			PhoneInfo info = null;	// 여기서 null값으로 비워놔야 밑에서 객체 만든거 들어간다.
 			
 			// 저장된 인스턴스가 기본인지, 대학친구인지, 회사인지, 동호회인지.
 			

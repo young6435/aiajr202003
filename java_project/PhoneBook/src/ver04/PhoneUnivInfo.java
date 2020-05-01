@@ -13,7 +13,7 @@ public class PhoneUnivInfo extends PhoneInfo{
 			String email, 
 			String major, 
 			String grade) {
-		super(name, phoneNumber, addr, email);
+		super(name, phoneNumber, addr, email);	// 부모꺼에서 4개 만들고, 2개는 여기서만들고.
 		this.major = major;
 		this.grade = grade;
 		

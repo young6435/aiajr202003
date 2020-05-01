@@ -95,7 +95,7 @@ public class PhoneBookManager {
 			
 			
 			
-			break;
+			break;		// while 문 나가려고.
 		}
 		
 		
@@ -145,7 +145,7 @@ public class PhoneBookManager {
 			}
 	
 			
-			break;
+			break;		// while 문 나가려고.
 			
 		}
 	
@@ -194,7 +194,7 @@ public class PhoneBookManager {
 		
 		addInfo(info);
 
-	}
+	}		// createInfo() 끝.
 
 	// 3. 배열의 데이터 출력
 	void showAllInfo() {
@@ -279,7 +279,7 @@ public class PhoneBookManager {
 		System.out.println("변경하고자 하는 이름을 입력해주세요.");
 		String name = kb.nextLine();
 		
-		int index = searchIndex(name);
+		int index = searchIndex(name);		// index에 이름 있다.
 		
 		if(index<0) {
 			System.out.println("찾으시는 이름의 정보가 존재하지 않습니다.");
@@ -297,7 +297,7 @@ public class PhoneBookManager {
 			System.out.println("이메일을 입력해주세요.");
 			String email = kb.nextLine();
 			
-			PhoneInfo info = null;
+			PhoneInfo info = null;		// null 로 해놔야, 밑에서 객체생성한거 들어간다.
 			
 			// 저장된 인스턴스가 : 기본, 대학, 회사, 동호회
 			if(books[index] instanceof PhoneUnivInfo) {
@@ -343,17 +343,6 @@ public class PhoneBookManager {
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

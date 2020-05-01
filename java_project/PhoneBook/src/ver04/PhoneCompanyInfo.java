@@ -14,8 +14,8 @@ public class PhoneCompanyInfo extends PhoneInfo {
 			String company, 
 			String dept, 
 			String job) {
-		super(name, phoneNumber, addr, email);
-		this.company = company;
+		super(name, phoneNumber, addr, email);		// 부모꺼에서 4개 만들고,
+		this.company = company;						// 여기서 3개만들고.
 		this.dept = dept;
 		this.job = job;
 	

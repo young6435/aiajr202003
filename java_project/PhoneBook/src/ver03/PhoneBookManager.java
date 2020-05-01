@@ -51,7 +51,7 @@ public class PhoneBookManager {
 	void addInfo() {					// 메서드 오버로딩 한거다. 2개.
 		
 		// 배열에 요소 대입
-		pBooks[cnt] = createInstance();		// 위에처럼 매개변수가 없어서,
+		pBooks[cnt] = createInstance();		// 매개변수가 없어서,
 											// createInstance 호출하면  info 들어온다.
 		// 등록된 정보의 개수를 증가
 		cnt++;

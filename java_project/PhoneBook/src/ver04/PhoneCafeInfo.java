@@ -12,8 +12,8 @@ public class PhoneCafeInfo extends PhoneInfo{
 			String email,
 			String cafeName,
 			String nickName) {
-		super(name, phoneNumber, addr, email);
-		this.cafeName = cafeName;
+		super(name, phoneNumber, addr, email);		// 부모꺼에서 4개 만들고,
+		this.cafeName = cafeName;					// 여기서 2개만들고.
 		this.nickName = nickName;
 	}
 
