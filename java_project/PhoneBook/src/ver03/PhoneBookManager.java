@@ -132,7 +132,7 @@ public class PhoneBookManager {
 		System.out.println("검색하고자하는 이름을 입력해주세요");
 		String name = sc.nextLine();
 		
-		int searchIndex = searchIndex(name);
+		int searchIndex = searchIndex(name);		// 위에 메서드있다.
 		
 		
 		if(searchIndex<0) {		// 0보다 작다는게 데이터가 없는거다.
@@ -150,7 +150,7 @@ public class PhoneBookManager {
 		System.out.println("삭제하고자하는 이름을 입력해주세요");
 		String name = sc.nextLine();
 		
-		int searchIndex = searchIndex(name);
+		int searchIndex = searchIndex(name);	// 이름으로 찾아야 되니까 이름을 준다.
 		
 		
 		
