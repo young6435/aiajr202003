@@ -12,7 +12,8 @@ public class FriendInfoHandler {
 	// 2. 공동으로 사용할 인스턴스 생성 : static private
 	// 3. 참조변수 반환 메서드 : static public
 	
-	//2020.05.01
+	// 2020.05.01
+	// ArrayList<E> 로 배열을 대신해 본다.
 	
 	private static FriendInfoHandler handler = new FriendInfoHandler(100);
 
@@ -28,7 +29,7 @@ public class FriendInfoHandler {
 	// 친구정보 상세 정보 출력 기능	
 	
 	// List 참조변수.
-	private ArrayList<Friend> myFriends;
+	private ArrayList<Friend> myFriends;		// ArrayList<E>
 	
 	//private Friend[] myFriends;	// Friend 타입의 배열 선언
 	//private int numOfFriend;	// 저장된 친구의 정보 개수
@@ -41,7 +42,7 @@ public class FriendInfoHandler {
 		//numOfFriend=0;
 		
 		// ArrayList 인스턴스 생성.
-		myFriends = new ArrayList<Friend>();
+		myFriends = new ArrayList<Friend>();		// ArrayList<E>
 		kb = new Scanner(System.in);
 	}
 	
@@ -56,7 +57,7 @@ public class FriendInfoHandler {
 		//myFriends[numOfFriend]=f;
 		//numOfFriend++;
 		
-		myFriends.add(f);
+		myFriends.add(f);		// ArrayList<E>
 	}
 	
 	
@@ -109,7 +110,7 @@ public class FriendInfoHandler {
 		
 		System.out.println("== 친구의 기본정보를 출력합니다.========");
 		
-		for(int i=0; i<myFriends.size(); i++) {
+		for(int i=0; i<myFriends.size(); i++) {			// ArrayList<E>
 			myFriends.get(i).showBasicInfo();
 			System.out.println("--------------------");
 		}
@@ -119,7 +120,7 @@ public class FriendInfoHandler {
 	// 친구정보 상세 정보 출력 기능	
 	void showAllData() {
 		System.out.println("=== 친구의 모든 정보를 출력합니다. ============");
-		for(int i=0; i<myFriends.size(); i++) {
+		for(int i=0; i<myFriends.size(); i++) {			// ArrayList<E>
 			myFriends.get(i).showData();
 			System.out.println("--------------------");
 		}
