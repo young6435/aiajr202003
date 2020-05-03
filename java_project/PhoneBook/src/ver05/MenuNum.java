@@ -11,7 +11,7 @@ public interface MenuNum {		// interface 다.
 	 6. 프로그램 종료
 */
 
-	// public static final 자료형 상수 = 리터럴;
+	// public static final 자료형 상수 = 리터럴;		//interface 기반의 상수 표현.
 
 	int INSERT = 1;		// 1. 친구 정보 입력
 	int SEARCH = 2;		// 2. 친구 정보 검색

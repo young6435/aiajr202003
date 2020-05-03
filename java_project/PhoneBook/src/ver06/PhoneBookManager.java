@@ -1,6 +1,6 @@
 package ver06;
 
-import java.util.ArrayList;
+import java.util.ArrayList;		
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -21,7 +21,7 @@ public class PhoneBookManager {
 	//int numOfInfo;
 
 	// List 선언
-	List<PhoneInfo> books;
+	List<PhoneInfo> books;		// ArrayList
 
 	Scanner kb;
 
@@ -33,7 +33,7 @@ public class PhoneBookManager {
 		//numOfInfo = 0;
 
 		// List 인스턴스 생성
-		books = new ArrayList<>();
+		books = new ArrayList<>();		// ArrayList
 
 		// Scanner 초기화
 		kb = new Scanner(System.in);
@@ -58,7 +58,7 @@ public class PhoneBookManager {
 		//numOfInfo++;
 
 		// List 에 요소 저장
-		books.add(info);
+		books.add(info);		// ArrayList
 	}
 
 	// 2.2 사용자로 부터 받은 데이터로 인스턴스 생성
@@ -105,7 +105,7 @@ public class PhoneBookManager {
 				//manager.kb.nextLine();
 				continue;
 			} finally {
-				manager.kb.nextLine();
+				manager.kb.nextLine();		
 			}
 
 
@@ -180,6 +180,7 @@ public class PhoneBookManager {
 			// 2.2.3 대학 클래스로 인스턴스 생성			
 			info = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
 			break;
+		
 		case MenuNum.COMPANY:
 			System.out.println("회사의 이름을 입력해주세요.");
 			String company = kb.nextLine();
@@ -191,6 +192,7 @@ public class PhoneBookManager {
 			// 2.2.4 회사 클래스로 인스턴스 생성
 			info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
+		
 		case MenuNum.CAFE:
 			System.out.println("동호회 이름을 입력해주세요.");
 			String cafeName = kb.nextLine();

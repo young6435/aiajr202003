@@ -12,6 +12,7 @@ public class Menu {
 		System.out.println(" 5. 친구 정보 전체 보기");
 		System.out.println(" 6. 프로그램 종료");
 		System.out.println("===================");
+		
 	}
 
 }

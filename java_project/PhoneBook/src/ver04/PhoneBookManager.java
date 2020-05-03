@@ -23,6 +23,7 @@ public class PhoneBookManager {
 		kb = new Scanner(System.in);
 	}
 
+	
 	// 2. 배열에 정보 저장
 	// 2.1 배열에 추가
 	// 2.2 사용자로 부터 받은 데이터로 인스턴스 생성
@@ -47,7 +48,7 @@ public class PhoneBookManager {
 
 		// 사용자 선택 번호
 		int select = Integer.parseInt(kb.nextLine());
-		
+	
 		if(!(select>0 && select<5)) {
 			System.out.println("정상적인 메뉴 선택이 아닙니다.\n메뉴를 다시 선택해 주세요.");
 			return;
@@ -108,7 +109,7 @@ public class PhoneBookManager {
 		
 		addInfo(info);
 
-	}
+	}	// createInfo 끝.
 
 	// 3. 배열의 데이터 출력
 	void showAllInfo() {
@@ -141,7 +142,7 @@ public class PhoneBookManager {
 		
 		return searchIndex;
 		
-	}
+	}	// searchIndex 끝.
 	
 	
 	// 4. 배열의 정보 검색 : 이름 기준
@@ -184,7 +185,7 @@ public class PhoneBookManager {
 			numOfInfo--;
 		}
 		
-	}
+	}	// deleteInfo 끝.
 	
 	
 	// 6. 배열의 정보를 수정 : 이름 기준
@@ -255,6 +256,6 @@ public class PhoneBookManager {
 		
 		
 		
-	}
+	}	// editInfo 끝.
 	
 }

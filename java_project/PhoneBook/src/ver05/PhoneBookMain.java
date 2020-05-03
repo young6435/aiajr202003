@@ -8,7 +8,9 @@ public class PhoneBookMain {
 
 	public static void main(String[] args) {
 		
-		//PhoneBookManager manager = new PhoneBookManager(100);
+		//PhoneBookManager manager = new PhoneBookManager(100);	
+		// 싱글톤 썼으니까 이거안됨.
+		
 		PhoneBookManager manager = PhoneBookManager.getInstance();
 		
 		while(true) {
@@ -51,22 +53,22 @@ public class PhoneBookMain {
 			
 			
 			switch(select) {
-			case MenuNum.INSERT:
+			case MenuNum.INSERT:	// 1. 친구 정보 입력
 				manager.createInfo();
 				break;
-			case MenuNum.SEARCH:
+			case MenuNum.SEARCH:	// 2. 친구 정보 검색
 				manager.showInfo();
 				break;
-			case MenuNum.DELETE:
+			case MenuNum.DELETE:	// 3. 친구 정보 삭제
 				manager.deleteInfo();
 				break;
-			case MenuNum.EDIT:
+			case MenuNum.EDIT:		// 4. 친구 정보 수정
 				manager.editInfo();
 				break;
-			case MenuNum.PRINT_ALL:
+			case MenuNum.PRINT_ALL:		// 5. 친구 정보 전체 보기
 				manager.showAllInfo();
 				break;
-			case MenuNum.EXIT:
+			case MenuNum.EXIT:		// 6. 프로그램 종료
 				System.out.println("프로그램을 종료합니다.");
 				return;
 			}

@@ -26,9 +26,9 @@ public class PhoneBookManager {
 		kb = new Scanner(System.in);
 	}
 	
-	private static PhoneBookManager manager = new PhoneBookManager(100);		// 싱글톤
+	private static PhoneBookManager manager = new PhoneBookManager(100);	// 싱글톤.
 	
-	public static PhoneBookManager getInstance() {								// 싱글톤
+	public static PhoneBookManager getInstance() {							// 싱글톤.
 		return manager;
 	}
 	
@@ -62,7 +62,7 @@ public class PhoneBookManager {
 			System.out.println(" 1.대학 2.회사 3.동호회 ");
 			System.out.println("입력하고자 하는 번호를 입력해주세요.");
 
-			try {
+			try {	// 예외처리.
 				select = kb.nextInt();
 				
 				// 정상범위 1~3
@@ -154,7 +154,7 @@ public class PhoneBookManager {
 //			// 2.2.2 기본 클래스로 인스턴스 생성
 //			info = new PhoneInfo(name, phoneNumber, addr, email);
 //			break;
-		case MenuNum.UNIV:
+		case MenuNum.UNIV:		// 대학 친구.
 			System.out.println("전공(학과)를 입력해주세요.");
 			String major = kb.nextLine();
 			System.out.println("학년 정보를 입력해주세요.");
@@ -165,7 +165,7 @@ public class PhoneBookManager {
 			info = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
 			break;
 		
-		case MenuNum.COMPANY:
+		case MenuNum.COMPANY:		// 회사 친구.
 			System.out.println("회사의 이름을 입력해주세요.");
 			String company = kb.nextLine();
 			System.out.println("부서의 이름을 입력해주세요.");
@@ -177,10 +177,10 @@ public class PhoneBookManager {
 			info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
 		
-		case MenuNum.CAFE:
+		case MenuNum.CAFE:		// 동호회 친구.
 			System.out.println("동호회 이름을 입력해주세요.");
 			String cafeName = kb.nextLine();
-			System.out.println("닉네임을 입력해주세요.");
+			System.out.println("닉네임을 입력해주세요."); 
 			String nickName = kb.nextLine();
 			
 			
