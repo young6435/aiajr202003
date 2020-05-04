@@ -7,6 +7,7 @@ public class FirstJava {
 		//System.out.println("Hellow~!! Java~!!!!");
 		//System.out.println("hi");
 		System.out.println("wow");
+		System.out.println("123");
 		
 	}
 
