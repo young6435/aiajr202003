@@ -25,13 +25,4 @@ public interface MenuNum {
 	int CAFE=3;			// 3. 동호회
 	
 	//char INSER_CHAR = 'i';
-	 
-
-
-
-
-
-
-
-
 }
