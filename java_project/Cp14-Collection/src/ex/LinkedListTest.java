@@ -33,7 +33,7 @@ public class LinkedListTest {
 		list.add(new Integer(20));
 		list.add(new Integer(10));
 		list.add(0);
-//		list.add(1);  // 이거 있으면 에러난다.
+		list.add(1);  // 이거 있으면 에러난다.
 	
 		// 데이터의 참조
 		System.out.println("저장된 데이터를 확인 합니다.");

@@ -1,6 +1,6 @@
 package ver05;
 
-// 상속을 위한 기본 클래스 구성.
+// 상속을 위한 기본 클래스 구성.		// showAllInfo를 완성 못해서 앞에 abstract를 붙인다.
 public abstract class PhoneInfo implements Info {		// 추상클래스라서 인스턴스 생성못한다.
 
 	String name;				// 친구의 이름.	

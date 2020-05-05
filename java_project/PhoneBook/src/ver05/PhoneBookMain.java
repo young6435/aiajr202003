@@ -11,7 +11,9 @@ public class PhoneBookMain {
 		//PhoneBookManager manager = new PhoneBookManager(100);	
 		// 싱글톤 썼으니까 이거안됨.
 		
-		PhoneBookManager manager = PhoneBookManager.getInstance();
+		
+		// 싱글톤.
+		PhoneBookManager manager = PhoneBookManager.getInstance();		
 		
 		while(true) {
 			

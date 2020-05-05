@@ -26,9 +26,11 @@ public class PhoneBookManager {
 		kb = new Scanner(System.in);
 	}
 	
-	private static PhoneBookManager manager = new PhoneBookManager(100);	// 싱글톤.
+	// 싱글톤.
+	private static PhoneBookManager manager = new PhoneBookManager(100);	
 	
-	public static PhoneBookManager getInstance() {							// 싱글톤.
+	// 싱글톤.
+	public static PhoneBookManager getInstance() {							
 		return manager;
 	}
 	
@@ -77,11 +79,11 @@ public class PhoneBookManager {
 				
 				
 				
-			} catch (InputMismatchException e) {
+			} catch (InputMismatchException e) {	// 한글 or 알파벳 입력했을때.
 				System.out.println("잘못된 메뉴 입력입니다. \n확인하시고 다시 입력해주세요.");
 				//manager.kb.nextLine();
 				continue;
-			} catch (BadNumberException e) {
+			} catch (BadNumberException e) {	// 1~3 이 아닌 숫자 입력했을때.
 				System.out.println("메뉴 범위를 벗어난 숫자 입력입니다.\n다시 확인 후 입력해주세요.");
 				continue;				
 			} catch (Exception e) {
@@ -133,12 +135,15 @@ public class PhoneBookManager {
 					phoneNumber.trim().isEmpty() || 
 					addr.trim().isEmpty() || 
 					email.trim().isEmpty()
-					) {
+					) 
+			{
 				StringEmptyException e = new StringEmptyException();
 				throw e;
 				
 			}
-			} catch (StringEmptyException e) {
+			} 
+			
+			catch (StringEmptyException e) {
 				System.out.println("기본정보는 공백없이 모두 입력해주셔야 합니다.");
 				System.out.println("다시 입력해주세요\n");
 				continue;
