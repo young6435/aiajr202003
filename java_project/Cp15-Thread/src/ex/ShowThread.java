@@ -13,7 +13,8 @@ public class ShowThread extends Thread{
 	@Override
 	public void run() {
 		for(int i=0; i<100; i++) {
-			System.out.println("안녕하세요."+threadName);
+			System.out.println("안녕하세요."+threadName+" 입니다.");
+			System.out.println("쓰레드의 우선순위는"+getPriority());
 			
 		}
 	}

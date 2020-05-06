@@ -1,4 +1,4 @@
-package ex;
+package ex;				// ThreadMain5
 
 public class Sum {
 
@@ -8,11 +8,11 @@ public class Sum {
 		num = 0;
 	}
 	
-	void addNum(int n) {
+	void addNum(long n) {
 		num += n;	// num = num + n;
 	}
 	
-	int getNum() {
+	long getNum() {
 		return num;
 	}
 	
