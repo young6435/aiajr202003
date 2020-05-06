@@ -1,4 +1,5 @@
-package ex;
+package ex;			// ThreadMain5
+
 
 public class AddThread extends Thread {
 	
