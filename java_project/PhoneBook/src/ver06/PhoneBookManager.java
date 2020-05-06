@@ -1,6 +1,6 @@
 package ver06;
 
-import java.util.ArrayList;		
+import java.util.ArrayList;		  
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -26,7 +26,7 @@ public class PhoneBookManager {
 	Scanner kb;
 
 	// 생성자를 통해서 배열 생성, 요소의 개수 초기화
-	private PhoneBookManager(int num) {
+	private PhoneBookManager(int num) {		// 싱글톤.
 		// 배열의 생성
 		//books = new PhoneInfo[num];
 		// 요소 개수의 초기화
@@ -38,9 +38,12 @@ public class PhoneBookManager {
 		// Scanner 초기화
 		kb = new Scanner(System.in);
 	}
-
+	
+	// 싱글톤.
 	private static PhoneBookManager manager = new PhoneBookManager(100);
 
+	
+	// 싱글톤.
 	public static PhoneBookManager getInstance() {
 		return manager;
 	}
@@ -93,11 +96,11 @@ public class PhoneBookManager {
 
 
 
-			} catch (InputMismatchException e) {
+			} catch (InputMismatchException e) {		// 영어 or 한글 입력시.
 				System.out.println("잘못된 메뉴 입력입니다. \n확인하시고 다시 입력해주세요.");
 				//manager.kb.nextLine();
 				continue;
-			} catch (BadNumberException e) {
+			} catch (BadNumberException e) {	// 1~3 벗어났을때.
 				System.out.println("메뉴 범위에 벗어난 숫자 입력입니다.\n다시 확인 후 입력해주세요.");
 				continue;				
 			} catch (Exception e) {
@@ -112,7 +115,7 @@ public class PhoneBookManager {
 
 
 			break;
-		}
+		}	// while 문 끝.
 
 
 
@@ -154,7 +157,7 @@ public class PhoneBookManager {
 				throw e;
 
 			}
-			} catch (StringEmptyException e) {
+			} catch (StringEmptyException e) {		// 빈칸이면 에러다.
 				System.out.println("기본정보는 공백없이 모두 입력해주셔야 합니다.");
 				System.out.println("다시 입력해주세요\n");
 				continue;
@@ -163,7 +166,7 @@ public class PhoneBookManager {
 
 			break;
 
-		}
+		} // while 문 끝.
 
 		switch (select) {
 //		case 1:
@@ -219,7 +222,7 @@ public class PhoneBookManager {
 		// for 반복문 : 반복의 횟수 지정이 가능 numOfInfo
 
 		System.out.println("전체 정보를 출력합니다. ===========");
-		for(int i=0; i<books.size() ; i++) {
+		for(int i=0; i<books.size() ; i++) {		// ArrayList
 			books.get(i).showAllInfo();
 			System.out.println("----------------");
 		}
@@ -235,7 +238,7 @@ public class PhoneBookManager {
 
 		// 배열의 반복으로 name 값을 비교해서 index 값을 찾는다.
 		for(int i=0; i<books.size(); i++) {
-			if(books.get(i).name.equals(name)) {
+			if(books.get(i).name.equals(name)) {		// ArrayList
 				searchIndex=i;
 				break;
 			}
@@ -286,7 +289,7 @@ public class PhoneBookManager {
 			//numOfInfo--;
 
 			// List 요소 삭제
-			books.remove(index);
+			books.remove(index);		// ArrayList
 		}
 
 	}
@@ -305,7 +308,7 @@ public class PhoneBookManager {
 			return;
 		} else {
 
-			String editName = books.get(index).name;
+			String editName = books.get(index).name;		// ArrayList
 
 			System.out.println("수정 데이터 입력을 시작합니다.");
 			System.out.println("이름은 " + editName + "입니다.");
@@ -354,26 +357,11 @@ public class PhoneBookManager {
 //			}
 
 			// List에 index 위치에 새로운 인스턴스를 저장
-			books.remove(index);
+			books.remove(index);		// ArrayList
 			books.add(index, info);
 
 
 		}
 
-
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

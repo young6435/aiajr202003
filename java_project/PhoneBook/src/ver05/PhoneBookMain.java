@@ -36,7 +36,9 @@ public class PhoneBookMain {
 				}
 				
 				
-			} catch (InputMismatchException e) {
+			} 	// try 끝.
+			
+			catch (InputMismatchException e) {	
 				System.out.println("잘못된 메뉴 입력입니다. \n확인하시고 다시 입력해주세요.");
 				//manager.kb.nextLine();
 				continue;

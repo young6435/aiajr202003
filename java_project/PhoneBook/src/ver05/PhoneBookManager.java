@@ -108,7 +108,7 @@ public class PhoneBookManager {
 //		}
 		
 		
-		PhoneInfo info = null;
+		PhoneInfo info = null;		// 1. 친구 정보 입력 누르고 들어오고, 아직 친구입력안됐음.
 		
 		String name=null, phoneNumber=null, addr=null, email=null;
 		
@@ -199,7 +199,7 @@ public class PhoneBookManager {
 		
 		addInfo(info);
 
-	}		// createInfo() 끝.
+	}	// createInfo() 끝.
 
 	// 3. 배열의 데이터 출력
 	void showAllInfo() {
@@ -305,7 +305,7 @@ public class PhoneBookManager {
 			PhoneInfo info = null;		// null 로 해놔야, 밑에서 객체생성한거 들어간다.
 			
 			// 저장된 인스턴스가 : 기본, 대학, 회사, 동호회
-			if(books[index] instanceof PhoneUnivInfo) {
+			if(books[index] instanceof PhoneUnivInfo) {	//대학.
 				System.out.println("전공을 입력해주세요.");
 				String major = kb.nextLine();
 				System.out.println("학년을 입력해주세요.");
@@ -313,7 +313,7 @@ public class PhoneBookManager {
 				
 				info = new PhoneUnivInfo(editName, phoneNumber, addr, email, major, grade);
 				
-			} else if(books[index] instanceof PhoneCompanyInfo) {
+			} else if(books[index] instanceof PhoneCompanyInfo) {	//회사.
 				
 				System.out.println("회사 이름을 입력해주세요.");
 				String company = kb.nextLine();
@@ -325,7 +325,7 @@ public class PhoneBookManager {
 				info = new PhoneCompanyInfo(editName, phoneNumber, addr, email, company, dept, job);
 				
 			
-			} else if(books[index] instanceof PhoneCafeInfo) {
+			} else if(books[index] instanceof PhoneCafeInfo) { 	//동호회.
 				
 				System.out.println("동호회 이름을 입력해주세요.");
 				String cafeName = kb.nextLine();

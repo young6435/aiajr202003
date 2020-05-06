@@ -9,6 +9,8 @@ public class PhoneBookMain {
 	public static void main(String[] args) {
 		
 		//PhoneBookManager manager = new PhoneBookManager(100);
+		
+		// 싱글톤.
 		PhoneBookManager manager = PhoneBookManager.getInstance();
 		
 		while(true) {
@@ -35,7 +37,7 @@ public class PhoneBookMain {
 			} catch (InputMismatchException e) {		// 알파벳 눌렀을때.
 				System.out.println("잘못된 메뉴 입력입니다. \n확인하시고 다시 입력해주세요.");
 				//manager.kb.nextLine();		
-				continue;
+				continue; 
 			} catch (BadNumberException e) {		// 숫자 범위 넘었을때.
 				System.out.println("메뉴 범위를 벗어난 숫자 입력입니다.\n다시 확인 후 입력해주세요.");
 				continue;					
