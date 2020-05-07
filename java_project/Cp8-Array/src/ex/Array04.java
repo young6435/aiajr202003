@@ -27,7 +27,7 @@ public class Array04 {
 		
 		for(int i=0; i<60000; i++) {
 			
-			j =(int)(Math.random()*44)+1;
+			j =(int)(Math.random()*44)+1;	// 1~45 까지 랜덤으로 숫자가 나온다. 이걸 하나 뽑는다.
 			
 			temp = ball[0];				// j에서 나온 숫자가 index숫자인데, 그 index가 갖고있는 숫자랑
 			ball[0] = ball[j];			// 첫번째 index랑 바꾼다.
