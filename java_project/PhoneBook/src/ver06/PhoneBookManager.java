@@ -21,7 +21,7 @@ public class PhoneBookManager {
 	//int numOfInfo;
 
 	// List 선언
-	List<PhoneInfo> books;		// ArrayList
+	ArrayList<PhoneInfo> books;		// ArrayList
 
 	Scanner kb;
 
@@ -37,7 +37,7 @@ public class PhoneBookManager {
 
 		// Scanner 초기화
 		kb = new Scanner(System.in);
-	}
+	}	// PhoneBookManager 끝.
 	
 	// 싱글톤.
 	private static PhoneBookManager manager = new PhoneBookManager(100);
@@ -78,7 +78,7 @@ public class PhoneBookManager {
 
 		while(true) {
 
-			System.out.println(" 1.대학 2.회사 3.동호회 ");
+			System.out.println(" 1.대학 2.회사 3.동호회 ");		// 일반 없어졌다.
 			System.out.println("입력하고자 하는 번호를 입력해주세요.");
 
 			try {
@@ -213,7 +213,7 @@ public class PhoneBookManager {
 
 		addInfo(info);
 
-	}
+	}	// createInfo 끝.
 
 	// 3. 배열의 데이터 출력
 	void showAllInfo() {
@@ -322,7 +322,7 @@ public class PhoneBookManager {
 			PhoneInfo info = null;
 
 			// 저장된 인스턴스가 : 기본, 대학, 회사, 동호회
-			if(books.get(index) instanceof PhoneUnivInfo) {
+			if(books.get(index) instanceof PhoneUnivInfo) {	// ArrayList
 				System.out.println("전공을 입력해주세요.");
 				String major = kb.nextLine();
 				System.out.println("학년을 입력해주세요.");
@@ -330,7 +330,7 @@ public class PhoneBookManager {
 
 				info = new PhoneUnivInfo(editName, phoneNumber, addr, email, major, grade);
 
-			} else if(books.get(index) instanceof PhoneCompanyInfo) {
+			} else if(books.get(index) instanceof PhoneCompanyInfo) {	// ArrayList
 
 				System.out.println("회사 이름을 입력해주세요.");
 				String company = kb.nextLine();
@@ -342,7 +342,7 @@ public class PhoneBookManager {
 				info = new PhoneCompanyInfo(editName, phoneNumber, addr, email, company, dept, job);
 
 
-			} else if(books.get(index) instanceof PhoneCafeInfo) {
+			} else if(books.get(index) instanceof PhoneCafeInfo) {	// ArrayList
 
 				System.out.println("동호회 이름을 입력해주세요.");
 				String cafeName = kb.nextLine();
@@ -358,7 +358,7 @@ public class PhoneBookManager {
 
 			// List에 index 위치에 새로운 인스턴스를 저장
 			books.remove(index);		// ArrayList
-			books.add(index, info);
+			books.add(index, info);		// ArrayList
 
 
 		}
