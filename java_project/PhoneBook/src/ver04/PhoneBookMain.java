@@ -13,7 +13,7 @@ public class PhoneBookMain {
 			int select = manager.kb.nextInt();		// 내가누른 숫자가 select에 저장된다.
 			manager.kb.nextLine();
 			
-			if(!(select>0 && select<7)) {	// 범위설정하는거 잘보기.
+			if(!(select>0 && select<7)) {	// 1~6번.
 				System.out.println("정상적인 메뉴 선택이 아닙니다.\n메뉴를 다시 선택해 주세요.");
 			}
 			switch(select) {

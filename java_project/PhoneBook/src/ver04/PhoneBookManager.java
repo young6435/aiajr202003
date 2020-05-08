@@ -49,7 +49,7 @@ public class PhoneBookManager {
 		// 사용자 선택 번호
 		int select = Integer.parseInt(kb.nextLine());
 	
-		if(!(select>0 && select<5)) {
+		if(!(select>0 && select<5)) { // 1~4번
 			System.out.println("정상적인 메뉴 선택이 아닙니다.\n메뉴를 다시 선택해 주세요.");
 			return;
 		}
@@ -70,11 +70,11 @@ public class PhoneBookManager {
 		PhoneInfo info = null;		// 기본으로 4개는 입력받아야 되고, 추가로 합친 다음에,
 									// 객체를 만들어야 되니까 미리 null값으로 해둔다.
 		switch (select) {
-		case 1:
+		case 1:	// 기본으로 하나 만든다. 4개짜리.
 			// 2.2.2 기본 클래스로 인스턴스 생성
-			info = new PhoneInfo(name, phoneNumber, addr, email);
+			info = new PhoneInfo(name, phoneNumber, addr, email);	// 여기서 만드니까.
 			break;
-		case 2:
+		case 2:	// 대학.
 			System.out.println("전공(학과)를 입력해주세요.");
 			String major = kb.nextLine();
 			System.out.println("학년 정보를 입력해주세요.");
@@ -83,7 +83,7 @@ public class PhoneBookManager {
 			// 2.2.3 대학 클래스로 인스턴스 생성			
 			info = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
 			break;
-		case 3:
+		case 3:	// 회사.
 			System.out.println("회사의 이름을 입력해주세요.");
 			String company = kb.nextLine();
 			System.out.println("부서의 이름을 입력해주세요.");
@@ -94,7 +94,7 @@ public class PhoneBookManager {
 			// 2.2.4 회사 클래스로 인스턴스 생성
 			info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
-		case 4:
+		case 4:	// 동호회.
 			System.out.println("동호회 이름을 입력해주세요.");
 			String cafeName = kb.nextLine();
 			System.out.println("닉네임을 입력해주세요.");
@@ -134,7 +134,7 @@ public class PhoneBookManager {
 		
 		// 배열의 반복으로 name 값을 비교해서 index 값을 찾는다.
 		for(int i=0; i<numOfInfo; i++) {
-			if(books[i].name.equals(name)) {
+			if(books[i].name.equals(name)) {	// 매개변수 name이랑 같냐.
 				searchIndex=i;
 				break;
 			}
@@ -213,6 +213,10 @@ public class PhoneBookManager {
 			String email = kb.nextLine();
 			
 			PhoneInfo info = null;	// 여기서 null값으로 비워놔야 밑에서 객체 만든거 들어간다.
+			
+			// 배열이 PhoneInfo 타입이고, PhoneInfo 타입을 상속받아서 
+			// 대학,회사,동호회 친구들을 만들었다.
+			// 그래서 타입변환할때 잘 봐야된다.
 			
 			// 저장된 인스턴스가 : 기본, 대학, 회사, 동호회
 			if(books[index] instanceof PhoneUnivInfo) {
