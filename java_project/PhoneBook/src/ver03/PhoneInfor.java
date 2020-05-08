@@ -28,7 +28,7 @@ public class PhoneInfor {
 		// this.name = name;
 		// this.phoneNumber = phoneNumber;
 		// this(name, phoneNumber, null);
-		this(name, phoneNumber, "입력값이 없습니다.");
+		this(name, phoneNumber, "입력값이 없습니다.");	// 3개니까(2+1), 위에꺼 생성자3개짜리로 이동한다.
 	}
 
 	void showInfo() {

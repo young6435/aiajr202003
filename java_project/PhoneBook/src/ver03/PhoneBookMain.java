@@ -25,8 +25,8 @@ public class PhoneBookMain {
 				//PhoneInfor info = manager.createInstance();
 				// 정보를 배열에 저장
 				//manager.addInfo(info);
-				manager.addInfo();
-				break;
+				manager.addInfo();		// PhoneBookManager로 객체 생성했다.(위에서) 
+				break;					// 이거 안에 addInfo가 있으니까 쓸수있다.
 			case 2:		// 2. 친구 정보 검색
 				// 이름으로 검색
 				manager.searchInfo();
