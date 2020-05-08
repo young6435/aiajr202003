@@ -1,6 +1,6 @@
 package ver06;
 
-public interface MenuNum {
+public interface MenuNum {	// 인터페이스.
 
 /*	
 	 1. 친구 정보 입력
@@ -13,7 +13,7 @@ public interface MenuNum {
 
 	// public static final 자료형 상수 = 리터럴;
 
-	int INSERT = 1;		// 1. 친구 정보 입력
+	int INSERT = 1;		// 1. 친구 정보 입력		// PhoneBookMain에서 쓴다.
 	int SEARCH = 2;		// 2. 친구 정보 검색
 	int DELETE = 3;		// 3. 친구 정보 삭제
 	int EDIT = 4;		// 4. 친구 정보 수정

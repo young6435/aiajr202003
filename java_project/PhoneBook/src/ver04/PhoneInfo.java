@@ -29,7 +29,7 @@ public class PhoneInfo {
 	// 전체 정보 출력 메서드.
 	void showAllInfo() {
 		// 상속 후 오버라이딩을 통해 재구성할꺼다.
-		showBasicInfo();
+		showBasicInfo();	// 기본적으로 베이직 보여주고, 오버라이딩해서 추가할꺼다.
 	}
 
 

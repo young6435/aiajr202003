@@ -114,7 +114,7 @@ public class PhoneBookManager {
 
 
 
-			break;
+			break;	// while 문 빠져나간다.
 		}	// while 문 끝.
 
 
@@ -223,7 +223,7 @@ public class PhoneBookManager {
 
 		System.out.println("전체 정보를 출력합니다. ===========");
 		for(int i=0; i<books.size() ; i++) {		// ArrayList
-			books.get(i).showAllInfo();
+			books.get(i).showAllInfo();				// ArrayList
 			System.out.println("----------------");
 		}
 
@@ -237,7 +237,7 @@ public class PhoneBookManager {
 		int searchIndex = -1; 
 
 		// 배열의 반복으로 name 값을 비교해서 index 값을 찾는다.
-		for(int i=0; i<books.size(); i++) {
+		for(int i=0; i<books.size(); i++) {				// ArrayList	
 			if(books.get(i).name.equals(name)) {		// ArrayList
 				searchIndex=i;
 				break;
@@ -261,7 +261,7 @@ public class PhoneBookManager {
 			System.out.println("검색하신 이름의 정보가 없습니다.");
 		} else {
 			System.out.println("----------------");
-			books.get(index).showBasicInfo();
+			books.get(index).showBasicInfo();			// ArrayList
 			System.out.println("----------------");
 		}
 
