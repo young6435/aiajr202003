@@ -164,7 +164,7 @@ public class PhoneBookManager {
 			}
 
 
-			break;
+			break;	// while 문 빠져나간다.
 
 		} // while 문 끝.
 
@@ -173,7 +173,7 @@ public class PhoneBookManager {
 //			// 2.2.2 기본 클래스로 인스턴스 생성
 //			info = new PhoneInfo(name, phoneNumber, addr, email);
 //			break;
-		case MenuNum.UNIV:
+		case MenuNum.UNIV:			// 1번 대학.
 			System.out.println("전공(학과)를 입력해주세요.");
 			String major = kb.nextLine();
 			System.out.println("학년 정보를 입력해주세요.");
@@ -184,7 +184,7 @@ public class PhoneBookManager {
 			info = new PhoneUnivInfo(name, phoneNumber, addr, email, major, grade);
 			break;
 		
-		case MenuNum.COMPANY:
+		case MenuNum.COMPANY:		// 2번 회사.
 			System.out.println("회사의 이름을 입력해주세요.");
 			String company = kb.nextLine();
 			System.out.println("부서의 이름을 입력해주세요.");
@@ -196,7 +196,7 @@ public class PhoneBookManager {
 			info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 			break;
 		
-		case MenuNum.CAFE:
+		case MenuNum.CAFE:		// 3번 동호회.
 			System.out.println("동호회 이름을 입력해주세요.");
 			String cafeName = kb.nextLine();
 			System.out.println("닉네임을 입력해주세요.");
@@ -321,7 +321,7 @@ public class PhoneBookManager {
 
 			PhoneInfo info = null;
 
-			// 저장된 인스턴스가 : 기본, 대학, 회사, 동호회
+			// 저장된 인스턴스가 : 대학, 회사, 동호회
 			if(books.get(index) instanceof PhoneUnivInfo) {	// ArrayList
 				System.out.println("전공을 입력해주세요.");
 				String major = kb.nextLine();
