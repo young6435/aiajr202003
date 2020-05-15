@@ -213,7 +213,7 @@ public class PhoneBookManager {
 
 		addInfo(info);
 
-	}	// createInfo 끝.
+	}	// createInfo 끝.		// 만드는거 따로(createInfo), 추가하는거 따로(addInfo)다.
 
 	// 3. 배열의 데이터 출력
 	void showAllInfo() {
@@ -357,7 +357,7 @@ public class PhoneBookManager {
 //			}
 
 			// List에 index 위치에 새로운 인스턴스를 저장
-			books.remove(index);		// ArrayList
+			books.remove(index);		// ArrayList		// 삭제하고 추가해야 된다.(edit니까)
 			books.add(index, info);		// ArrayList
 
 
