@@ -54,7 +54,7 @@ public class PhoneBookManager {
 	// 2.2 사용자로 부터 받은 데이터로 인스턴스 생성
 
 	// 2.1 배열에 추가
-	void addInfo(PhoneInfo info) {
+	void addInfo(PhoneInfo info) {		// 위에서 배열만들었으니까, 여기서 추가한다.
 		// 배열에 numOfInfo 숫자 -> index 로 참조값을 저장
 		//books[numOfInfo] = info;
 		// 입력된 정보의 개수를 +1 증가 시킨다
