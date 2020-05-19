@@ -10,9 +10,9 @@ from emp
 
 2. 사원의 이름, 급여, 연간 총 수입을 총 수입이 많은 것부터 작은 순으로 출력하시오, 연간 총수입은 월급에 12를 곱한 후 $100의 상여금을 더해서 계산하시오.
 
-select ename, sal, (sal*12)+100 as yearsal
+select ename, sal, (sal*12)+100 as income
 from emp
-order by (sal*12)+100 desc
+order by income desc
 ;
 
 
@@ -22,7 +22,7 @@ order by (sal*12)+100 desc
 
 select ename, sal
 from emp
-where sal >=2000
+where sal >2000
 order by sal desc
 ;
 
@@ -51,7 +51,7 @@ where sal not between 2000 and 3000
 
 select ename, job, hiredate
 from emp
-where hiredate between '81/02/20' and '81/05/01'
+where hiredate between '81/02/20' and '81/05/01'        --81-02-20 써도 된다.
 ;
 
 
@@ -60,6 +60,7 @@ where hiredate between '81/02/20' and '81/05/01'
 
 select ename, deptno
 from emp
+--where deptno in(20,30)
 where deptno=20 or deptno=30
 order by ename desc
 ;
@@ -73,6 +74,7 @@ order by ename desc
 select ename, sal, deptno
 from emp
 where (sal >=2000 and sal<=3000) and (deptno=20 or deptno=30)
+--where sal between 2000 and 3000 and deptno in (20, 30)
 order by ename
 ;
 
@@ -122,7 +124,7 @@ where ename like '__R%'
 
 select ename
 from emp
-where ename like '%A%E%'
+where ename like '%A%' and '%E%'
 ;
 
 

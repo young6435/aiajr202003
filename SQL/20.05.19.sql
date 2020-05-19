@@ -190,3 +190,13 @@ select ename, deptno
 from emp
 order by deptno, ename      -- 기본이 오름차순이다. 
 ;
+
+
+-- work2 할때 필요하다.
+select * from tab;
+desc book;
+desc customer;
+desc orders;
+select * from book;
+select * from customer;
+select * from orders;
