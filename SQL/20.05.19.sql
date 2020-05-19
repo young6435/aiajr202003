@@ -107,7 +107,7 @@ select *
 from emp
 --where hiredate>'1982-01-01'
 --where hiredate>='1981-01-01' and hiredate<='1981-12-31'
-where hiredate between '1981-01-01' and '1981-12-31'
+where hiredate not between '1981-01-01' and '1981-12-31'
 ;
 
 
@@ -121,7 +121,8 @@ where hiredate between '1981-01-01' and '1981-12-31'
 select *
 from emp
 --where comm=300 or comm=500 or comm=1400
-where comm in(300, 500, 1400)
+--where comm in(300, 500, 1400)
+where comm not in(300, 500, 1400)
 ;
 
 
@@ -148,5 +149,8 @@ select *
 from emp
 --where ename like '_A%'    -- 이름 2번째가 A
 --where ename like '__A%'     -- 이름 3번째가 A
-where ename like '%E_'      -- 이름 뒤에서 2번째가 E
+--where ename like '%E_'      -- 이름 뒤에서 2번째가 E
+where ename not like '%A%'      -- A를 포함하지 않는 이름
 ;
+
+
