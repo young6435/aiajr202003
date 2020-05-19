@@ -153,4 +153,30 @@ from emp
 where ename not like '%A%'      -- A를 포함하지 않는 이름
 ;
 
+-- null 값 확인을 위한 연산자 : is null, in not null
+-- 컬럼명 in null : 해당 컬럼의 값이 null인경우 true
+-- 컬럼명 is not null : 해당 컬럼의 값이 null이 아닌경우 true
 
+select ename, comm
+from emp
+--where comm is null
+where comm is not null
+;
+
+
+-- row의 정렬
+-- 오름차순 : 작은쪽에서 => 큰쪽, asc(생략가능, 기본 값)
+-- 내림차순 : 큰쪽에서 => 작은쪽, desc(명시적 사용)
+select ename, sal, hiredate, comm
+from emp
+where empno>0   -- 조건 그냥 임의로 준다.
+--order by ename asc  --문자의 오름차순.
+--order by ename   --문자의 오름차순 asc 생략가능.
+--order by ename desc  --문자의 내림차순.
+--order by sal asc        -- 숫자의 오름차순.
+--order by sal desc        -- 숫자의 내림차순.
+--order by hiredate asc     -- 날짜의 오름차순.
+--order by hiredate desc      -- 날짜의 내림차순. 최근날짜가 위로
+--order by comm asc         -- null의 오름차순.
+order by comm desc          -- null의 내림차순.
+;
