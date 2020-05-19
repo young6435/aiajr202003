@@ -180,3 +180,13 @@ where empno>0   -- 조건 그냥 임의로 준다.
 --order by comm asc         -- null의 오름차순.
 order by comm desc          -- null의 내림차순.
 ;
+
+select ename, sal
+from emp
+order by sal desc, ename asc
+;
+
+select ename, deptno
+from emp
+order by deptno, ename      -- 기본이 오름차순이다. 
+;
