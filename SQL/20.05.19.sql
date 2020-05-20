@@ -69,7 +69,7 @@ where deptno=10 or job='MANAGER'
 -- 사원이름, 부서번호, 직급을 출력.
 
 select *
-from emp
+from emp                          -- not 표현 하는게 3개다.     
 --where not deptno != 10 
 --where not deptno <> 10 
 where not deptno=10       
