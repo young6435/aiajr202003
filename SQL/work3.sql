@@ -72,13 +72,11 @@ group by job
 ;
 
 
-25. COUNT(*) 함수를 이용하여 담당업무가 동일한 사원 수를 출력하시오.    xxx
+25. COUNT(*) 함수를 이용하여 담당업무가 동일한 사원 수를 출력하시오.    oo
 
-
-
-
-select count(
+select job, count(*)
 from emp
+group by job
 ;
 
 
