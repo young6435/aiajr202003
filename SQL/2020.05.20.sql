@@ -207,3 +207,95 @@ from emp
 ;
 
 -- max, min : 해당 컬럼의 데이터중에서 최대값, 최소값을 반환.
+select max(sal), min(sal), max(comm), min(comm)         -- null값 무시.
+from emp
+;
+
+-- coung(컬럼명 or *) : 행(row) 의 개수를 반환.       -- null값 무시.
+select count(*)
+from emp
+;
+
+select count(comm)      -- null 을 포함하는 행은 개수로 포함하지 않는다.     -- null값 무시.
+from emp
+;
+
+select count(job)
+from emp
+;
+
+select distinct job
+from emp
+order by job
+;
+
+select count(distinct job)
+from emp
+order by job
+;
+
+
+-- group by 절 : 특정 컬럼으로 그룹핑 해준다.
+
+select deptno       -- 부서번호로 묶는다.
+from emp
+group by deptno
+;
+
+select job      -- 직급별로 묶는다.
+from emp
+group by job
+;
+
+-- 소속 부서별 
+-- 평균 급여 구하는 예제.
+
+select deptno, round(avg(sal),0)
+from emp
+group by deptno
+;
+
+-- 소속 부서별
+-- 최대 급여와 최소 급여를 구하자.
+
+select deptno, max(sal), min(sal)
+from emp
+group by deptno
+;
+
+-- 부서별로
+-- 사원 수와 커미션을 받는 사원들의 수를 계산하자.
+select deptno, count(*), count(comm)        --  count(*)  : 사원수
+from emp
+where comm <> 0
+group by deptno
+;
+
+
+-- 부서별 
+-- 평균 급여가 2000 이상인(HAVING) 
+-- 부서번호와 부서별 평균 급여를 출력.
+select deptno, avg(sal), count(*), count(comm), sum(comm)
+from emp
+GROUP by deptno
+having avg(sal)<=2000               -- where는 row를 찾는다.  -- having 집합으로 나누어져있는 결과를 가지고 구한다.
+;
+
+-- 직급별, 지표 출력.
+select job, count(*) as "직급별 인원",        -- 한글처리할때는 큰따옴표.
+            sum(sal) as "직급별 월 총 급여",
+            trunc(avg(sal)) as "직급별 월 평균 급여",
+            nvl(sum(comm), 0) as "부서별 수령 커미션 총 합",
+            max(sal) as "직급별 최고 급여 금액"
+from emp
+group by job
+--having count(*) >= 2      -- 직급의 인원이 2명 이상인 직급.
+having avg(sal) >= 2000 and count(*) > 1
+;
+
+
+select deptno, job
+from emp
+group by deptno, job
+order by job
+;
