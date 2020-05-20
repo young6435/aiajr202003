@@ -84,7 +84,7 @@ select to_char(12500, '999,999')
 from dual
 ;
 
-select to_char(12500, 'L999,999')       -- 통화표현.
+select to_char(12500, 'L999,999')       -- 통화표현. 나라마다 통화표현이 다르니까 고객쪽에서 하는게 좋다.
 from dual
 ;
 
@@ -129,3 +129,46 @@ from dual
 select sysdate, trunc(sysdate-to_date('19850625','YYYYMMDD'))
 from dual
 ;
+
+-- TO_NUMBER
+-- to_number(원본, 패턴)
+-- str -> number : 산술연산, 관계연산이 목적이다.
+
+select to_number('20,000','999,999') - to_number('10,000','999,999')
+from dual
+;
+
+-- DECODE 함수 : if switch 구문과 유사
+select ename, deptno, 
+decode(deptno, 10, 'ACCOUNTING',
+                20, 'RESEARCH',
+                30, 'SALES',
+                40, 'OPERATING'
+) as deptname
+from emp
+;
+
+-- 직급에 따라 급여를 인상하도록 하자. 
+-- 직급이 'ANALYST'인 사원은 5%, 
+-- 'SALESMAN'인 사원은 10%, 
+-- 'MANAGER'인 사원은 15%, 
+-- 'CLERK'인사원은 20%인 인상한다.
+
+select ename, job, sal,
+decode(job, 'ANALYST', sal+sal*0.05,        -- sal*1.05
+            'SALESMAN', sal+sal*0.1,        -- sal*1.1
+            'MANAGER', sal+sal*0.15,        -- sal*1.15
+            'CLERK', sal+sal*0.2              -- sal*1.2
+) as upsal
+from emp
+;
+
+select ename, deptno, 
+case
+    when deptno=10 then 'ACCOUNTING'
+    when deptno=20 then 'RESEARCH'
+    when deptno=30 then 'SALES'
+    when deptno=40 then 'OPERATING'
+    else 'no name'
+end as depnname
+from emp;
