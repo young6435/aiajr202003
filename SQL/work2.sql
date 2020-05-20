@@ -24,25 +24,36 @@ from book
 where price >=20000
 ;
 
---(3) 박지성의총구매액(박지성의고객번호는1번으로놓고작성)     xxx
+--(3) 박지성의총구매액(박지성의고객번호는1번으로놓고작성)     
 
-select 
+select sum(saleprice) as "박지성의 총 구매액"
 from orders
 where custid=1
 ;
 
---(4) 박지성이구매한도서의수(박지성의고객번호는1번으로놓고작성)  xxx
+--(4) 박지성이구매한도서의수(박지성의고객번호는1번으로놓고작성)  
 
-select custid
+select sum(custid) as "박지성이 구매한 도서의 수"
 from orders
 where custid=1
 ;
+
+
 
 --2 마당서점의 운영자와 경영자가 요구하는 다음질문에 대해 SQL문을 작성하시오.
---(1) 마당서점도서의총개수  xxx
+--(1) 마당서점도서의총개수  
+
+select count(*) as "마당서점 도서의 총 개수"
+from book
+;
 
 
---(2) 마당서점에 도서를 출고하는 출판사의 총개수     xxx
+
+--(2) 마당서점에 도서를 출고하는 출판사의 총개수 
+
+select count(distinct publisher) as "출판사의 총 개수"
+from book
+;
 
 
 --(3) 모든 고객의 이름, 주소
