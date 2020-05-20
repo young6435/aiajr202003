@@ -80,12 +80,13 @@ group by job
 ;
 
 
-26. 관리자 수를 나열하시오.       xxx
+26. 관리자 수를 나열하시오.       
 
 select count(job) as "매니저 수"
 from emp
 where job='MANAGER'
 ;
+
 
 
 27. 급여 최고액, 급여 최저액의 차액을 출력하시오.      ooo
@@ -121,11 +122,21 @@ group by deptno
 
 30. 각 부서에 대해 부서번호 이름, 지역 명, 사원 수, 부서내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 정수로 반올림 하시오. DECODE 사용.          xxx
 
-select deptno, count(*), round(avg(sal),0)
+select deptno, 
+decode(deptno,  10, 'ACCOUNTING',
+                20, 'RESEARCH',
+                30, 'SALES',
+                40, 'OPERATING'
+) as deptname, round(avg(sal),0)
 from emp
 group by deptno
 ;
 
+select *
+from dept
+;
+
+desc dept;
 
 31. 업무를 표시한 다음 해당 업무에 대해 부서 번호별 급여 및 부서 10, 20, 30의 급여 총액을 각각 출력하시오. 별칭은 각 job, dno, 부서 10, 부서 20, 부서 30, 총액으로 지정하시오. ( hint. Decode, group by )
 
