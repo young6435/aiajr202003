@@ -172,3 +172,38 @@ case
     else 'no name'
 end as depnname
 from emp;
+
+-------------------------------------------------------------
+
+-- 그룹함수 (집합함수)      -- null값은 제외하고 한다.
+
+-- sum, avg, count, max, min
+
+-- sum(컬럼명) : 해당 컬럼의 데이터들의 합 반환
+-- 매월 지급되는 급여의 총 합
+select sum(sal) as totalsal                   -- null 값 무시.
+from emp
+;
+
+select to_char(sum(sal)*1000, 'L999,999,999') as totalsal 
+from emp
+;
+
+select sum(comm)
+from emp
+;
+
+-- avg(컬럼명) : 해당 컬럼의 데이터들의 평균값을 반환.
+select avg(sal)         
+from emp
+;
+
+select trunc(avg(sal))         
+from emp
+;
+
+select avg(comm)
+from emp
+;
+
+-- max, min : 해당 컬럼의 데이터중에서 최대값, 최소값을 반환.
