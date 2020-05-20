@@ -19,7 +19,7 @@ CREATE TABLE  Customer (
 
 CREATE TABLE Orders (
   orderid NUMBER(2) PRIMARY KEY,
-  custid  NUMBER(2) REFERENCES Customer(custid),        -- 외래키 설정, 뒤에것을 참조한다.
+  custid  NUMBER(2) REFERENCES Customer(custid),        -- 외래키 설정, 뒤에것을 참조한다. 외래키는 기본키(custid)로 설정된다. 외래키없으면 기본키 설정이 안된다.
   bookid  NUMBER(2) REFERENCES Book(bookid),            -- 외래키 설정, 뒤에것을 참조한다.
   saleprice NUMBER(8) ,
   orderdate DATE
