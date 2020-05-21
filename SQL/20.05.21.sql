@@ -103,8 +103,22 @@ from emp e, emp m
 where e.mgr = m.empno(+)
 ;
 
+
 select e.ename, e.empno, e.sal, e.comm, nvl(m.ename, '관리자없음')
 from emp e, emp m
 where e.mgr = m.empno(+)
 ;
+
+
+select *
+from emp e left outer join emp m                -- 출력하고싶은 방향을 왼쪽.
+on e.mgr = m.empno  
+;
+
+
+
+select ename, dname
+from emp natural join dept
+;
+
 
