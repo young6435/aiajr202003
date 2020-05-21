@@ -1,3 +1,5 @@
+-- 2020.05.19. 화요일.
+
 desc book;
 desc customer;
 desc orders;
@@ -26,18 +28,27 @@ where price >=20000
 
 --(3) 박지성의총구매액(박지성의고객번호는1번으로놓고작성)     
 
+select * from orders;
+
 select sum(saleprice) as "박지성의 총 구매액"
 from orders
-where custid=1
+where custid=1      -- 박지성
 ;
 
+
 --(4) 박지성이구매한도서의수(박지성의고객번호는1번으로놓고작성)  
+
+select * from orders;
+
+select count(*) as "박지성이 구매한 도서의 수"
+from orders
+where custid=1      -- 박지성
+;
 
 select sum(custid) as "박지성이 구매한 도서의 수"
 from orders
 where custid=1
 ;
-
 
 
 --2 마당서점의 운영자와 경영자가 요구하는 다음질문에 대해 SQL문을 작성하시오.
@@ -50,6 +61,8 @@ from book
 
 
 --(2) 마당서점에 도서를 출고하는 출판사의 총개수 
+
+select * from book;
 
 select count(distinct publisher) as "출판사의 총 개수"
 from book
