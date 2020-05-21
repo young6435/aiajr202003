@@ -25,7 +25,7 @@ where emp.deptno = dept.deptno
 
 select *
 from emp inner join dept
-on emp.deptno=dept.deptno
+on emp.deptno = dept.deptno
 ;
 
 
@@ -37,7 +37,7 @@ on e.deptno = d.deptno
 
 select ename, dname
 from emp inner join dept
-using(deptno)
+using(deptno)               -- emp, dept테이블에서 deptno가 공통이다.
 ;
 
 
@@ -79,7 +79,7 @@ where e.sal >= s.losal and e.sal <= s.hisal
 select ename, sal, grade
 from emp e, salgrade s
 --where e.sal >= s.losal and e.sal <= s.hisal
-where sal between losal and hisal
+where sal between losal and hisal   -- sal이 losal 이상이고 hisal 이하다.
 ;
 
 ----------------------------------------------------------
@@ -90,15 +90,17 @@ where sal between losal and hisal
 
 select * from emp;
 
+
 select e.ename || ' 의 상사는 ' || m.ename || ' 입니다. '
 from emp e, emp m
 where e.mgr = m.empno
+--where m.empno = e.mgr
 ;
 
 
 -- outer join
 
-select *    --e.ename || ' 의 상사는 ' || m.ename || ' 입니다. '
+select *    -- e.ename || ' 의 상사는 ' || m.ename || ' 입니다. '
 from emp e, emp m
 where e.mgr = m.empno(+)
 ;
@@ -106,19 +108,20 @@ where e.mgr = m.empno(+)
 
 select e.ename, e.empno, e.sal, e.comm, nvl(m.ename, '관리자없음')
 from emp e, emp m
-where e.mgr = m.empno(+)
+where e.mgr = m.empno(+)        -- 정보가 부족한 컬럼 이름 뒤에 + 붙인다.
 ;
 
 
 select *
-from emp e left outer join emp m                -- 출력하고싶은 방향을 왼쪽.
-on e.mgr = m.empno  
+from emp e left outer join emp m  -- 출력하고싶은 방향을 왼쪽.
+on e.mgr = m.empno                -- left outer join // right outer join // full outer join .
 ;
 
 
 
 select ename, dname
-from emp natural join dept
-;
+from emp natural join dept    -- emp 랑 dept에 deptno가 있어서, 
+;                              --간단하게 표현할때 natural join 쓴다.
+
 
 

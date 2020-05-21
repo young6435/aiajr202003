@@ -22,36 +22,45 @@ from emp
 ;
 
 -- trunc : 특정 자리수 잘라버린다.
-select trunc(3.141592, 2)
+select trunc(3.141592, 2)       -- 3.14
 from dual
 ;
 
-select trunc(123.141592, 0)   -- 앞에 정수만 나온다.
+select trunc(123.141592, 0)   -- 123    앞에 정수만 나온다.
 from dual
 ;
 
-select trunc(sal, -2)       -- 음수 쓰면 자리수만큼 0으로 바꾼다.
-from emp
+select trunc(sal, -2)      -- 2975 => 2900 -- 음수 쓰면 자리수만큼 0으로 바꾼다.
+from emp                   -- 1250 => 1200
 ;
+
+
 
 -- round : 반올림.
-select round(3.141592, 3)
+
+select round(3.141592, 3)       -- 3.142
 from dual
 ;
 
-select round(123.141592, -2)
+select round(123.141592, -2)    -- 100
 from dual
 ;
+
+select round(12345, -2)         -- 12300
+from dual
+;
+
 
 
 -- 2. 날짜함수.
+
 select sysdate
 from dual
 ;
 
 -- TO_CHAR
 -- date -> varchar2
-select sysdate, to_char(sysdate, 'YYYY.MM.DD')
+select sysdate, to_char(sysdate, 'YYYY.MM.DD')      -- 2020.05.21
 from dual
 ;
 
@@ -59,45 +68,49 @@ select ename, to_char(hiredate, 'YYYY.MM.DD') as hiredate
 from emp
 ;
 
+
 -- 시간표현
-select sysdate, to_char(sysdate, 'HH24:MI:SS')
+
+select sysdate, to_char(sysdate, 'HH24:MI:SS')     -- 20/05/21 19:26:26
 from dual
 ;
 
 -- 2020.05.20. 11:30
 select to_char(sysdate, 'YYYY.MM.DD. HH24:MI')
---select to_char(sysdate, 'YYYY.MM.DD. PMHH24:MI')      -- AM,PM
+--select to_char(sysdate, 'YYYY.MM.DD. PMHH24:MI')      -- AM,PM 오전,오후 한글로 뜬다.
 from dual
 ;
 
 -- to_char
 -- number -> varchar2
 select to_char(12500, '000,000')    -- 오른쪽 자리수가 더 많아야 된다. 작으면 오류난다.
+from dual                           -- 012,500
+;
+
+select to_char(12500, '0,000,000')     -- 0,012,500
 from dual
 ;
 
-select to_char(12500, '0,000,000')
-from dual
-;
-
-select to_char(12500, '999,999')
+select to_char(12500, '999,999')        -- 12,500
 from dual
 ;
 
 select to_char(12500, 'L999,999')       -- 통화표현. 나라마다 통화표현이 다르니까 고객쪽에서 하는게 좋다.
-from dual
+from dual                               -- $12500
 ;
+
 
 -- 소수점 
-select to_char(3.14, '000,000.000')
+
+select to_char(3.14, '000,000.000')      -- 000,003.140
 from dual
 ;
 
-select to_char(3.14, '999,999.999')
+select to_char(3.14, '999,999.999')     -- 3.140
 from dual
 ;
 
-select to_char(3.14, '999,999.9')
+select to_char(3.14, '999,999.9')       -- 3.1
 from dual
 ;
 
@@ -109,11 +122,12 @@ order by income desc
 -- To_DATE
 -- to_date(원본, 패턴)
 -- str -> date
-select to_date('19810220','YYYYMMDD')
+
+select to_date('19810220','YYYYMMDD')       -- 81/02/20 ??
 from dual
 ;
 
-select to_date('1981/02/20','YYYY/MM/DD')
+select to_date('1981/02/20','YYYY/MM/DD')   -- 81/02/20
 from dual
 ;
 
@@ -122,25 +136,29 @@ from emp
 where hiredate = to_date('1981/02/20', 'YYYY/MM/DD')
 ;
 
-select sysdate, to_date('20201225','YYYYMMDD'), trunc(to_date('20201225','YYYYMMDD')-sysdate) 
-from dual
+select sysdate, to_date('20201225','YYYYMMDD'), trunc(to_date('20201225','YYYYMMDD')-sysdate)
+from dual                                       -- trunc가 소수점 날린다. 정수만 나온다. 
 ;
 
 select sysdate, trunc(sysdate-to_date('19850625','YYYYMMDD'))
 from dual
 ;
 
--- TO_NUMBER
+-- TO_NUMBER                -- 문자를 숫자로 바꾼다.
 -- to_number(원본, 패턴)
 -- str -> number : 산술연산, 관계연산이 목적이다.
 
-select to_number('20,000','999,999') - to_number('10,000','999,999')
+select to_number('20,000','999,999') - to_number('10,000','999,999')        -- 10000
 from dual
 ;
 
+
+----------------------------------------------------
+
 -- DECODE 함수 : if switch 구문과 유사
+
 select ename, deptno, 
-decode(deptno, 10, 'ACCOUNTING',
+decode(deptno, 10, 'ACCOUNTING',      -- deptno 가 10이면 ACCOUNTING 이라고 부른다.
                 20, 'RESEARCH',
                 30, 'SALES',
                 40, 'OPERATING'
@@ -181,6 +199,7 @@ from emp;
 
 -- sum(컬럼명) : 해당 컬럼의 데이터들의 합 반환
 -- 매월 지급되는 급여의 총 합
+
 select sum(sal) as totalsal                   -- null 값 무시.
 from emp
 ;
@@ -193,12 +212,14 @@ select sum(comm)
 from emp
 ;
 
+
 -- avg(컬럼명) : 해당 컬럼의 데이터들의 평균값을 반환.
+
 select avg(sal)         
 from emp
 ;
 
-select trunc(avg(sal))         
+select trunc(avg(sal))      -- 정수 나온다.         
 from emp
 ;
 
@@ -206,30 +227,34 @@ select avg(comm)
 from emp
 ;
 
+
 -- max, min : 해당 컬럼의 데이터중에서 최대값, 최소값을 반환.
+
 select max(sal), min(sal), max(comm), min(comm)         -- null값 무시.
 from emp
 ;
 
--- coung(컬럼명 or *) : 행(row) 의 개수를 반환.       -- null값 무시.
-select count(*)
+
+-- count(컬럼명 or *) : 행(row) 의 개수를 반환.       -- null값 무시.
+
+select count(*)     -- 14 , 행이 14개다.
 from emp
 ;
 
 select count(comm)      -- null 을 포함하는 행은 개수로 포함하지 않는다.     -- null값 무시.
-from emp
+from emp                -- 4 나온다.  14개중에 4개 빼고 null이다.
 ;
 
 select count(job)
 from emp
 ;
 
-select distinct job
+select distinct job     -- 5개 나온다. 중복되는거 빼고 나온다.
 from emp
 order by job
 ;
 
-select count(distinct job)
+select count(distinct job)      -- 5개 나온다.
 from emp
 order by job
 ;
@@ -247,10 +272,12 @@ from emp
 group by job
 ;
 
+
 -- 소속 부서별 
 -- 평균 급여 구하는 예제.
 
-select deptno, round(avg(sal),0)
+--select deptno, round(avg(sal),0)
+select deptno, round(avg(sal))      -- 정수 나온다.
 from emp
 group by deptno
 ;
@@ -263,32 +290,37 @@ from emp
 group by deptno
 ;
 
+
 -- 부서별로
 -- 사원 수와 커미션을 받는 사원들의 수를 계산하자.
+
 select deptno, count(*), count(comm)        --  count(*)  : 사원수
 from emp
-where comm <> 0
-group by deptno
+where comm <> 0         -- 300, 500, 1400, 0  4명 있다. null 값은 제외한다.
+group by deptno         
 ;
+
 
 
 -- 부서별 
 -- 평균 급여가 2000 이상인(HAVING) 
 -- 부서번호와 부서별 평균 급여를 출력.
+
 select deptno, avg(sal), count(*), count(comm), sum(comm)
 from emp
 GROUP by deptno
-having avg(sal)<=2000               -- where는 row를 찾는다.  -- having 집합으로 나누어져있는 결과를 가지고 구한다.
+having avg(sal)>=2000               -- where는 row를 찾는다.  -- having 집합으로 나누어져있는 결과를 가지고 구한다.
 ;
 
 -- 직급별, 지표 출력.
+
 select job, count(*) as "직급별 인원",        -- 한글처리할때는 큰따옴표.
             sum(sal) as "직급별 월 총 급여",
             trunc(avg(sal)) as "직급별 월 평균 급여",
             nvl(sum(comm), 0) as "부서별 수령 커미션 총 합",
             max(sal) as "직급별 최고 급여 금액"
 from emp
-group by job
+group by job  -- 직급별이니까 job으로 묶는다.
 --having count(*) >= 2      -- 직급의 인원이 2명 이상인 직급.
 having avg(sal) >= 2000 and count(*) > 1
 ;
