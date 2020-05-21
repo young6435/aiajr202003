@@ -78,7 +78,7 @@ from emp
 
 24. 각 담당 업무 유형별로 급여 최고액, 최저액, 총액 및 평균 액을 출력하시오. 평균에 대해서는 정수로 반올림 하시오.       
 
-select job, max(sal), min(sal), sum(sal), round(avg(sal),0)
+select job, max(sal), min(sal), sum(sal), round(avg(sal))
 from emp
 group by job
 ;
@@ -92,80 +92,79 @@ group by job
 ;
 
 
-26. 관리자 수를 나열하시오.       
+26. 관리자 수를 나열하시오.   (job에 있는 manager 말고, MGR말하는 거다.)      
 
-select count(job) as "매니저 수"
+select count(distinct mgr) as "관리자 수"
 from emp
-where job='MANAGER'
 ;
 
 
-
 27. 급여 최고액, 급여 최저액의 차액을 출력하시오.      
+
+select max(sal), min(sal), max(sal) - min(sal) as "급여 최고액과 최저액의 차"
+from emp
+;
 
 select job, max(sal), min(sal), max(sal) - min(sal) as "급여 최고액과 최저액의 차"
 from emp
 group by job
 ;
 
-select max(sal), min(sal), max(sal) - min(sal) as "급여 최고액과 최저액의 차"
+
+28. 직급별 사원의 최저 급여를 출력하시오. 
+    관리자를 알 수 없는 사원의      where mgr is not null
+    최저 급여가 2000 미만인 그룹은 제외시키고   having min(sal) >=2000 ,   2000이상만 출력하겠다는 뜻.
+    결과를 급여에 대한 내림차순으로 정렬하여 출력하시오.       
+
+select job, min(sal)
 from emp
-;
-
-
-28. 직급별 사원의 최저 급여를 출력하시오. 관리자를 알 수 없는 사원의 최저 급여가 2000 미만인 그룹은 제외시키고 결과를 급여에 대한 내림차순으로 정렬하여 출력하시오.       
-
-select job, max(sal), min(sal), max(sal)
-from emp
+where mgr is not null
 group by job
-having min(sal) < 2000
+having min(sal) >= 2000
 order by min(sal) desc
 ;
-
-select *
-from emp
-;
-
 
 
 29. 각 부서에 대해 부서번호, 사원 수, 부서 내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 소수점 둘째 자리로 반올림 하시오.          
 
-select deptno, count(deptno), round(avg(sal), 2) 
+select deptno, count(*), round(avg(sal), 2) 
 from emp
 group by deptno 
 ;
 
 
-30. 각 부서에 대해 부서번호 이름, 지역 명, 사원 수, 부서내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 정수로 반올림 하시오. DECODE 사용.          
+30. 각 부서에 대해 부서번호, 이름, 지역 명, 사원 수, 부서내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 정수로 반올림 하시오. DECODE 사용.          
 
 select deptno, 
 decode(deptno,  10, 'ACCOUNTING',
                 20, 'RESEARCH',
                 30, 'SALES',
-                40, 'OPERATING') as "지역명", 
-                count(*) as "사원 수", round(avg(sal),0) as "평균급여",
+                40, 'OPERATING') as "부서명", 
 decode(deptno, 10, '서울',
                 20, '일산',
                 30, '인천',
-                40, '제주도')
+                40, '제주도') as "지역명",
+                count(*) as "사원 수", round(avg(sal),0) as "평균급여"
 from emp
 group by deptno
 ;
+
 
 select *
 from dept
 ;
 
-desc dept;
 
-31. 업무를 표시한 다음 해당 업무에 대해 부서 번호별 급여 및 부서 10, 20, 30의 급여 총액을 각각 출력하시오. 별칭은 각 job, dno, 부서 10, 부서 20, 부서 30, 총액으로 지정하시오. ( hint. Decode, group by )
+
+31. 업무를 표시한 다음 해당 업무에 대해 부서 번호별 급여 및 부서 10, 20, 30의 급여 총액을 각각 출력하시오. 
+    별칭은 각 job, dno, 부서 10, 부서 20, 부서 30, 총액으로 지정하시오. ( hint. Decode, group by )
 
 select job, deptno as dno,
-decode(deptno, 10, sum(sal)) as "부서10",
-decode(deptno, 20, sum(sal)) as "부서20",
-decode(deptno, 30, sum(sal)) as "부서30",
+nvl(decode(deptno, 10, sum(sal)),0) as "부서10",
+nvl(decode(deptno, 20, sum(sal)),0) as "부서20",
+nvl(decode(deptno, 30, sum(sal)),0) as "부서30",
 sum(sal) as "총액"
 from emp 
 group by job, deptno 
-order by deptno
+order by job, deptno
 ;
