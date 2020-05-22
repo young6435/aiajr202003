@@ -56,7 +56,7 @@ select * from customer;
 
 select *                
 from orders o, book b, customer c       -- 10 x 10 x 5 = 500행
-where o.bookid = b.bookid and o.custid = c.custid
+where o.bookid = b.bookid and o.custid = c.custid       -- 책이름, 고객번호
 ;
 
 select *                
@@ -71,7 +71,7 @@ select * from emp;
 select * from salgrade;
 
 
-select ename, sal, grade
+select ename, sal, grade        -- sal이 어떤 등급(grade) 이냐.
 from emp e, salgrade s
 where e.sal >= s.losal and e.sal <= s.hisal
 ;
