@@ -177,6 +177,9 @@ insert into dept values(10, 'test', 'seoul');
 --)
 
 
+---------------------------------------------------------------------
+
+-- not null
 
 -- not null 제약 : 컬럼의 값에 null 값을 허용하지 않는다.
 -- 컬럼 레벨에서만 정의가 가능
@@ -202,6 +205,9 @@ insert into emp02 values (1111, 'SON', 'MANAGER', 10);      -- 한줄 들어간�
 
 select * from emp02;
 
+----------------------------------------------------------------------------
+
+-- unique
 
 drop table emp03;
 
@@ -273,3 +279,62 @@ desc emp05;
 insert into emp05 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
 insert into emp05 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
 insert into emp05 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
+
+
+--------------------------------------------------------------------------
+
+-- foreign key
+
+-- 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
+-- 테이블을 생성하되 기본 키 제약 조건을 설정해 봅시다.
+-- deptno 외래키로 제약조건을 설정
+
+drop table emp06;
+
+create table emp06(
+    empno number(4) constraint emp06_empno_pk primary key,          
+    ename varchar2(10) constraint emp06_ename_nn not null,
+    job varchar2(10),
+    deptno number(2) CONSTRAINT emp06_deptno_fk REFERENCES dept(deptno)
+);
+
+select * from dept;
+
+desc emp06;
+
+insert into emp06 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
+insert into emp06 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp06 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp06 values(2222, 'TEST123', 'MANAGER', 50);       -- 에러       -- 10,20,30,40 중에서 써야됨.
+
+
+---------------------------------------------------------------------------------
+
+-- check 제약조건
+
+-- 사원번호, 사원명, 직급, 부서번호, 직급, 성별, 생일 7개의 칼럼으로 
+-- 구성된 테이블을 생성하되 
+-- 기본 키 제약 조건, 외래키 제약 조건은 물론 
+-- CHECK 제약 조건도 설정해 봅시다.
+-- default 제약조건으로 birthday sysdate로 입력되도록 처리.
+
+drop table emp07;
+
+CREATE TABLE EMP07(
+    EMPNO NUMBER(4) CONSTRAINT EMP07_EMPNO_PK PRIMARY KEY,
+    ENAME VARCHAR2(10) CONSTRAINT EMP07_ENAME_NN NOT NULL,
+    JOB VARCHAR2(10) DEFAULT 'MANAGER',
+    DEPTNO NUMBER(2) CONSTRAINT EMP07_DEPTNO_FK REFERENCES DEPT(DEPTNO),
+    GENDER CHAR(1) CONSTRAINT EMP07_GENDER_CK CHECK (GENDER='M' OR GENDER='F'),
+    SAL NUMBER(7,2) CONSTRAINT EMP07_SAL_CK CHECK (SAL BETWEEN 500 AND 5000),
+    BIRTHDAY DATE DEFAULT SYSDATE
+);
+
+INSERT INTO EMP07 VALUES (1111, 'TEST', NULL, 10, 'F', 600, NULL);
+INSERT INTO EMP07 VALUES (1112, 'TEST', NULL, 10, 'M', 600, NULL);
+
+INSERT INTO EMP07 (EMPNO, ENAME, DEPTNO, GENDER, SAL) 
+           VALUES (1113, 'TEST', 10, 'F', 1600);
+
+SELECT * FROM EMP07;
+
