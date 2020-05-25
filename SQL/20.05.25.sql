@@ -59,6 +59,7 @@ select * from tab;
 desc emp02;
 select * from emp02;
 
+---------------------------------------------------------
 
 -- emp 테이블의 empno 와 ename 컬러만 복사해서 
 -- 새로운 테이블 emp03을 생성하자.
@@ -71,6 +72,8 @@ select empno, ename from emp
 select * from emp03;
 desc emp03;
 
+-------------------------------------------------------
+
 -- emp 테이블의 10번 부서의 데이터만 복사해서 새로운 테이블
 -- emp04 테이블을 생성하자.
 
@@ -80,6 +83,8 @@ select * from emp where deptno=10
 ;
 
 select * from emp04;
+
+---------------------------------------------------------
 
 -- emp테이블의 스키마 구조만 복사해서 새로운 테이블 emp05를 생성하자.
 
@@ -199,8 +204,8 @@ create table emp02(
 
 desc emp02;
 
-insert into emp02 values (null, null, 'MANAGER', 10);       -- 에러
-insert into emp02 values (1111, null, 'MANAGER', 10);       -- 에러
+insert into emp02 values (null, null, 'MANAGER', 10);       -- 에러   --empno, ename 에러
+insert into emp02 values (1111, null, 'MANAGER', 10);       -- 에러   --ename 에러
 insert into emp02 values (1111, 'SON', 'MANAGER', 10);      -- 한줄 들어간다.
 
 select * from emp02;
@@ -228,8 +233,8 @@ create table emp03(
 desc emp03;
 
 insert into emp03 values(1111, 'TEST', 'MANAGER', 10);      -- 행 삽입
-insert into emp03 values(1111, 'TEST123', 'MANAGER', 20);   -- 에러
-insert into emp03 values(null, 'TEST123', 'MANAGER', 20);   -- 에러
+insert into emp03 values(1111, 'TEST123', 'MANAGER', 20);   -- 에러   --empno에러
+insert into emp03 values(null, 'TEST123', 'MANAGER', 20);   -- 에러   --empno에러
 
 select * from emp03;
 
@@ -239,7 +244,7 @@ select * from emp03;
 
 -- 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
 -- EMP04 테이블을 생성하되 
--- 사원번호에는 유일키로 사원명은 NOT NULL 제약조건을 설정해 봅시다.
+-- 사원번호에는 유일키로(unique) 사원명은 NOT NULL 제약조건을 설정해 봅시다.
 
 drop table emp04;
 
@@ -253,8 +258,8 @@ create table emp04(
 desc emp04;
 
 insert into emp04 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
-insert into emp04 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
-insert into emp04 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp04 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러   --empno 에러
+insert into emp04 values(null, 'TEST123', 'MANAGER', 20);       -- 에러   --empno 에러
 
 select * from emp04;
 
@@ -277,8 +282,8 @@ create table emp05(
 desc emp05;
 
 insert into emp05 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
-insert into emp05 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
-insert into emp05 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp05 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러   --empno 에러
+insert into emp05 values(null, 'TEST123', 'MANAGER', 20);       -- 에러   --empno 에러
 
 
 --------------------------------------------------------------------------
@@ -295,7 +300,7 @@ create table emp06(
     empno number(4) constraint emp06_empno_pk primary key,          
     ename varchar2(10) constraint emp06_ename_nn not null,
     job varchar2(10),
-    deptno number(2) CONSTRAINT emp06_deptno_fk REFERENCES dept(deptno)
+    deptno number(2) constraint emp06_deptno_fk REFERENCES dept(deptno)
 );
 
 select * from dept;
@@ -303,8 +308,8 @@ select * from dept;
 desc emp06;
 
 insert into emp06 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
-insert into emp06 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
-insert into emp06 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp06 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러   --empno 에러
+insert into emp06 values(null, 'TEST123', 'MANAGER', 20);       -- 에러   --empno 에러
 insert into emp06 values(2222, 'TEST123', 'MANAGER', 50);       -- 에러       -- 10,20,30,40 중에서 써야됨.
 
 
