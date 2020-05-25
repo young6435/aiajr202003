@@ -125,3 +125,7 @@ from emp natural join dept    -- emp 랑 dept에 deptno가 있어서,
 
 
 
+
+
+
+

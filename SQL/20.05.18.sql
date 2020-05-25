@@ -78,3 +78,6 @@ select distinct deptno from emp;
 
 select deptno, job from emp order by deptno;                -- order by 정렬하는거, 줄세우는거, 기본은 오름차순(asc).
 select distinct deptno, job from emp order by deptno;
+
+
+
