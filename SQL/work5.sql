@@ -20,7 +20,7 @@ where job=(select job from emp where empno=7788)        --'ALALYST'
 
 select * from emp;
 
-select sal from emp where empno=7499;
+select sal from emp where empno=7499;   -- 1600
 
 
 select ename, job
@@ -61,7 +61,7 @@ having avg(sal) <= all(select avg(sal)
 
 -- 부서별 평균의 최소 평균값.
 
-select avg(sal)
+select job, avg(sal)        -- job 안써도 된다.
 from emp
 group by job
 ;
@@ -96,11 +96,11 @@ group by deptno
 
 
 select *
-from emp e1
+from emp e
 where sal in (select min(sal)
-                from emp e2
-                where e1.deptno = e2.deptno
-                group by deptno)
+                from emp m
+                where e.deptno = m.deptno
+                group by deptno)           -- 부서별로 구해야되니까.
 ;
 
 
@@ -110,7 +110,7 @@ where sal in (select min(sal)
     업무가 ANALYST가 아닌 
     사원들을 표시(사원번호, 이름, 담당 업무, 급여)하시오.  
 
-select distinct sal from emp where job = 'ANALYST';
+select distinct sal from emp where job = 'ANALYST';     -- 3000
 
 
 select empno, ename, job, sal
@@ -126,7 +126,7 @@ and job !='ANALYST'
 
 select * from emp;
 
-select distinct mgr from emp where mgr is not null;
+select distinct mgr from emp where mgr is not null;     -- 부하직원 있는 애들. -- mgr 채워져있는 애들.
 
 
 select ename, mgr
@@ -204,7 +204,7 @@ where deptno in(select deptno from dept where loc='DALLAS')
 
 
 
-55. KING에게 보고하는 사원의 이름과 급여를 표시하시오.
+55. KING에게 보고하는 사원의 이름과 급여를 표시하시오.      --job이 manager애들이 보고한다.
 
 select empno from emp where ename='KING';
 
@@ -218,7 +218,7 @@ where mgr = (select empno from emp where ename='KING')      -- mgr이 king인 �
 
 56. RESEARCH 부서의 사원에 대한 부서번호, 사원이름 및 담당 업무를 표시하시오.
 
-select deptno from dept where dname='RESEARCH';
+select deptno from dept where dname='RESEARCH';     --20번 부서
 
 
 select deptno, ename, job           -- 1번 방법
@@ -258,7 +258,7 @@ and deptno in (select distinct deptno from emp where ename like '%M%')
 
 58. 평균급여가 가장 적은 업무를 찾으시오.
 
-select job, avg(sal)
+select job, avg(sal)        -- CLERK, 1037
 from emp
 group by job
 ;

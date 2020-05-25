@@ -30,7 +30,7 @@ select * from dept;
 
 select e.ename, d.dname
 from emp e, dept d
-where e.deptno = d.deptno and e.ename like '%A%'
+where e.deptno = d.deptno and e.ename like '%A%'        -- dept에 이름없다.
 ;
 
 
