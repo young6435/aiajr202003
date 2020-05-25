@@ -6,6 +6,19 @@ desc orders;
 
 
 
+
+select * from tab;
+desc book;
+desc customer;
+desc orders;
+select * from book;
+select * from customer;
+select * from orders;
+
+
+
+
+
 --1 마당서점의 고객이 요구하는 다음질문에 대해 SQL문을 작성하시오.
 --(1) 도서번호가1인 도서의이름
 

@@ -1,4 +1,4 @@
--- 2020.05.19 화요일.
+-- 2020.05.19. 화요일.
 
 -- 특정 데이터를 축출하기 : where 절을 이용.
 -- select 컬럼명 from 테이블 이름 where 조건(true/false)
@@ -46,6 +46,7 @@ where hiredate='80-12-17'       -- 날짜를 비교할때 => '' 작은 따옴표
 -- 조건1 : 10번 부서 소속 => deptno=10
 -- 조건2 : job ='MANAGER'
 
+
 select * --ename, deptno, job
 from emp
 where deptno=10 and job='MANAGER'
@@ -57,6 +58,7 @@ where deptno=10 and job='MANAGER'
 -- 사원명, 부서번호, 직급을 출력합시다.
 -- 조건1 : 10번 부서 소속 => deptno=10
 -- 조건2 : job ='MANAGER'
+
 
 select ename, deptno, job
 from emp
@@ -96,11 +98,13 @@ where sal BETWEEN 2000 and 3000
 -- sal>2000 and sal<3000
 -- sal between 2001 and 2999
 
+
 select *
 from emp
 --where sal>2000 and sal<3000
 where sal BETWEEN 2001 and 2999
 ;
+
 
 -- 1987년 입사자 리스트를 출력.
 select *

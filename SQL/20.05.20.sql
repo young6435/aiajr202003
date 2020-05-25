@@ -30,7 +30,7 @@ select trunc(123.141592, 0)   -- 123    앞에 정수만 나온다.
 from dual
 ;
 
-select trunc(sal, -2)      -- 2975 => 2900 -- 음수 쓰면 자리수만큼 0으로 바꾼다.
+select trunc(sal, -2)      -- 2975 => 2900 -- 음수 쓰면 자리수만큼 0으로 바꾼다.(-2니까 2개 자리)
 from emp                   -- 1250 => 1200
 ;
 
@@ -76,8 +76,8 @@ from dual
 ;
 
 -- 2020.05.20. 11:30
-select to_char(sysdate, 'YYYY.MM.DD. HH24:MI')
---select to_char(sysdate, 'YYYY.MM.DD. PMHH24:MI')      -- AM,PM 오전,오후 한글로 뜬다.
+--select to_char(sysdate, 'YYYY.MM.DD. HH24:MI')
+select to_char(sysdate, 'YYYY.MM.DD. PMHH24:MI')      -- AM,PM 오전,오후 한글로 뜬다.
 from dual
 ;
 
@@ -188,7 +188,7 @@ case
     when deptno=30 then 'SALES'
     when deptno=40 then 'OPERATING'
     else 'no name'
-end as depnname
+end as deptname
 from emp;
 
 -------------------------------------------------------------
@@ -204,9 +204,11 @@ select sum(sal) as totalsal                   -- null 값 무시.
 from emp
 ;
 
+
 select to_char(sum(sal)*1000, 'L999,999,999') as totalsal 
 from emp
 ;
+
 
 select sum(comm)
 from emp
@@ -296,7 +298,7 @@ group by deptno
 
 select deptno, count(*), count(comm)        --  count(*)  : 사원수
 from emp
-where comm <> 0         -- 300, 500, 1400, 0  4명 있다. null 값은 제외한다.
+where comm <> 0         -- 300, 500, 1400, 0  4명 있다. null 값은 제외한다. 0은 제외하고 3명 나온다.
 group by deptno         
 ;
 

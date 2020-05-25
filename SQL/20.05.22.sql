@@ -33,7 +33,7 @@ where deptno = 20
 ;
 
 
-select *
+select *        -- deptno 가 20 인 사람들 출력.
 from emp
 where deptno = (select deptno from emp where ename ='SCOTT')
 ;
@@ -55,10 +55,10 @@ from emp
 where deptno in (10,20)
 ;
 
-select distinct deptno from emp where sal >= 3000;
+select distinct deptno from emp where sal >= 3000;     
 
 
-select *
+select *        -- deptno 10,20 사원 나온다.
 from emp
 where deptno in (select distinct deptno from emp where sal >= 3000)
 ;

@@ -24,13 +24,13 @@ where emp.deptno = dept.deptno
 
 
 select *
-from emp inner join dept
+from emp inner join dept   
 on emp.deptno = dept.deptno
 ;
 
 
 select ename, dname
-from emp e inner join dept d
+from emp e inner join dept d        -- 별칭사용.
 on e.deptno = d.deptno
 ;
 
