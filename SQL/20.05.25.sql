@@ -115,3 +115,114 @@ alter table emp01 modify (job varchar(30) not null);
 desc emp01;
 
 
+------------------------------------------------------------------------------
+
+-- 컬럼의 삭제
+
+-- alter table 테이블이름 drop column 컬럼이름
+
+alter table emp01 drop column sal;
+
+desc emp01;
+
+-------------------------------------------------------------------------------
+
+-- 테이블 객체 삭제                -- 뒤지기 싫으면 고민하고 지워라!
+-- drop table 테이블이름;
+
+drop table emp01;
+select * from tab;
+desc emp01;
+
+
+
+-------------------------------------------------------------------------------
+
+-- truncate
+
+select * from emp02;
+
+truncate table emp02;       -- 테이블 안에 모든 로우 제거.      -- 뒤지기 싫으면 고민하고 지워라!
+select * from emp02;
+
+-------------------------------------------------------------------------------
+
+-- 테이블 이름 변경
+
+-- rename 현재 테이블 이름 to 새로운 테이블 이름
+
+rename emp02 to test_emp;
+
+select * from tab;
+
+-------------------------------------------------------------------------------
+
+-- 제약조건
+
+desc dept;
+
+insert into dept values(10, 'test', 'seoul');
+
+
+-- 컬럼의 제약 정의는 컬럼 정의를 하면서 컬럼 옆에 정의
+-- 컬럼의 타입을 모두 정의하고, 아래에 제약을 정의하는 방법
+
+--create table emp01(                 -- 실행은 안한다.
+    --empno number(4) not null
+--)
+
+--create table emp01(
+ --   empno number(4),        -- 컬럼을 정의하고,
+ --   primary key(empno)      -- 제약사항 정의하고.
+--)
+
+
+
+-- not null 제약 : 컬럼의 값에 null 값을 허용하지 않는다.
+-- 컬럼 레벨에서만 정의가 가능
+
+-- 사원 테이블(EMP02)을 
+-- 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성하되 
+-- 이번에는 사원번호와 사원명에 NOT NULL 조건을 지정하도록 합시다.
+
+drop table emp02;
+
+create table emp02(
+    empno number(4) not null,
+    ename varchar2(10) not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+desc emp02;
+
+insert into emp02 values (null, null, 'MANAGER', 10);       -- 에러
+insert into emp02 values (1111, null, 'MANAGER', 10);       -- 에러
+insert into emp02 values (1111, 'SON', 'MANAGER', 10);      -- 한줄 들어간다.
+
+select * from emp02;
+
+
+drop table emp03;
+
+create table emp03(
+    empno number(4) unique,
+    ename varchar2(10) not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+create table emp03(
+    empno number(4) unique not null,
+    ename varchar2(10) not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+desc emp03;
+
+insert into emp03 values(1111, 'TEST', 'MANAGER', 10);      -- 행 삽입
+insert into emp03 values(1111, 'TEST123', 'MANAGER', 20);   -- 에러
+insert into emp03 values(null, 'TEST123', 'MANAGER', 20);
+
+select * from emp03;
