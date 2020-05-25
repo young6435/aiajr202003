@@ -223,6 +223,53 @@ desc emp03;
 
 insert into emp03 values(1111, 'TEST', 'MANAGER', 10);      -- 행 삽입
 insert into emp03 values(1111, 'TEST123', 'MANAGER', 20);   -- 에러
-insert into emp03 values(null, 'TEST123', 'MANAGER', 20);
+insert into emp03 values(null, 'TEST123', 'MANAGER', 20);   -- 에러
 
 select * from emp03;
+
+-------------------------------------------------------------------
+
+-- unique
+
+-- 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
+-- EMP04 테이블을 생성하되 
+-- 사원번호에는 유일키로 사원명은 NOT NULL 제약조건을 설정해 봅시다.
+
+drop table emp04;
+
+create table emp04(
+    empno number(4) constraint emp04_empno_uk unique constraint emp04_empno_nn not null,        -- 제약조건 2개다.
+    ename varchar2(10)constraint enp04_ename_nn not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+desc emp04;
+
+insert into emp04 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
+insert into emp04 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp04 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
+
+select * from emp04;
+
+------------------------------------------------------------------------
+
+-- primary key
+
+-- 사원번호, 사원명, 직급, 부서번호 4개의 칼럼으로 구성된 
+-- 테이블을 생성하되 기본 키 제약 조건을 설정해 봅시다.
+
+drop table emp05;
+
+create table emp05(
+    empno number(4) constraint emp05_empno_pk primary key,          -- 그냥 primary key 써도 된다.
+    ename varchar2(10) constraint emp05_ename_nn not null,
+    job varchar2(10),
+    deptno number(2)
+);
+
+desc emp05;
+
+insert into emp05 values(1111, 'TEST', 'MANAGER', 10);          -- 행 삽입    
+insert into emp05 values(1111, 'TEST123', 'MANAGER', 20);       -- 에러
+insert into emp05 values(null, 'TEST123', 'MANAGER', 20);       -- 에러
