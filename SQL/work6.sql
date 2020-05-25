@@ -179,24 +179,31 @@ where b.bookid = o.bookid and o.custid = c.custid
 
 
 (12) 도서의가격(Book 테이블)과판매가격(Orders 테이블)의차이가가장많은주문
+;
 
-
-select max(b.bookname, b.price-o.saleprice)
-from orders o, book b
-where o.bookid = b.bookid
+SELECT MAX(B.PRICE-O.SALEPRICE)
+FROM ORDERS O, BOOK B
+WHERE O.BOOKID=B.BOOKID
 ;
 
 
-select b.bookname, b.price-o.saleprice
-from orders o, book b
-where o.bookid = b.bookid
-and price-saleprice=(select max(b.bookname, b.price-o.saleprice)
-from orders o, book b
-where o.bookid = b.bookid);
+SELECT B.BOOKNAME, B.PRICE-O.SALEPRICE
+FROM ORDERS O, BOOK B
+WHERE O.BOOKID=B.BOOKID
+AND PRICE-SALEPRICE=(
+    SELECT MAX(B.PRICE-O.SALEPRICE)
+    FROM ORDERS O, BOOK B
+    WHERE O.BOOKID=B.BOOKID
+)
+;
+
+
+
 
 
 (13) 도서의 판매액 평균보다
      자신의 구매액평균이 더 높은 고객의이름
+;
 
 select avg(saleprice) from orders;
 
@@ -212,6 +219,7 @@ having avg(saleprice)>(select avg(saleprice) from orders)        -- 평균구매
 3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
 
 (1) 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
+;
 
 select b.publisher
 from orders o, customer c, book b
@@ -232,4 +240,11 @@ and c.name !='박지성'
 ;
 
 (2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
+;
 
+select c.name, count(distinct publisher)
+from orders o, customer c, book b
+where o.custid=c.custid and o.bookid =b.bookid
+group by c.name
+having count(distinct publisher) >=2
+;
