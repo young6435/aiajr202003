@@ -23,8 +23,6 @@ where e.empno = 7499 and e.sal < m.sal
 ;
 
 
-
-
 45. 최소급여를 받는 사원의 이름, 담당업무 및 급여를 표시하시오. (그룹함수 사용)    xx
 
 select * from emp;

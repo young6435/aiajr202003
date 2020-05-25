@@ -212,8 +212,10 @@ where custid in (select custid from customer where address like '%대한민국%'
 -- 더 비싼 도서를 구입한 주문의 주문번호와 금액을 보이시오.
 
 -- 3번 고객이 주문한 도서 금액
-select * from orders where custid=3 order by saleprice desc;    
-select max(saleprice) from orders where custid=3;      -- 13000
+select * from orders where custid=3 order by saleprice desc;    -- 3권 샀다.
+select max(saleprice) from orders where custid=3;      -- 최고 13000.
+
+
 
 select orderid, saleprice
 from orders
