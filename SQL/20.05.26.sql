@@ -37,11 +37,16 @@ insert into dept01 (deptno, dname) values (40,'DEV');    -- 성공   -- loc 가 
 
 
 desc dept01;
+
 select * from dept01;
 
 
 
 ------------------------------------------------------------------------------------------
+
+drop table dept02;
+
+select * from dept02;
 
 
 create table dept02(            -- 껍데기 만든다.
@@ -50,25 +55,25 @@ create table dept02(            -- 껍데기 만든다.
     loc varchar2(20) default 'SEOUL'
 );
 
-insert into dept02 (deptno, dname, loc) values(10,'MARKETING', 'SEOUL'); 
+insert into dept02 (deptno, dname, loc) values(10,'MARKETING', 'SEOUL');        -- 생성
 
-insert into dept02 (deptno, dname) values (40,'DEV');
+insert into dept02 (deptno, dname) values (40,'DEV');       -- 생성
 
 
 -- null 값 입력
 
-insert into dept02 (deptno, dname, loc) values(20,'MARKETING', null);   -- 명시적으로 null 써도 된다.
+insert into dept02 (deptno, dname, loc) values(20,'MARKETING', null); --생성  -- 명시적으로 null 써도 된다.
 
-insert into dept02 (deptno, dname, loc) values(30,'MARKETING', '');     -- null 값이다. 
+insert into dept02 (deptno, dname, loc) values(30,'MARKETING', ''); --생성    -- null 값이다. 
 
 
 -- 오류
 
-insert into dept02 (deptno, dname) values(40, 'DEV', 'PUSAN');           -- 개수가 안맞는다.
+insert into dept02 (deptno, dname) values(40, 'DEV', 'PUSAN');      --2/3         -- 개수가 안맞는다.
 
-insert into dept02 (deptno, dname, loc) values(10,'MARKETING');          -- 개수가 안맞는다.
+insert into dept02 (deptno, dname, loc) values(10,'MARKETING');     --3/2         -- 개수가 안맞는다.
 
-insert into dept02 values(40,'MARKETING');       --앞에꺼 3개 뒤에꺼 2개    -- 개수가 안맞는다.    
+insert into dept02 values(40,'MARKETING');      --3/2        -- 개수가 안맞는다.    
 
 
 
@@ -76,9 +81,9 @@ select * from dept02;
 
 desc dept02;
 
-insert into dept02 (dname, loc) values('test', 'locTest');      -- 에러    -- deptno, dname 가 not null 이다.
+insert into dept02 (dname, loc) values('test', 'locTest');      -- 에러    -- deptno가 not null 인데 생략했다.
 
-insert into dept02 (deptno, dname, loc) values(60, 'test', 'locTest'); 
+insert into dept02 (deptno, dname, loc) values(60, 'test', 'locTest');   -- 생성
 
 
 

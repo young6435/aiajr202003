@@ -61,7 +61,7 @@ select * from emp02;
 
 ---------------------------------------------------------
 
--- emp 테이블의 empno 와 ename 컬러만 복사해서 
+-- emp 테이블의 empno 와 ename 컬럼만 복사해서 
 -- 새로운 테이블 emp03을 생성하자.
 
 create table emp03
@@ -335,11 +335,11 @@ CREATE TABLE EMP07(
     BIRTHDAY DATE DEFAULT SYSDATE
 );
 
-INSERT INTO EMP07 VALUES (1111, 'TEST', NULL, 10, 'F', 600, NULL);
-INSERT INTO EMP07 VALUES (1112, 'TEST', NULL, 10, 'M', 600, NULL);
+INSERT INTO EMP07 VALUES (1111, 'TEST', NULL, 10, 'F', 600, NULL);      -- 생성
+INSERT INTO EMP07 VALUES (1112, 'TEST', NULL, 10, 'M', 600, NULL);      -- 생성
 
 INSERT INTO EMP07 (EMPNO, ENAME, DEPTNO, GENDER, SAL) 
-           VALUES (1113, 'TEST', 10, 'F', 1600);
+           VALUES (1113, 'TEST', 10, 'F', 1600);            -- 생성
 
 SELECT * FROM EMP07;
 
@@ -351,6 +351,7 @@ SELECT * FROM EMP07;
 ---------------------------------------------------------------------------------
 
 drop table emp02;
+
 create table emp02(
     empno number(4),
     ename varchar2(10) constraint emp02_ename_nn not null,

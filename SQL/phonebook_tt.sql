@@ -31,8 +31,8 @@ create table phonebook(
     pbidx number(4),                -- 기본키, 대리키
     pbname varchar2(10) not null,   -- 이름
     pbnumber varchar(13) not null,  -- 전화번호
-    pbaddr varchar(50) default '입력 없음'  not null,    -- 주소
-    pbmail varchar2(50) default '입력 없음' not null,   -- 이메일
+    pbaddr varchar(50) default '입력 없음'  not null,    -- 주소 default
+    pbmail varchar2(50) default '입력 없음' not null,   -- 이메일 default
     pbtype varchar2(10) not null,   -- 친구 타입
     pbmajor varchar2(20),           -- 전공
     pbgrade number(1),              -- 학년
@@ -218,8 +218,16 @@ insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address)
 VALUES (1, '박지성', '010-9999-0000', 'park@gmail.com', 'London')
 ;
 insert into phoneinfo_univ          
-values (1, 'computer', 1, 1)
+values (1, 'computer', 1, 1)      -- phoneinfo_univ 컬럼 4개다.
 ;                                 -- 이거 2개가 들어가야 학교 친구 정보 저장된거다. 박지성 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
+
+-----------------------------------------
+
+select * from phoneinfo_basic;
+
+select * from phoneinfo_univ;
+-------------------------------------------
+
 
 -- 회사 친구 정보 입력 순서
 -- 1. 기본 친구 정보 테이블 데이터 입력
@@ -227,23 +235,37 @@ values (1, 'computer', 1, 1)
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
 VALUES (2, '손흥민', '010-7777-5555', 'son@gmail.com', 'London')
 ;
-insert into phoneinfo_com 
+insert into phoneinfo_com       -- phoneinfo_com 컬럼 3개다.
 values (1, 'NAVER', 2)          -- 이거 2개가 들어가야 회사 친구 정보 저장된거다. 손흥민 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
 ;                                   
+
+-----------------------------------------------------------
+select * from phoneinfo_basic;
+
+select * from phoneinfo_com;
+
+--------------------------------------------------------
 
 ---------------------------------------------------------------------------------
 -- 친구 정보 출력 질의
 ---------------------------------------------------------------------------------
 -- 1. 전체 친구 목록 출력 : 테이블 3개 JOIN
-select * from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
---where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+)
+select * 
+from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
+--where pb.idx=pu.fr_ref and pb.idx=pc.fr_ref
 where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+)
 ;
+
+
 -- 2. 학교 친구 목록 출력
-select * from phoneinfo_basic pb, phoneinfo_univ pu
+select * 
+from phoneinfo_basic pb, phoneinfo_univ pu
 where pb.idx=pu.fr_ref
 ;
+
+
 -- 3. 회사 친구 목록 출력
-select * from phoneinfo_basic pb, phoneinfo_com pc
+select * 
+from phoneinfo_basic pb, phoneinfo_com pc
 where pb.idx=pc.fr_ref
 ;
