@@ -151,7 +151,10 @@ where empno in (select distinct mgr from emp where mgr is not null)
 
 51. BLAKE와 동일한 부서에 속한 사원의 이름과 입사일을 표시하는 질의를 작성하시오. ( 단 BLAKE는 제외 )
 
-
+select ename, hiredate 
+from emp 
+where deptno = (select deptno from emp where ename='BLAKE')
+and ename != 'BLAKE';
 
 
 
