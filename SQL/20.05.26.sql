@@ -54,6 +54,9 @@ insert into dept02 (deptno, dname, loc) values(10,'MARKETING', 'SEOUL');
 
 insert into dept02 (deptno, dname) values (40,'DEV');
 
+
+-- null 값 입력
+
 insert into dept02 (deptno, dname, loc) values(20,'MARKETING', null);   -- 명시적으로 null 써도 된다.
 
 insert into dept02 (deptno, dname, loc) values(30,'MARKETING', '');     -- null 값이다. 
@@ -76,4 +79,11 @@ drop table dept02;
 
 
 --------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
