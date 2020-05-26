@@ -27,7 +27,7 @@ create table phonebook(
     pbadress varchar2(50) default '입력정보없음' not null,       --주소
     pbemail varchar2(50) default '입력정보없음' not null,         --이메일
     --regdate date default sysdate,
-    pbtype varchar2(10) constraint phonebook_pbtype_ck check (pbtype in('univ','com','cafe')),
+    pbtype varchar2(10) constraint phonebook_pbtype_ck check (pbtype in('univ','com','cafe')) not null,
     pbmajor varchar2(20),     --전공
     pbgrade number(1),     --학년
     pbcomname varchar2(20),   --회사이름
@@ -62,7 +62,7 @@ create table phonebook(
     pbadress varchar2(20) default '입력정보없음' not null,       --주소
     pbemail varchar2(20) default '입력정보없음' not null,         --이메일
     --regdate date default sysdate,
-    pbtype varchar2(10),        --친구타입
+    pbtype varchar2(10) not null,        --친구타입
     pbmajor varchar2(20),     --전공
     pbgrade number(1),     --학년
     pbcomname varchar2(20),   --회사이름
@@ -129,5 +129,47 @@ create table phoneinfo_com(
 drop table phoneinfo_com;
 
 
+---------------------------------------------------------------------------------------
 
 
+-- 입력 SQL 작성
+
+desc phonebook;     -- 구조를 먼저 본다.
+
+select * from phonebook;
+
+truncate phonebook;
+
+-- 기본정보 입력
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype)
+values(1, 'son', '010-1234-1234', 'SEOUL', 'son@naver.com', 'univ');
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype)
+values(2, 'messi', '010-1234-5678', '아르헨티나 부에노스아이레스', 'messi@naver.com', '');
+
+
+-- 학교 친구 정보 입력
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype, pbmajor, pbgrade)
+values(3, 'roony', '010-1234-4321', '잉글랜드 멘체스터', 'roony@naver.com', '','축구',2);
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype, pbmajor, pbgrade)
+values(4, 'van de sar', '010-1234-3131', '네덜란드 암스테르담', 'vadesar@naver.com', '','축구',3);
+
+-- 회사 친구 정보 입력
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype, pbcomname, pbdeptname, pbcomjob)
+values(5, 'gerrard', '010-2323-3131', '잉글랜드 리버풀', 'gerrard@naver.com', '','리버풀상회','영업부','대리');
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype, pbcomname, pbdeptname, pbcomjob)
+values(6, 'torres', '010-2323-3131', '잉글랜드 리버풀', 'torres@naver.com', '','리버풀상회','해외영업부','과장');
+
+
+-- 모임 친구 정보 입력
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype, pbcafename, pbnickname)
+values(7, 'ronaldo', '010-1234-1254', '포르투갈 마데이라', 'ronaldo@naver.com', '','오늘만 산다','날강두');
+
+insert into phonebook (pidx, pbname, pbnumber, pbadress, pbemail, pbtype, pbcafename, pbnickname)
+values(8, 'evra', '010-1446-1234', '프랑스 파리', 'evra@naver.com', '','오늘만 산다','국민브라');

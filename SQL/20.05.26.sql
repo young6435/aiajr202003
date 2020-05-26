@@ -23,17 +23,17 @@ select * from dept01;
 ----------------------------------------------------------------------
 
 -- 새로운 부서 정보를 입력 : 행단위 입력
--- insert into 테이블이름 (입력하고자 하는 컬럼들) values (데잍들)
+-- insert into 테이블이름 (입력하고자 하는 컬럼들) values (데이터들)
 -- 입력 컬럼의 순서와 입력데이터의 순서는 같아야 한다.
 
 
-insert into dept01 (deptno, dname, loc) values(10,'MARKETING', 'SEOUL'); 
+insert into dept01 (deptno, dname, loc) values(10,'MARKETING', 'SEOUL');     --성공 
 
-insert into dept01 VALUES (20,'DESIGN','PUSAN');            --dept가 3개 컬럼인데 그거 3개 다쓸꺼면 생략가능하다.
+insert into dept01 VALUES (20,'DESIGN','PUSAN');   -- 성공         --dept가 3개 컬럼인데 그거 3개 다쓸꺼면 생략가능하다.
 
-insert into dept01 (loc, deptno, dname) values('LONDON',30, 'SALES');       -- 입력순서 바꿔도 되는데, 뒤에것도 순서 맞춰야 된다.
+insert into dept01 (loc, deptno, dname) values('LONDON',30, 'SALES');    -- 성공   -- 입력순서 바꿔도 되는데, 뒤에것도 순서 맞춰야 된다.
 
-insert into dept01 (deptno, dname) values (40,'DEV');       -- loc 가 null 이다.
+insert into dept01 (deptno, dname) values (40,'DEV');    -- 성공   -- loc 가 null 이다.
 
 
 desc dept01;
@@ -74,7 +74,11 @@ insert into dept02 values(40,'MARKETING');       --앞에꺼 3개 뒤에꺼 2개
 
 select * from dept02;
 
-drop table dept02;
+desc dept02;
+
+insert into dept02 (dname, loc) values('test', 'locTest');      -- 에러    -- deptno, dname 가 not null 이다.
+
+insert into dept02 (deptno, dname, loc) values(60, 'test', 'locTest'); 
 
 
 
