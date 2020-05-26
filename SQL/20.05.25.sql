@@ -1,7 +1,7 @@
 --2020.05.25. 월요일.
 
 ---------------------------------------------------------
--- DDL
+-- DDL 
 ---------------------------------------------------------
 
 -- 테이블 생성
@@ -47,7 +47,7 @@ desc emp01;
 -----------------------------------------------------------------
 
 -- 테이블의 복사 : 서브 쿼리 이용 
--- 스키마 복사, 행 복사 가능
+-- 스키마 복사, 행 복사 가능          -- 컬럼을 집한시킨게 스키마.
 -- 제약조건의 복사는 되지 않는다.
 
 create table emp02      
@@ -90,7 +90,7 @@ select * from emp04;
 
 create table emp05
 as
-select * from emp where 1<0
+select * from emp where 1<0     -- 무조건 false 나오는 값을 쓴다.
 ;
 
 select * from emp05;
@@ -212,7 +212,7 @@ select * from emp02;
 
 ----------------------------------------------------------------------------
 
--- unique
+-- unique   (중복허용 안함)
 
 drop table emp03;
 
@@ -317,7 +317,7 @@ insert into emp06 values(2222, 'TEST123', 'MANAGER', 50);       -- 에러       
 
 -- check 제약조건
 
--- 사원번호, 사원명, 직급, 부서번호, 직급, 성별, 생일 7개의 칼럼으로 
+-- 사원번호, 사원명, 직급, 부서번호, 성별, 생일 7개의 칼럼으로 
 -- 구성된 테이블을 생성하되 
 -- 기본 키 제약 조건, 외래키 제약 조건은 물론 
 -- CHECK 제약 조건도 설정해 봅시다.
@@ -329,7 +329,7 @@ CREATE TABLE EMP07(
     EMPNO NUMBER(4) CONSTRAINT EMP07_EMPNO_PK PRIMARY KEY,
     ENAME VARCHAR2(10) CONSTRAINT EMP07_ENAME_NN NOT NULL,
     JOB VARCHAR2(10) DEFAULT 'MANAGER',
-    DEPTNO NUMBER(2) CONSTRAINT EMP07_DEPTNO_FK REFERENCES DEPT(DEPTNO),
+    DEPTNO NUMBER(2) CONSTRAINT EMP07_DEPTNO_FK REFERENCES DEPT(DEPTNO),    -- dept가 외래키다 deptno는 primary key다.
     GENDER CHAR(1) CONSTRAINT EMP07_GENDER_CK CHECK (GENDER='M' OR GENDER='F'),
     SAL NUMBER(7,2) CONSTRAINT EMP07_SAL_CK CHECK (SAL BETWEEN 500 AND 5000),
     BIRTHDAY DATE DEFAULT SYSDATE
@@ -344,5 +344,34 @@ INSERT INTO EMP07 (EMPNO, ENAME, DEPTNO, GENDER, SAL)
 SELECT * FROM EMP07;
 
 
+---------------------------------------------------------------------------------
+
+-- 테이블 레벨에서의 제약 조건 정의
+
+---------------------------------------------------------------------------------
+
+drop table emp02;
+create table emp02(
+    empno number(4),
+    ename varchar2(10) constraint emp02_ename_nn not null,
+    job varchar2(10) not null,
+    deptno number(2),
+    constraint emp02_empno_pk primary key(empno),
+    constraint emp02_ename_uk unique(ename),
+    constraint emp02_deptno_fk foreign key(deptno) references dept(deptno)     --dept 테이블의 deptno 컬럼을 지정한다.
+);
 
 
+--------------------------------------------------------------------------------
+
+-- 전화번호 관리 프로그램
+
+--------------------------------------------------------------------------------
+
+-- 이름, 전화번호, 생일, 이메일
+-- 전공, 학년
+-- 부서이름, 직급
+-- 동호회 이름, 닉네임
+-- 대리키 : 일련번호 -> pIdx
+
+-- 전화번호 부(Contact)
