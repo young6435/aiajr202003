@@ -1,3 +1,7 @@
+-- 2020.05.26. 화요일.
+
+
+
 -- phonebook DDL
 -- ===== 전화번호 부( Contact )
 
@@ -10,8 +14,11 @@
 -- 전공, 학년
 -- 회사이름, 부서이름, 직급
 -- 모임이름, 닉네임
+
 drop table phonebook;
+
 -- 테이블 레벨 제약 정의
+
 create table phonebook(
     pbidx number(4),                -- 기본키, 대리키
     pbname varchar2(10) not null,   -- 이름
@@ -32,7 +39,10 @@ create table phonebook(
     constraint pb_grade_ck check (pbgrade between 1 and 4)
 );
 
+
+
 -- 컬럼 레벨 제약 정의
+
 create table phonebook(
     pbidx number(4) constraint pb_pbidx_pk PRIMARY KEY,                -- 기본키
     pbname varchar2(10) not null,   -- 이름
@@ -73,35 +83,45 @@ select * from phonebook;
 
 TRUNCATE TABLE phonebook;
 
+
 -- 기본정보 입력
+
 insert into phonebook 
 (pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype)
 values 
 (1, 'scott', '010-9999-1234', 'SEOUL', 'scott@gmail.com', 'univ')
 ;
 
+
 -- default 입력 처리 pbaddr, pbemail
+
 insert into phonebook 
 (pbidx, pbname, pbnumber, pbtype)
 values 
 (2, 'king', '010-7777-3333', 'univ')
 ;
 
+
 -- 학교 친구 정보 입력
+
 insert into phonebook 
 (pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbmajor, pbgrade)
 values 
 (3, 'son', '010-3333-1111', '서울', 'son@gmail.com', 'univ', 'computer', 1)
 ;
 
+
 -- 회사 친구 정보 입력 
+
 insert into phonebook 
 (pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbcomname, pbcomdept, pbcomjob)
 values 
 (4, '박지성', '010-1234-0000', '런던', 'ji@gmail.com', 'com', 'NAVER', 'SEARCH', 'PROGRAMER')
 ;
 
+
 -- 모임 친구 정보 입력
+
 insert into phonebook 
 (pbidx, pbname, pbnumber, pbaddr, pbmail, pbtype, pbcafename, pbcafenickname)
 values 
