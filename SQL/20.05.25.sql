@@ -136,7 +136,9 @@ desc emp01;
 -- drop table 테이블이름;
 
 drop table emp01;
+
 select * from tab;
+
 desc emp01;
 
 
@@ -148,6 +150,7 @@ desc emp01;
 select * from emp02;
 
 truncate table emp02;       -- 테이블 안에 모든 로우 제거.      -- 뒤지기 싫으면 고민하고 지워라!
+
 select * from emp02;
 
 -------------------------------------------------------------------------------
