@@ -122,13 +122,29 @@ where ename='SCOTT'
 
 -- 서브쿼리를 이용한 데이터 수정하기
 
+-- 1. 20번 부서의 지역명을 
+--    40번 부서의 지역명으로 변경하기 위해서 서브 쿼리문을 사용해 봅시다.
+
+update dept01
+set loc=(
+    select loc from dept01 where deptno=40
+)
+where deptno=20
+;
+
+rollback;
+
+
 drop table dept01;
+
 
 create table dept01
 as
-select * from dept;
+select * from dept
+;
 
 
+select * from dept01;
 
 -----------------------------------------------------------------------------
 
@@ -207,10 +223,19 @@ delete from emp01 where deptno=(
 
 -- 1. 회사친구의 정보 변경.
 
+update phoneinfo_basic
+set fr_address = '강원도'
+where fr_name = '손흥민'
+;
+
 
 
 -- 2. 학교 친구의 정보 변경.
 
+update phoneinfo_basic
+set fr_address = '강원도'
+where fr_name = '박지성'
+;
 
 
 
@@ -222,9 +247,21 @@ delete from emp01 where deptno=(
 
 -- 1. 회사 친구 정보를 삭제.
 
+delete from phoneinfo_com;
+
+delete from phoneinfo_basic where fr_name = '손흥민';
+
+rollback;
+
+
 
 
 -- 2. 학교 친구 정보를 삭제.
+
+delete from phoneinfo_univ;
+
+delete from phoneinfo_basic where fr_name = '박지성';
+
 
 
 
