@@ -175,8 +175,8 @@ select pbname, pbnumber, pbcafename, pbcafenickname, pbtype from phonebook where
 
 -- phonebook 테이블명세서 DDL : 2020.05.26
 
-drop table phoneInfo_basic;
-drop table phoneInfo_univ;
+drop table phoneInfo_basic;         -- 외래키 때문에 phoneInfo_univ 하고 phoneInfo_com 지운다음에 phoneInfo_basic 지워야된다.
+drop table phoneInfo_univ;      
 drop table phoneInfo_com;
 
 create table phoneInfo_basic (
@@ -197,7 +197,8 @@ create table phoneInfo_univ (
     fr_ref number(6),
     constraint pu_idx_pk primary key(idx),
     constraint pu_fr_u_year_ck check (fr_u_year between 1 and 4),
-    constraint pu_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx)    
+    --constraint pu_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx)  
+    constraint pu_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx) on delete CASCADE  
 );
  
 create table phoneInfo_com(
@@ -205,7 +206,7 @@ create table phoneInfo_com(
     fr_c_company varchar2(20) default 'N' not null,
     fr_ref number(6),
     constraint pc_idx_pk primary key(idx),
-    constraint pc_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx)  
+    constraint pc_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx) on delete CASCADE  
 );
 
 ---------------------------------------------------------------------------------
@@ -244,6 +245,8 @@ select * from phoneinfo_basic;
 
 select * from phoneinfo_com;
 
+select * from phoneinfo_univ;
+
 --------------------------------------------------------
 
 ---------------------------------------------------------------------------------
@@ -269,3 +272,108 @@ select *
 from phoneinfo_basic pb, phoneinfo_com pc
 where pb.idx=pc.fr_ref
 ;
+
+
+
+-----------------------------------------------------------------
+
+-- 수정을 위한 SQL (phonebook 이용)        2020.05.27. 수요일.
+
+-----------------------------------------------------------------
+
+-- 1. 회사친구의 정보 변경. (기본정보 + 회사정보 수정)
+
+-- a. 기본정보 수정.
+
+update phoneinfo_basic
+set fr_name='SCOTT',                        
+    fr_phonenumber='010-5436-1235', 
+    fr_address='SEOUL', 
+    fr_email='scott@gmail.com'
+where idx=2                            -- 이름은 겹칠수 있으니까.
+;
+
+-- b. 회사정보 수정.
+
+update phoneinfo_com
+set fr_c_company='KAKAO'
+where fr_ref=2
+;
+
+
+
+
+
+
+
+-- 2. 학교 친구의 정보 변경. (기본정보 + 학교정보 수정)
+
+-- a. 기본정보 수정.
+
+update phoneinfo_basic
+set fr_name='KING',                        
+    fr_phonenumber='010-2323-1235', 
+    fr_address='SEOUL', 
+    fr_email='king@gmail.com'
+where idx=1                             -- 이름은 겹칠수 있으니까.
+;
+
+-- b. 학교정보 수정.
+
+update phoneinfo_univ
+set fr_u_major='DATA',
+    fr_u_year=3         -- 3학년.
+where fr_ref=1;
+
+
+
+select * from phoneinfo_basic;
+
+select * from phoneinfo_com;
+
+select * from phoneinfo_univ;
+
+
+
+
+
+-----------------------------------------------------------------
+
+-- 삭제를 위한 SQL
+
+-----------------------------------------------------------------
+
+-- 1. 학교 친구 정보를 삭제.
+
+delete from phoneinfo_com where fr_ref=1;
+delete from phoneinfo_univ where fr_ref=1;
+
+delete from phoneinfo_basic where idx=1;        -- on delete cascade 썼다.
+
+
+-- 2. 회사 친구 정보를 삭제.
+
+delete from phoneinfo_com where fr_ref=2;
+delete from phoneinfo_univ where fr_ref=2;
+
+delete from phoneinfo_basic where idx=2;         -- on delete cascade 썼다.
+
+
+
+
+select * from phoneinfo_basic;
+
+select * from phoneinfo_com;
+
+select * from phoneinfo_univ;
+
+
+-----------------------------------------------------------------------
+
+-- 외래키 설정시 부모의 행이 삭제 될 때 설정.
+-- references phoneinfo_basic(idx) on delete 설정옵션
+-- no action : 모두 삭제 불가.
+-- cascade (중요) : 참조를 하고 있는 자식 테이블의 모든 행도 삭제
+-- set null (중요) : 참조를 하고 있는 자식 테이블의 모든 행의 외래키 컬럼의 값을 null로 변경.
+-- set default : 참조를 하고 있는 자식 테이블의 모든 행의 외래키 컬럼의 값을 기본값으로 변경.
+

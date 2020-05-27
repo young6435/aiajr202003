@@ -10,7 +10,7 @@
 
 
 
-drop table emp01;
+drop table emp01;       -- 테이블 삭제.
 
 create table emp01      -- 복사해서 테이블 생성한다.
 as
@@ -217,25 +217,63 @@ delete from emp01 where deptno=(
 
 -----------------------------------------------------------------
 
--- 수정을 위한 SQL (phonebook 이용)
+-- 수정을 위한 SQL (phonebook 이용)        -- phonebook 자료에도 있다.
 
 -----------------------------------------------------------------
 
--- 1. 회사친구의 정보 변경.
+-- 1. 회사친구의 정보 변경. (기본정보 + 회사정보 수정)
+
+-- a. 기본정보 수정.
 
 update phoneinfo_basic
-set fr_address = '강원도'
-where fr_name = '손흥민'
+set fr_name='SCOTT',                        
+    fr_phonenumber='010-5436-1235', 
+    fr_address='SEOUL', 
+    fr_email='scott@gmail.com'
+where idx=2                            -- 이름은 겹칠수 있으니까.
+;
+
+-- b. 회사정보 수정.
+
+update phoneinfo_com
+set fr_c_company='KAKAO'
+where fr_ref=2
 ;
 
 
 
--- 2. 학교 친구의 정보 변경.
+
+
+
+
+-- 2. 학교 친구의 정보 변경. (기본정보 + 학교정보 수정)
+
+-- a. 기본정보 수정.
 
 update phoneinfo_basic
-set fr_address = '강원도'
-where fr_name = '박지성'
+set fr_name='KING',                        
+    fr_phonenumber='010-2323-1235', 
+    fr_address='SEOUL', 
+    fr_email='king@gmail.com'
+where idx=1                             -- 이름은 겹칠수 있으니까.
 ;
+
+-- b. 학교정보 수정.
+
+update phoneinfo_univ
+set fr_u_major='DATA',
+    fr_u_year=3         -- 3학년.
+where fr_ref=1;
+
+
+
+select * from phoneinfo_basic;
+
+select * from phoneinfo_com;
+
+select * from phoneinfo_univ;
+
+
 
 
 
@@ -245,23 +283,36 @@ where fr_name = '박지성'
 
 -----------------------------------------------------------------
 
--- 1. 회사 친구 정보를 삭제.
+-- 1. 학교 친구 정보를 삭제.
 
-delete from phoneinfo_com;
+delete from phoneinfo_com where fr_ref=1;
+delete from phoneinfo_univ where fr_ref=1;
 
-delete from phoneinfo_basic where fr_name = '손흥민';
-
-rollback;
-
+delete from phoneinfo_basic where idx=1;        -- on delete cascade 썼다.
 
 
+-- 2. 회사 친구 정보를 삭제.
 
--- 2. 학교 친구 정보를 삭제.
+delete from phoneinfo_com where fr_ref=2;
+delete from phoneinfo_univ where fr_ref=2;
 
-delete from phoneinfo_univ;
-
-delete from phoneinfo_basic where fr_name = '박지성';
+delete from phoneinfo_basic where idx=2;         -- on delete cascade 썼다.
 
 
 
 
+select * from phoneinfo_basic;
+
+select * from phoneinfo_com;
+
+select * from phoneinfo_univ;
+
+
+-----------------------------------------------------------------------
+
+-- 외래키 설정시 부모의 행이 삭제 될 때 설정.
+-- references phoneinfo_basic(idx) on delete 설정옵션
+-- no action : 모두 삭제 불가.
+-- cascade (중요) : 참조를 하고 있는 자식 테이블의 모든 행도 삭제
+-- set null (중요) : 참조를 하고 있는 자식 테이블의 모든 행의 외래키 컬럼의 값을 null로 변경.
+-- set default : 참조를 하고 있는 자식 테이블의 모든 행의 외래키 컬럼의 값을 기본값으로 변경.
