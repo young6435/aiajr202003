@@ -176,7 +176,7 @@ select pbname, pbnumber, pbcafename, pbcafenickname, pbtype from phonebook where
 -- phonebook 테이블명세서 DDL : 2020.05.26
 
 drop table phoneInfo_basic;         -- 외래키 때문에 phoneInfo_univ 하고 phoneInfo_com 지운다음에 phoneInfo_basic 지워야된다.
-drop table phoneInfo_univ;      
+drop table phoneInfo_univ; 
 drop table phoneInfo_com;
 
 create table phoneInfo_basic (
@@ -222,6 +222,16 @@ insert into phoneinfo_univ
 values (1, 'computer', 1, 1)      -- phoneinfo_univ 컬럼 4개다.
 ;                                 -- 이거 2개가 들어가야 학교 친구 정보 저장된거다. 박지성 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
 
+
+
+
+
+
+
+
+
+
+
 -----------------------------------------
 
 select * from phoneinfo_basic;
@@ -239,6 +249,15 @@ VALUES (2, '손흥민', '010-7777-5555', 'son@gmail.com', 'London')
 insert into phoneinfo_com       -- phoneinfo_com 컬럼 3개다.
 values (1, 'NAVER', 2)          -- 이거 2개가 들어가야 회사 친구 정보 저장된거다. 손흥민 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
 ;                                   
+
+
+
+
+
+
+
+
+
 
 -----------------------------------------------------------
 select * from phoneinfo_basic;
@@ -385,10 +404,96 @@ select * from phoneinfo_univ;
 
 -------------------------------------------------------------------------------
 
---1.
+create or replace view emp_hir_view
+as
+select empno, ename, hiredate
+from emp
+order by hiredate asc
+;
+
+
+-- view 생성.
+
+--1. pb_all_view
+
+create or replace view pb_all_view 
+as
+select   
+        pb.fr_name,             -- 중복되는거 때문에(idx), *하면 안된다. 그래서 하나씩 나열한다.
+        pb.fr_phonenumber, 
+        pb.fr_email, 
+        pb.fr_address, 
+        pb.fr_regdate,
+        pc.fr_c_company,
+        pu.fr_u_major, 
+        pu.fr_u_year        
+from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc 
+where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+)
+;
+
+select * from pb_all_view;
 
 
 --2. pb_com_view
 
+create or replace view pb_com_view
+as
+select 
+        pb.fr_name,  
+        pb.fr_phonenumber, 
+        pb.fr_email, 
+        pb.fr_address, 
+        pb.fr_regdate,
+        pc.fr_c_company
+from phoneinfo_basic pb, phoneinfo_com pc
+where pb.idx=pc.fr_ref
+;
+
+select * from pb_com_view;
+
 
 --3. pb_univ_view
+
+create or replace view pb_univ_view
+as
+select 
+        pb.fr_name,  
+        pb.fr_phonenumber, 
+        pb.fr_email, 
+        pb.fr_address, 
+        pb.fr_regdate,
+        pu.fr_u_major, 
+        pu.fr_u_year
+from phoneinfo_basic pb, phoneinfo_univ pu
+where pb.idx=pu.fr_ref
+;
+
+select * from pb_univ_view;
+
+
+
+-----------------------------------------------------------------------------
+
+-- sequence 생성
+
+------------------------------------------------------------------------------
+
+-- 1. basic 테이블 seq
+
+create sequence pb_basic_idx_seq
+start with 0
+minvalue 0
+;               -- 1씩 증가가 default.
+
+
+-- 2. com 테이블 seq
+
+create sequence pb_com_idx_seq start with 0 minvalue 0; 
+
+-- 3. univ 테이블 seq
+
+create sequence pb_univ_idx_seq start with 0 minvalue 0; 
+
+
+
+
