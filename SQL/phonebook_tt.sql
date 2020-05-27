@@ -223,14 +223,13 @@ values (1, 'computer', 1, 1)      -- phoneinfo_univ 컬럼 4개다.
 ;                                 -- 이거 2개가 들어가야 학교 친구 정보 저장된거다. 박지성 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
 
 
-
-
-
-
-
-
-
-
+-- sequence
+insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
+VALUES (PB_BASIC_IDX_SEQ.nextval, '박지성', '010-9999-0000', 'park@gmail.com', 'London')
+;
+insert into phoneinfo_univ 
+values (PB_UNIV_IDX_SEQ.nextval, 'computer', 1, pb_basic_idx_seq.currval)
+;
 
 -----------------------------------------
 
@@ -249,6 +248,15 @@ VALUES (2, '손흥민', '010-7777-5555', 'son@gmail.com', 'London')
 insert into phoneinfo_com       -- phoneinfo_com 컬럼 3개다.
 values (1, 'NAVER', 2)          -- 이거 2개가 들어가야 회사 친구 정보 저장된거다. 손흥민 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
 ;                                   
+
+
+-- sequence
+insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
+VALUES (PB_BASIC_IDX_SEQ.nextval, '손흥민', '010-7777-5555', 'son@gmail.com', 'London')
+;
+insert into phoneinfo_com 
+values (PB_COM_IDX_SEQ.nextval, 'NAVER', PB_BASIC_IDX_SEQ.currval)
+;
 
 
 
