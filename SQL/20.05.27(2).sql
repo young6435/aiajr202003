@@ -67,7 +67,7 @@ select rownum, empno, ename, hiredate from emp order by hiredate;
 -- cache | nocache
 
 
--- 부서번호 deptno의 sequenct 생성
+-- 부서번호 deptno의 sequence 생성
 
 create sequence dept_deptno_seq01;
 
@@ -76,4 +76,6 @@ from dual;
 
 select dept_deptno_seq01.currval        -- 현재값 나온다.
 from dual;
+
+drop sequence dept_deptno_seq01;        -- 삭제.
 

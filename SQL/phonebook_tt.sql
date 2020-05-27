@@ -43,8 +43,8 @@ create table phonebook(
     pbcafeNickname varchar2(50),    -- 닉네임
     
     constraint pb_pbidx_pk PRIMARY KEY (pbidx),         -- phonebook 을 pb로 쓴거다.
-    CONSTRAINT pb_type_ck check (pbtype in ('univ', 'com', 'cafe') ),
-    constraint pb_grade_ck check (pbgrade between 1 and 4) -- 1,2,3,4
+    CONSTRAINT pb_pbtype_ck check (pbtype in ('univ', 'com', 'cafe') ),
+    constraint pb_pbgrade_ck check (pbgrade between 1 and 4) -- 1,2,3,4
 );
 
 ---------------------------------------------------------------------------------
@@ -58,11 +58,11 @@ create table phonebook(
     pbaddr varchar(50) default '입력 없음'  not null,    -- 주소
     pbmail varchar2(50) default '입력 없음' not null,   -- 이메일
     pbtype varchar2(10) not null 
-    CONSTRAINT pb_type_ck 
+    CONSTRAINT pb_pbtype_ck 
         check (pbtype in ('univ', 'com', 'cafe') ),   -- 친구 타입
     pbmajor varchar2(20),           -- 전공
     pbgrade number(1) 
-    constraint pb_grade_ck 
+    constraint pb_pbgrade_ck 
     check (pbgrade between 1 and 4),              -- 학년
     pbcomName varchar2(50),         -- 회사이름    
     pbcomDept varchar2(50),         -- 부서이름
@@ -82,7 +82,9 @@ select * from user_constraints where table_name='PHONEBOOK';
 
 
 -----------------------------------------------------------------
+
 -- 정보 입력 SQL 작성
+
 -----------------------------------------------------------------
 
 desc phonebook;
@@ -143,7 +145,9 @@ select * from phonebook;
 
 
 ------------------------------------------------------------------------
+
 -- 정보 출력 질의 
+
 ------------------------------------------------------------------------
 
 -- 1. 기본 정보 출력 질의
@@ -169,9 +173,8 @@ select pbname, pbnumber, pbcafename, pbcafenickname, pbtype from phonebook where
 
 
 
-
--------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------
+
 
 -- phonebook 테이블명세서 DDL : 2020.05.26
 
@@ -196,7 +199,7 @@ create table phoneInfo_univ (
     fr_u_year number(1) default 1 not null,
     fr_ref number(6),
     constraint pu_idx_pk primary key(idx),
-    constraint pu_fr_u_year_ck check (fr_u_year between 1 and 4),
+    constraint pu_fr_u_year_ck check (fr_u_year between 1 and 4),   -- 대학교 4학년까지니까.
     --constraint pu_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx)  
     constraint pu_fr_ref_fk foreign key(fr_ref) REFERENCES phoneInfo_basic(idx) on delete CASCADE  
 );
@@ -210,23 +213,29 @@ create table phoneInfo_com(
 );
 
 ---------------------------------------------------------------------------------
+
 -- 입력 DML
+
 ---------------------------------------------------------------------------------
+
 -- 학교 친구 정보 입력 순서
 -- 1. 기본 친구 정보 테이블 데이터 입력
 -- 2. 학교 친구 정보 테이블 데이터 입력
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
 VALUES (1, '박지성', '010-9999-0000', 'park@gmail.com', 'London')
 ;
+
 insert into phoneinfo_univ          
 values (1, 'computer', 1, 1)      -- phoneinfo_univ 컬럼 4개다.
 ;                                 -- 이거 2개가 들어가야 학교 친구 정보 저장된거다. 박지성 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
+                                  -- (첫번째등록, 전공컴퓨터, 1학년, 외래키1번연결)
 
 
 -- sequence
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
 VALUES (PB_BASIC_IDX_SEQ.nextval, '박지성', '010-9999-0000', 'park@gmail.com', 'London')
 ;
+
 insert into phoneinfo_univ 
 values (PB_UNIV_IDX_SEQ.nextval, 'computer', 1, pb_basic_idx_seq.currval)
 ;
@@ -236,6 +245,7 @@ values (PB_UNIV_IDX_SEQ.nextval, 'computer', 1, pb_basic_idx_seq.currval)
 select * from phoneinfo_basic;
 
 select * from phoneinfo_univ;
+
 -------------------------------------------
 
 
@@ -245,25 +255,21 @@ select * from phoneinfo_univ;
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
 VALUES (2, '손흥민', '010-7777-5555', 'son@gmail.com', 'London')
 ;
+
 insert into phoneinfo_com       -- phoneinfo_com 컬럼 3개다.
-values (1, 'NAVER', 2)          -- 이거 2개가 들어가야 회사 친구 정보 저장된거다. 손흥민 앞에있는 1번이 여기 끝에 1번으로 외래키로 들어온다.
-;                                   
+values (1, 'NAVER', 2)          -- 이거 2개가 들어가야 회사 친구 정보 저장된거다. 손흥민 앞에있는 2번이 여기 끝에 2번으로 외래키로 들어온다.
+;                               -- (첫번째등록, 회사이름, 외래키2번연결)   
+
 
 
 -- sequence
 insert into phoneinfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) 
 VALUES (PB_BASIC_IDX_SEQ.nextval, '손흥민', '010-7777-5555', 'son@gmail.com', 'London')
 ;
+
 insert into phoneinfo_com 
 values (PB_COM_IDX_SEQ.nextval, 'NAVER', PB_BASIC_IDX_SEQ.currval)
 ;
-
-
-
-
-
-
-
 
 
 
@@ -277,8 +283,11 @@ select * from phoneinfo_univ;
 --------------------------------------------------------
 
 ---------------------------------------------------------------------------------
+
 -- 친구 정보 출력 질의
+
 ---------------------------------------------------------------------------------
+
 -- 1. 전체 친구 목록 출력 : 테이블 3개 JOIN
 select * 
 from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
@@ -326,10 +335,6 @@ update phoneinfo_com
 set fr_c_company='KAKAO'
 where fr_ref=2
 ;
-
-
-
-
 
 
 
@@ -424,6 +429,11 @@ order by hiredate asc
 
 --1. pb_all_view
 
+select * 
+from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
+where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+)
+;
+
 create or replace view pb_all_view 
 as
 select   
@@ -442,7 +452,12 @@ where pb.idx=pu.fr_ref(+) and pb.idx=pc.fr_ref(+)
 select * from pb_all_view;
 
 
+
 --2. pb_com_view
+
+select * from phoneinfo_basic pb, phoneinfo_com pc
+where pb.idx=pc.fr_ref
+;
 
 create or replace view pb_com_view
 as
@@ -461,6 +476,10 @@ select * from pb_com_view;
 
 
 --3. pb_univ_view
+
+select * from phoneinfo_basic pb, phoneinfo_univ pu
+where pb.idx=pu.fr_ref
+;
 
 create or replace view pb_univ_view
 as

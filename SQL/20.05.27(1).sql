@@ -31,6 +31,7 @@ update emp01
 set deptno = 30
 ;
 
+select * from emp01;
 
 -- 2. 모든 사원의 급여를 10% 인상시킨다.
 
@@ -38,12 +39,15 @@ update emp01
 set sal = sal + (sal * 0.1)     -- sal * 1.1
 ;
 
+select * from emp01;
 
 -- 3. 모든 사원의 입사일을 오늘로 수정한다.
 
 update emp01
 set hiredate = sysdate
 ;
+
+select * from emp01;
 
 rollback;       -- 방금 전꺼 저장되기 전으로 되돌린다.
 
@@ -118,6 +122,8 @@ set hiredate = sysdate, sal=50, comm=4000
 where ename='SCOTT'
 ;
 
+select * from emp01 where ename='SCOTT';
+
 ---------------------------------------------------------------------------
 
 -- 서브쿼리를 이용한 데이터 수정하기
@@ -157,7 +163,7 @@ select * from dept01;
 
 
 -- 1개씩 2개 한거.
-update dept01
+update dept01             -- 바로 위에 설명있다.
 set dname=(select dname from dept01 where deptno=40),
 loc=(select loc from dept01 where deptno=40)
 where deptno=20
@@ -185,9 +191,7 @@ select * from dept01;
 
 -- 부서 테이블의 모든 행을 삭제합시다.
 
-delete from dept01;
-
-
+delete from dept01;     -- drop table dept01  => 테이블 지워버리기.
 
 select * from dept01;
 
@@ -204,7 +208,7 @@ delete from dept01 where deptno=30;
 -- 2. 사원 테이블에서 
 -- 부서명이 SALES인 사원을 모두 삭제.
 
-select deptno from dept where dname='SALES';
+select deptno from dept where dname='SALES';        -- 부서명 30번이 SALES 다.
 
 select * from emp01;
 
@@ -230,7 +234,7 @@ set fr_name='SCOTT',
     fr_phonenumber='010-5436-1235', 
     fr_address='SEOUL', 
     fr_email='scott@gmail.com'
-where idx=2                            -- 이름은 겹칠수 있으니까.
+where idx=2                            -- 이름은 겹칠수 있으니까. 조건을 안겹치게 이걸로 건다.
 ;
 
 -- b. 회사정보 수정.
