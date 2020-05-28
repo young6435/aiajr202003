@@ -1,14 +1,14 @@
 -- 2020.05.28. 목요일.
 
 
-------------------------------------------------------
+----------------------------------------------
 
--- index
+-- INDEX
 
--------------------------------------------------------
+----------------------------------------------
 
--- 검색을 빠르게 하기위해 사용한다.
--- DML 작업에는 성능 저하가 올수 있다.(insert, update, delete)
+-- 검샛을 빠르게 하기위해 사용한다.
+-- DML 작업에는 성능 저하가 올수 있다.
 
 desc user_ind_columns;
 
@@ -27,7 +27,6 @@ select * from emp
 ;
 
 insert into emp01 select * from emp01;
-
 select count(*) from emp01;
 
 insert into emp01 (empno, ename) values (2222,'PARK');
@@ -37,8 +36,7 @@ select * from emp01 where ename='SON';
 
 select * from emp where empno=1111;
 
-
--- index 생성
+-- INDEX 생성
 -- create index 인덱스이름 on 테이블이름 (컬럼이름)
 
 create index emp01_ename_index on emp01 (ename);
