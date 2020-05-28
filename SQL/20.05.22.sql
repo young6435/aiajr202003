@@ -80,8 +80,8 @@ where sal > (select max(sal) from emp where deptno=30)
 
 select ename, sal
 from emp
-where sal > all(select sal from emp where deptno=30)
-;
+where sal > all(select sal from emp where deptno=30)    -- 30번 부서에서 월급받는 모든 사람들을 구한다.
+;                                                       -- 거기에서 1등보다 크면 제일 많이 받는게 된다. 
 
 --------------------------------------------------------
 
