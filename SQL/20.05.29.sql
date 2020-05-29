@@ -15,8 +15,14 @@ create table MEMBER(
 
 drop table MEMBER;
 
+
+
+
 -- 2번
 create index MEMBER_name_index on MEMBER (name);
+
+
+
 
 
 
@@ -36,5 +42,5 @@ from MEMBER m
 drop view member_view;
     
 
-
+select * from emp;
 
