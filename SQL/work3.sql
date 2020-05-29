@@ -105,6 +105,8 @@ select max(sal), min(sal), max(sal) - min(sal) as "급여 최고액과 최저액
 from emp
 ;
 
+
+-- 직급별로.
 select job, max(sal), min(sal), max(sal) - min(sal) as "급여 최고액과 최저액의 차"
 from emp
 group by job
@@ -133,7 +135,7 @@ group by deptno
 ;
 
 
-30. 각 부서에 대해 부서번호, 이름, 지역 명, 사원 수, 부서내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 정수로 반올림 하시오. DECODE 사용.          
+30. 각 부서에 대해 부서번호, 부서명, 지역 명, 사원 수, 부서내의 모든 사원의 평균 급여를 출력하시오. 평균 급여는 정수로 반올림 하시오. DECODE 사용.          
 
 select deptno, 
 decode(deptno,  10, 'ACCOUNTING',
@@ -160,7 +162,7 @@ from dept
     별칭은 각 job, dno, 부서 10, 부서 20, 부서 30, 총액으로 지정하시오. ( hint. Decode, group by )
 
 select job, deptno as dno,
-nvl(decode(deptno, 10, sum(sal)),0) as "부서10",
+nvl(decode(deptno, 10, sum(sal)),0) as "부서10",      -- null이면 꼴보기 싫어서 nvl 쓴거다.
 nvl(decode(deptno, 20, sum(sal)),0) as "부서20",
 nvl(decode(deptno, 30, sum(sal)),0) as "부서30",
 sum(sal) as "총액"

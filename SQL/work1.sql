@@ -84,8 +84,8 @@ order by ename
 
 
 
-
 9. 1981년도에 입사한 사원의 이름과 입사일을 출력하시오. (like 연산자와 와일드카드 사용)
+
 
 select ename, hiredate
 from emp

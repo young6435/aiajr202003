@@ -46,6 +46,7 @@ where custid=1      -- 박지성
 ;
 
 select sum(custid) as "박지성이 구매한 도서의 수"
+
 from orders
 where custid=1
 ;
@@ -80,6 +81,7 @@ from customer
 select orderid
 from orders
 where orderdate between '14-07-04' and '14-07-07'
+--where orderdate between '14/07/04' and '14/07/07'
 ;
 
 
