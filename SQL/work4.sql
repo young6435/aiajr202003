@@ -8,6 +8,7 @@ select * from emp;
 select * from dept;   -- 2개가 겹쳐지는게 deptno 다.
 
 
+
 32. EQUI 조인을 사용하여 SCOTT 사원의 부서번호와 부서 이름을 출력하시오.
 
 select d.deptno, d.dname        -- dept에 2개 다 있다.
@@ -66,7 +67,7 @@ select * from emp;
 
 select e.ename, e.empno, m.ename
 from emp e , emp m                
-where e.mgr = m.empno(+)  
+where e.mgr = m.empno(+)    --mgr이 null이라서 empno가 안나오니까 empno에 (+) 붙여야된다.
 order by e.empno desc
 ;
 
@@ -81,7 +82,7 @@ order by e.empno
 
 40. SELF JOIN을 사용하여 지정한 사원과 동일한 부서에서 근무하는 사원이름, 부서번호를 출력하시오. ( SCOTT )    
 
-select * from emp where deptno = 20;
+select * from emp where deptno = 20;    -- 애들 누구있는지 볼라고.
 
 select * from emp;
 
@@ -106,9 +107,9 @@ where m.ename = 'WARD' and e.hiredate > m.hiredate      -- 기준이 m.ename = '
 
 42. SELF JOIN 을 사용하여 관리자보다 먼저 입사한 모든 사원의 이름 및 입사일을 관리자의 이름 및 입사일과 함께 출력하시오.
 
-select * from emp e, emp m;
+select * from emp e, emp m;     -- 관리자가보다 먼저 입사니까, 부등호가 적은 쪽으로 해야된다.
 
-
+select * from emp;
 
 select e.ename, e.hiredate, m.ename, m.hiredate
 from emp e, emp m

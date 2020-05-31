@@ -32,6 +32,7 @@ where sal>(select sal from emp where empno=7499)
 45. 최소급여를 받는 사원의 이름, 담당업무 및 급여를 표시하시오. (그룹함수 사용)    
 
 select * from emp;
+
 select min(sal) from emp;
 
 select ename, job, sal          -- 1번 방법(이거 추천)
@@ -43,6 +44,7 @@ select ename, job, sal          -- 2번 방법
 from emp
 where sal <= all(select sal from emp)
 ;
+
 
 
 46. 평균급여가 가장 적은 직급의 
