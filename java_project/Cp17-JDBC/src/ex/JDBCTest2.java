@@ -1,4 +1,4 @@
-package ex;
+package ex;			
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -54,7 +54,6 @@ public class JDBCTest2 {
 			conn.close();
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();

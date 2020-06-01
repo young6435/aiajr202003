@@ -44,7 +44,7 @@ public class JDBCTest4 {
 			
 
 			//4. close
-			conn.close();
+			conn.close();		//close 안하면, 객체가 남아있어서 성능저하 온다.
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
