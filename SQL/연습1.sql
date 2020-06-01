@@ -18,3 +18,18 @@ from emp
 group by job, deptno 
 order by job, deptno
 ;
+
+
+create table emp31
+as
+select * from emp;
+
+create table dept31
+as
+select * from dept;
+
+create table dept32
+as
+select * from dept;
+
+commit;
