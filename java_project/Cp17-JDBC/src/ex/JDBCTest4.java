@@ -36,7 +36,7 @@ public class JDBCTest4 {
 			String sql = "insert into dept (deptno, dname, loc) "
 					+ " values (60, 'design', 'jeju')";
 			
-			int resultCnt = stmt.executeUpdate(sql);
+			int resultCnt = stmt.executeUpdate(sql);		// 실행횟수를 반환한다.
 			
 			System.out.println(resultCnt + "개 행이 입력되었습니다.");
 			

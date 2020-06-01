@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class EMPManager {
+public class EMPManager11{
 
 	static Scanner sc = new Scanner(System.in);
 
@@ -1140,27 +1140,20 @@ public class EMPManager {
 
 		System.out.println("사원번호 : ");
 		int empno = sc.nextInt();
-		
 		System.out.println("사원이름 : ");
 		sc.nextLine();
 		String ename = sc.nextLine();
-		
 		System.out.println("직급(업무) : ");
 		String job = sc.nextLine();
-		
 		System.out.println("관리자 : ");
 		int mgr = sc.nextInt();
-		
 		System.out.println("입사일 : ");
 		sc.nextLine();
 		String hiredate = sc.nextLine();
-		
 		System.out.println("급여 : ");
 		int sal = sc.nextInt();
-		
 		System.out.println("수당 : ");
 		int comm = sc.nextInt();
-		
 		System.out.println("부서번호 : ");
 		int deptno = sc.nextInt();
 
