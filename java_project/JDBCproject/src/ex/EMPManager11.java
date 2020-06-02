@@ -131,7 +131,7 @@ public class EMPManager11{
 
 			String selectSql = "select * from dept where dname='" + searchName + "'";
 
-			rs = stmt.executeQuery(selectSql);
+			rs = stmt.executeQuery(selectSql);	// select라서 executeQuery 쓴다.
 
 			int sDeptno = 0;
 			String sDname = "";
@@ -269,7 +269,7 @@ public class EMPManager11{
 
 			String sql = "delete from dept  where dname=?";
 
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);		// delete(DML) 라서  prepareStatement 이거 쓴다.
 			pstmt.setString(1, searchName);
 			int resultCnt = pstmt.executeUpdate();
 
