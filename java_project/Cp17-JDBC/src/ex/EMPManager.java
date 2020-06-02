@@ -441,9 +441,9 @@ public class EMPManager {
 
 
 		// JDBC 사용 객체
-		Connection conn = null;
-		Statement stmt = null;
-		PreparedStatement pstmt = null;
+		Connection conn = null;		// 데이터 베이스와 연결을 위한 객체
+		Statement stmt = null;		
+		PreparedStatement pstmt = null;		 // SQL 문을 데이터베이스에 보내기위한 객체
 		ResultSet rs = null;
 
 		// 사용자 입력정보 변수
@@ -452,7 +452,7 @@ public class EMPManager {
 		System.out.println("부서번호 : ");
 		int deptno = sc.nextInt();
 		System.out.println("부서이름 : ");
-		sc.nextLine();
+		sc.nextLine();						// sc.nextInt() 다음꺼 입력할때 이상함.
 		String dname = sc.nextLine();
 		System.out.println("지역 : ");
 		String loc = sc.nextLine();
@@ -484,11 +484,12 @@ public class EMPManager {
 			String sql = "insert into dept " + " (deptno, dname, loc) "
 					+ " values (?, ?, ?)";
 
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);	// PreParedStatement 객체 생성, 객체 생성시 SQL 문장 저장.
 			pstmt.setInt(1, deptno);
 			pstmt.setString(2, dname);
 			pstmt.setString(3, loc);
 
+			// SQL 문장을 실행하고 결과를 리턴 - SQL 문장 실행 후, 변경된 row 수 int type 리턴
 			int resultCnt = pstmt.executeUpdate();
 
 			if (resultCnt > 0) {
