@@ -6,10 +6,10 @@ public class Dept {
 	private String dname;
 	private String loc;
 
-	public Dept() {
+	public Dept() {		 // default 생성자 필수.
 	}
 
-	public Dept(int deptno, String dname, String loc) {
+	public Dept(int deptno, String dname, String loc) {		// 이건 선택적이다.
 		this.deptno = deptno;
 		this.dname = dname;
 		this.loc = loc;

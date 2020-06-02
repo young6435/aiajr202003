@@ -461,8 +461,8 @@ public class DeptDao {
 
 	public List<Dept> deptList() {
 		
-		// VO : Value Object read only
-		// DTO : Data Transfer Object 
+		// VO : Value Object,   read only, getter, 데이터베이스 자료를 출력용(참조용)으로만 쓴다.
+		// DTO : Data Transfer Object ,    gettet/setter, toString, equals
 
 		// JDBC 사용 객체
 		Connection conn = null;

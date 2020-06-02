@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class ManagerMain {
+public class ManageMain {
 
 	static Scanner sc = new Scanner(System.in);
 
