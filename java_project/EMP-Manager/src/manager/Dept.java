@@ -6,7 +6,7 @@ public class Dept {
 	private String dname;
 	private String loc;
 
-	public Dept() {		 // default 생성자 필수.
+	public Dept() {			// default 생성자 필수
 	}
 
 	public Dept(int deptno, String dname, String loc) {		// 이건 선택적이다.
@@ -45,4 +45,20 @@ public class Dept {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
