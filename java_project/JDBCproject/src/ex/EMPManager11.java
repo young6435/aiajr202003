@@ -131,14 +131,14 @@ public class EMPManager11{
 
 			String selectSql = "select * from dept where dname='" + searchName + "'";
 
-			rs = stmt.executeQuery(selectSql);	// select라서 executeQuery 쓴다.
+			rs = stmt.executeQuery(selectSql);	// select라서 executeQuery 쓴거냐
 
-			int sDeptno = 0;
+			int sDeptno = 0;		// 이거 뭔 뜻이냐
 			String sDname = "";
 			String sLoc = "";
 			
 			if (rs.next()) {
-				sDeptno = rs.getInt("deptno");
+				sDeptno = rs.getInt("deptno");		// 이거 뭔 뜻이냐
 				sDname = rs.getString("dname");
 				sLoc = rs.getString("loc");
 			} else {
@@ -163,14 +163,15 @@ public class EMPManager11{
 
 			String sql = "update dept  set  dname=?, loc=? " + " where deptno=?";
 
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);		// 이거는 똑같은거 왜 2번 쓴거냐
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dname);
+			
+			pstmt.setString(1, dname);			// 이거 뭔 뜻이냐
 			pstmt.setString(2, loc);
 			pstmt.setInt(3, sDeptno);
 
-			int resultCnt = pstmt.executeUpdate();
+			int resultCnt = pstmt.executeUpdate();		// update라서  executeUpdate 이거 쓴거냐
 
 			if (resultCnt > 0) {
 				System.out.println("정상적으로 수정 되었습니다.");
@@ -269,9 +270,9 @@ public class EMPManager11{
 
 			String sql = "delete from dept  where dname=?";
 
-			pstmt = conn.prepareStatement(sql);		// delete(DML) 라서  prepareStatement 이거 쓴다.
+			pstmt = conn.prepareStatement(sql);		// 왜  prepareStatement 이거 쓰는거냐
 			pstmt.setString(1, searchName);
-			int resultCnt = pstmt.executeUpdate();
+			int resultCnt = pstmt.executeUpdate();		// delete 라서 executeUpdate 이거 쓴거냐
 
 			if (resultCnt < 1) {
 				System.out.println("삭제할 정보가 검색 결과가 없습니다.");
@@ -373,10 +374,10 @@ public class EMPManager11{
 			String sql = "select * from dept  where dname like '%'||?||'%' or  loc like '%'||?||'%'";
 			// String sql = "select * from dept where dname=?";
 
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, searchName);
+			pstmt = conn.prepareStatement(sql);		// prepareStatement 이거 왜썼냐	// serch는 그냥 값만 갖고오니까 select 써야되냐
+			pstmt.setString(1, searchName);			// 뜻
 			pstmt.setString(2, searchName);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();		// select라서  executeQuery 쓴거냐
 
 			int resultCnt = 0;
 			System.out.println("검색 결과");
@@ -481,15 +482,15 @@ public class EMPManager11{
 			// Statement or PreparedStatement
 			// pstmt = conn.prepareStatement(SQL 문장)
 
-			String sql = "insert into dept " + " (deptno, dname, loc) "
+			String sql = "insert into dept " + " (deptno, dname, loc) "		// insert 클래스다.
 					+ " values (?, ?, ?)";
 
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, deptno);
+			pstmt = conn.prepareStatement(sql);		// 어떨때 createStatement or prepareStatement 쓰는거냐
+			pstmt.setInt(1, deptno);				// 뜻
 			pstmt.setString(2, dname);
 			pstmt.setString(3, loc);
 
-			int resultCnt = pstmt.executeUpdate();
+			int resultCnt = pstmt.executeUpdate();		// insert 라서  executeUpdate 이거 썼냐
 
 			if (resultCnt > 0) {
 				System.out.println("정상적으로 입력 되었습니다.");
@@ -572,11 +573,11 @@ public class EMPManager11{
 			// Connection 객체 생성
 			conn = DriverManager.getConnection(url, user, pw);
 
-			String sql = "select * from dept  order by dname";
+			String sql = "select * from dept  order by dname";		// list 보여주는 거니까 select 쓰냐
 
-			stmt = conn.createStatement();
+			stmt = conn.createStatement();		// 어떨때 createStatement or prepareStatement 쓰는거냐
 
-			rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql);		// select 라서  executeQuery 썼냐
 
 			int resultCnt = 0;
 			System.out.println("검색 결과");
