@@ -130,6 +130,9 @@ select * from emp_hir;
 
 select * from emp_mgr;
 
+drop table emp_hir;
+
+drop table emp_mgr;
 
 ------------------------------------------------------------------------------------
 
