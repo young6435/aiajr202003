@@ -226,7 +226,7 @@ public class PhoneBookManager {
 			// 그래서 타입변환할때 잘 봐야된다.
 			
 			// 저장된 인스턴스가 : 기본, 대학, 회사, 동호회
-			if(books[index] instanceof PhoneUnivInfo) {
+			if(books[index] instanceof PhoneUnivInfo) {		// books 가 PhoneInfo 타입이다.
 				System.out.println("전공을 입력해주세요.");
 				String major = kb.nextLine();
 				
@@ -264,7 +264,7 @@ public class PhoneBookManager {
 			}
 			
 			// 배열에 새로운 인스턴스를 저장
-			books[index]=info;
+			books[index] = info;
 			
 			
 		}
