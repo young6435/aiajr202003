@@ -119,7 +119,7 @@ public class DeptDao {
 			conn = ConnectionProvider.getConnection();
 
 			String sql = "delete from dept  where dname=?";
-
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dname);
 			
