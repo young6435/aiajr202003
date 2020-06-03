@@ -1,4 +1,4 @@
-package manager;
+package manager22;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,7 +45,7 @@ public class EmpDao {
 			// 유일조건이 아니라면 여러개의 행에 수정 처리가 이루어집니다.
 			// 현재 버전에서는 유일한 값으로 생각하고 처리합니다.
 	
-			String sql = "update emp21  set  ename=?, sal=?, deptno=?  where empno=?";
+			String sql = "update emp  set  ename=?, sal=?, deptno=?  where empno=?";
 
 			pstmt = conn.prepareStatement(sql);
 
@@ -119,7 +119,7 @@ public class EmpDao {
 			// Connection 객체 생성
 			conn = ConnectionProvider.getConnection();
 
-			String sql = "delete from emp21  where ename=?";
+			String sql = "delete from emp  where ename=?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, ename);
@@ -193,7 +193,7 @@ public class EmpDao {
 			// Oracle
 			// select * from dept where dname like '%'||?||'%'
 
-			String sql = "select * from emp21  where ename like '%'||?||'%' or  deptno like '%'||?||'%'";
+			String sql = "select * from emp  where ename like '%'||?||'%' or  deptno like '%'||?||'%'";
 			// String sql = "select * from emp where dname=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -276,7 +276,7 @@ public class EmpDao {
 			// Statement or PreparedStatement
 			// pstmt = conn.prepareStatement(SQL 문장)
 
-			String sql = "insert into emp21 (empno,ename,job,mgr,hiredate,sal,comm,deptno)  values (?, ?, ? ,? ,? ,? ,?, ?)";
+			String sql = "insert into emp (empno,ename,job,mgr,hiredate,sal,comm,deptno)  values (?, ?, ? ,? ,? ,? ,?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, emp.getEmpno());
@@ -353,7 +353,7 @@ public class EmpDao {
 			// 2. 데이터베이스 연결
 			conn = ConnectionProvider.getConnection();
 
-			String sql = "select * from emp21  order by ename";
+			String sql = "select * from emp  order by ename";
 
 			stmt = conn.createStatement();
 
@@ -433,7 +433,7 @@ public class EmpDao {
 		try {
 			//conn = ConnectionProvider.getConnection();
 			
-			String sql = "select count(*) from emp21 where ename=?";
+			String sql = "select count(*) from emp where ename=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);
@@ -469,7 +469,7 @@ public class EmpDao {
 		try {
 			//conn = ConnectionProvider.getConnection();
 			
-			String sql = "select * from emp21 where ename=?";
+			String sql = "select * from emp where ename=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);
@@ -494,4 +494,17 @@ public class EmpDao {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

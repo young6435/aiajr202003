@@ -45,11 +45,13 @@ public class DeptDao {
 			// 유일조건이 아니라면 여러개의 행에 수정 처리가 이루어집니다.
 			// 현재 버전에서는 유일한 값으로 생각하고 처리합니다.
 	
-			String sql = "update dept  set  dname=?, loc=? " + " where deptno=?";
-
+			//String sql = "update dept21  set  dname=?, loc=? " + " where deptno=?";
+			String sql = "update dept21  set  dname=?, loc=?, where deptno=?";
+			
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt = conn.prepareStatement(sql);
+			//pstmt = conn.prepareStatement(sql);		// 왜 2개 썼지?
+			
 			pstmt.setString(1, newDept.getDname());
 			pstmt.setString(2, newDept.getLoc());
 			pstmt.setInt(3, newDept.getDeptno());
@@ -118,7 +120,7 @@ public class DeptDao {
 			// Connection 객체 생성
 			conn = ConnectionProvider.getConnection();
 
-			String sql = "delete from dept  where dname=?";
+			String sql = "delete from dept21  where dname=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dname);
@@ -192,7 +194,7 @@ public class DeptDao {
 			// Oracle
 			// select * from dept where dname like '%'||?||'%'
 
-			String sql = "select * from dept  where dname like '%'||?||'%' or  loc like '%'||?||'%'";
+			String sql = "select * from dept21  where dname like '%'||?||'%' or  loc like '%'||?||'%'";
 			// String sql = "select * from dept where dname=?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -270,7 +272,7 @@ public class DeptDao {
 			// Statement or PreparedStatement
 			// pstmt = conn.prepareStatement(SQL 문장)
 
-			String sql = "insert into dept  (deptno, dname, loc)  values (?, ?, ?)";
+			String sql = "insert into dept21  (deptno, dname, loc)  values (?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dept.getDeptno());
@@ -342,7 +344,7 @@ public class DeptDao {
 			// 2. 데이터베이스 연결
 			conn = ConnectionProvider.getConnection();
 
-			String sql = "select * from dept  order by dname";
+			String sql = "select * from dept21  order by dname";
 
 			stmt = conn.createStatement();
 
@@ -421,7 +423,7 @@ public class DeptDao {
 		try {
 			//conn = ConnectionProvider.getConnection();
 			
-			String sql = "select count(*) from dept where dname=?";
+			String sql = "select count(*) from dept21 where dname=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);
@@ -457,7 +459,7 @@ public class DeptDao {
 		try {
 			//conn = ConnectionProvider.getConnection();
 			
-			String sql = "select * from dept where dname=?";
+			String sql = "select * from dept21 where dname=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);

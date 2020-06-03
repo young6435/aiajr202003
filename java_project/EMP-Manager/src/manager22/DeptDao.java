@@ -1,4 +1,4 @@
-package manager;
+package manager22;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpDao {
+public class DeptDao {
 	
 	// DAO = Data Acess Object
 	// 데이터베이스 처리 하는 클래스
@@ -21,7 +21,7 @@ public class EmpDao {
 	
 	
 
-	public int empEdit(Emp newEmp, Connection conn) {
+	public int deptEdit(Dept newDept, Connection conn) {
 
 		// JDBC 사용 객체
 		//Connection conn = null;
@@ -45,15 +45,14 @@ public class EmpDao {
 			// 유일조건이 아니라면 여러개의 행에 수정 처리가 이루어집니다.
 			// 현재 버전에서는 유일한 값으로 생각하고 처리합니다.
 	
-			String sql = "update emp21  set  ename=?, sal=?, deptno=?  where empno=?";
+			String sql = "update dept  set  dname=?, loc=? " + " where deptno=?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, newEmp.getEname());
-			pstmt.setInt(2, newEmp.getSal());
-			pstmt.setInt(3, newEmp.getDeptno());
-			pstmt.setInt(4, newEmp.getEmpno());
+			pstmt.setString(1, newDept.getDname());
+			pstmt.setString(2, newDept.getLoc());
+			pstmt.setInt(3, newDept.getDeptno());
 
 			resultCnt = pstmt.executeUpdate();
 
@@ -104,7 +103,7 @@ public class EmpDao {
 
 	}
 
-	public int empDelete(String ename) {
+	public int deptDelete(String dname) {
 
 		// JDBC 사용 객체
 		Connection conn = null;
@@ -119,10 +118,10 @@ public class EmpDao {
 			// Connection 객체 생성
 			conn = ConnectionProvider.getConnection();
 
-			String sql = "delete from emp21  where ename=?";
-
+			String sql = "delete from dept  where dname=?";
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, ename);
+			pstmt.setString(1, dname);
 			
 			resultCnt = pstmt.executeUpdate();
 
@@ -164,7 +163,7 @@ public class EmpDao {
 
 	}
 
-	public List<Emp> empSearch(String ename) {
+	public List<Dept> deptSearch(String dname) {
 
 		// JDBC 사용 객체
 		Connection conn = null;
@@ -173,7 +172,7 @@ public class EmpDao {
 		ResultSet rs = null;
 		
 		
-		List<Emp> list = new ArrayList<>();
+		List<Dept> list = new ArrayList<Dept>();
 
 
 		try {
@@ -193,24 +192,19 @@ public class EmpDao {
 			// Oracle
 			// select * from dept where dname like '%'||?||'%'
 
-			String sql = "select * from emp21  where ename like '%'||?||'%' or  deptno like '%'||?||'%'";
-			// String sql = "select * from emp where dname=?";
+			String sql = "select * from dept  where dname like '%'||?||'%' or  loc like '%'||?||'%'";
+			// String sql = "select * from dept where dname=?";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, ename);
-			pstmt.setString(2, ename);
+			pstmt.setString(1, dname);
+			pstmt.setString(2, dname);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				list.add(new Emp(
-						rs.getInt("empno"), 
-						rs.getString("ename"), 
-						rs.getString("job"),
-						rs.getInt("mgr"),
-						rs.getString("hiredate"),
-						rs.getInt("sal"),
-						rs.getInt("comm"),
-						rs.getInt("deptno")));
+				list.add(new Dept(
+						rs.getInt("deptno"), 
+						rs.getString("dname"), 
+						rs.getString("loc")));
 			}
 			
 
@@ -257,7 +251,7 @@ public class EmpDao {
 
 	}
 
-	public int empInsert(Emp emp) {
+	public int deptInsert(Dept dept) {
 
 		// JDBC 사용 객체
 		Connection conn = null;
@@ -276,17 +270,12 @@ public class EmpDao {
 			// Statement or PreparedStatement
 			// pstmt = conn.prepareStatement(SQL 문장)
 
-			String sql = "insert into emp21 (empno,ename,job,mgr,hiredate,sal,comm,deptno)  values (?, ?, ? ,? ,? ,? ,?, ?)";
+			String sql = "insert into dept  (deptno, dname, loc)  values (?, ?, ?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, emp.getEmpno());
-			pstmt.setString(2, emp.getEname());
-			pstmt.setString(3, emp.getJob());
-			pstmt.setInt(4, emp.getMgr());
-			pstmt.setString(5, emp.getHiredate());
-			pstmt.setInt(6, emp.getSal());
-			pstmt.setInt(7, emp.getComm());
-			pstmt.setInt(8, emp.getDeptno());
+			pstmt.setInt(1, dept.getDeptno());
+			pstmt.setString(2, dept.getDname());
+			pstmt.setString(3, dept.getLoc());
 
 			resultCnt = pstmt.executeUpdate();
 
@@ -333,7 +322,7 @@ public class EmpDao {
 
 	}
 
-	public List<Emp> empList() {
+	public List<Dept> deptList() {
 		
 		// VO : Value Object , read only , getter
 		// DTO : Data Transfer Object  getter/setter , toString, equals
@@ -345,7 +334,7 @@ public class EmpDao {
 		ResultSet rs = null;
 		
 		// Dao 클래스 추가
-		List<Emp> empList= new ArrayList<>();
+		List<Dept> deptList= new ArrayList<>();
 
 		// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된것으로 처리합니다.
 
@@ -353,7 +342,7 @@ public class EmpDao {
 			// 2. 데이터베이스 연결
 			conn = ConnectionProvider.getConnection();
 
-			String sql = "select * from emp21  order by ename";
+			String sql = "select * from dept  order by dname";
 
 			stmt = conn.createStatement();
 
@@ -362,18 +351,17 @@ public class EmpDao {
 			
 			while (rs.next()) {
 				
-				Emp emp = new Emp(
-						rs.getInt("empno"), 
-						rs.getString("ename"), 
-						rs.getString("job"),
-						rs.getInt("mgr"),
-						rs.getString("hiredate"),
-						rs.getInt("sal"),
-						rs.getInt("comm"),
-						rs.getInt("deptno"));
-				empList.add(emp);
+				Dept dept = new Dept(
+						rs.getInt("deptno"), 
+						rs.getString("dname"), 
+						rs.getString("loc"));
 				
-
+				deptList.add(dept);
+				
+//				System.out.print(rs.getInt("deptno") + "\t");
+//				System.out.printf("%15s", rs.getString("dname") + "\t");
+//				System.out.printf("%15s", rs.getString("loc") + "\n");
+//				resultCnt++;
 			}
 
 			System.out.println("=======================================================================");
@@ -416,14 +404,14 @@ public class EmpDao {
 //			}
 
 		}
-		return empList;
+		return deptList;
 
 	}
 
 	
 	
 	
-	public int empSearchCount(String searchName, Connection conn) {
+	public int deptSearchCount(String searchName, Connection conn) {
 		
 		//Connection conn = null;
 		PreparedStatement pstmt =null;
@@ -433,7 +421,7 @@ public class EmpDao {
 		try {
 			//conn = ConnectionProvider.getConnection();
 			
-			String sql = "select count(*) from emp21 where ename=?";
+			String sql = "select count(*) from dept where dname=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);
@@ -457,10 +445,10 @@ public class EmpDao {
 	}
 	
 	
-	public Emp empSearchName(String searchName, Connection conn) {
+	public Dept deptSearchName(String searchName, Connection conn) {
 		
 		
-		Emp emp = null;
+		Dept dept = null;
 		
 		//Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -469,7 +457,7 @@ public class EmpDao {
 		try {
 			//conn = ConnectionProvider.getConnection();
 			
-			String sql = "select * from emp21 where ename=?";
+			String sql = "select * from dept where dname=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, searchName);
@@ -477,7 +465,7 @@ public class EmpDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				emp = new Emp(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getInt(8));
+				dept = new Dept(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
 			
 			
@@ -488,10 +476,23 @@ public class EmpDao {
 		
 		
 		
-		return emp;
+		return dept;
 		
 		
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }

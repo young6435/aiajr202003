@@ -46,7 +46,7 @@ public class ArrayListTest {
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i));
 		}
-		
+		System.out.println("메롱");	// 확인용.
 	
 	}
 

@@ -1,4 +1,4 @@
-package manager;
+package manager22;
 
 import java.sql.Date;
 
@@ -10,7 +10,7 @@ public class Emp {
 	private String ename;
 	private String job;
 	private int mgr;
-	private String hiredate;
+	private Date hiredate;
 	private int sal;
 	private int comm;
 	private int deptno;
@@ -20,14 +20,7 @@ public class Emp {
 	public Emp() {
 	}
 	
-	public Emp(int empno, String ename, int sal, int deptno) {
-		this.empno = empno;
-		this.ename = ename;
-		this.sal = sal;
-		this.deptno = deptno;
-	}
-
-	public Emp(int empno, String ename, String job, int mgr, String hiredate, int sal, int comm, int deptno) {
+	public Emp(int empno, String ename, String job, int mgr, Date hiredate, int sal, int comm, int deptno) {
 		this.empno = empno;
 		this.ename = ename;
 		this.job = job;
@@ -49,7 +42,7 @@ public class Emp {
 	public int getMgr() {
 		return mgr;
 	}
-	public String getHiredate() {
+	public Date getHiredate() {
 		return hiredate;
 	}
 	public int getSal() {
@@ -73,7 +66,7 @@ public class Emp {
 	public void setMgr(int mgr) {
 		this.mgr = mgr;
 	}
-	public void setHiredate(String hiredate) {
+	public void setHiredate(Date hiredate) {
 		this.hiredate = hiredate;
 	}
 	public void setSal(int sal) {
@@ -84,12 +77,6 @@ public class Emp {
 	}
 	public void setDeptno(int deptno) {
 		this.deptno = deptno;
-	}
-
-	@Override
-	public String toString() {
-		return "Emp [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate=" + hiredate
-				+ ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
 	}
 	
 	

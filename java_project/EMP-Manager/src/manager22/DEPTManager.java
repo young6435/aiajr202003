@@ -1,4 +1,4 @@
-package manager;
+package manager22;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -61,11 +61,11 @@ public class DEPTManager {
 			// 사용자 입력정보 변수
 
 			System.out.println("수정하고자 하는 부서 이름 : ");
-			ManageMain.sc.nextLine();					// ManageMain 에 scanner 있다.
+			ManageMain.sc.nextLine();
 			String searchName = ManageMain.sc.nextLine();
 
 			// 1. 수정하고자 하는 데이터 유무 확인
-			int rowCnt = dao.deptSearchCount(searchName, conn);		// 내가 원하는 이름이 몇번째 행인지 반환?
+			int rowCnt = dao.deptSearchCount(searchName, conn);
 			// System.out.println(rowCnt);
 
 			if (rowCnt > 0) {
@@ -91,7 +91,7 @@ public class DEPTManager {
 
 				// 공백 입력에 대한 예외처리가 있어야 하나 이번 버전에서는 모두 잘 입력된것으로 처리합니다.
 
-				Dept newDept = new Dept(dept.getDeptno(), dname, loc);		// 생성자. 새로운 객체 만든다.
+				Dept newDept = new Dept(dept.getDeptno(), dname, loc);
 
 				int resultCnt = dao.deptEdit(newDept, conn);
 
