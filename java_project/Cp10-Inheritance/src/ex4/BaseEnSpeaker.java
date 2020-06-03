@@ -9,7 +9,7 @@ public class BaseEnSpeaker extends Speaker {
 	}
 
 	@Override
-	void showCurrnetState() {
+	void showCurrnetState() {		// 볼륨의 크기, 베이스의 크기  출력된다.
 		
 		super.showCurrnetState();
 		System.out.println("베이스의 크기 : "+baseRate);

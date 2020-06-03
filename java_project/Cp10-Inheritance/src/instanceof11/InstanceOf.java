@@ -8,10 +8,12 @@ public class InstanceOf {
 		GoldPaperBox box3 = new GoldPaperBox();
 		wrapBox(box1);		// 밑에 메서드호출.		// simple wrap 호출된다.
 		wrapBox(box2);							// paper wrap 호출된다.
-		wrapBox(box3);							// paper wrap 호출된다.
+		wrapBox(box3);							// gold wrap 호출된다.
+	
+		
 	}
 
-	public static void wrapBox(Box box) {
+	public static void wrapBox(Box box) { 	//PaperBox, GoldPaperBox 는 Box를 상속해서 3개 다 사용가능하다.
 		
 		//box.wrap();
 		if (box instanceof GoldPaperBox)
