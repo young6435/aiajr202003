@@ -38,7 +38,7 @@ public class PhoneBookManager {
 	
 	// 저장 : 이름, 전화번호, 생년월일 정보를 대상으로 하는 저장
 	// 배열에 PhoneInfor 타입의 참조값을 저장
-	void addInfo(PhoneInfor info) {		// 이름, 전화번호, 생일을 쓸거라서 PhoneInfo 타입으로 받는다.
+	void addInfo(PhoneInfor info) {		// 이름, 전화번호, 생일을 쓸거라서 PhoneInfo 타입으로 받는다.	// info로 객체 생성했다.
 		
 		// 배열에 요소 대입
 		pBooks[cnt] = info;		// 배열 0번지에 친구를 저장한다.
@@ -59,7 +59,7 @@ public class PhoneBookManager {
 	}
 	
 	
-	// 사용자의 입력데이터로 PhoneInfor 객체를 생성
+	// 사용자의 입력데이터로 PhoneInfor 객체를 생성해서 info로 반환한다.
 	PhoneInfor createInstance() {
 		
 		PhoneInfor info = null;
@@ -95,7 +95,7 @@ public class PhoneBookManager {
 		
 		// 전체 데이터 ->  입력된 데이터의 개수 cnt
 		for(int i=0; i<cnt; i++) {
-			pBooks[i].showInfo();
+			pBooks[i].showInfo();			// pBooks의 0번지 ,1번지, 2번지 ... 에 저장되어있는 애들을 출력해라.
 			System.out.println("------------");
 		}
 		
@@ -107,11 +107,11 @@ public class PhoneBookManager {
 	// 배열에서 이름을 기준으로 검색후 index 값을 반환
 	int searchIndex(String name) {
 		
-		int searchIndex = -1;		// 기본으로 데이터에 이름이 없다고 가정한다.	0이면 저장된게 있으니까.
+		int searchIndex = -1;		// 기본으로 데이터에 이름이 없다고 가정한다.	// 0이면 저장된게 있으니까.
 		
 		// 사용자가 입력한 이름으로 배열에 요소를 검색 -> index
 		for(int i=0; i<cnt; i++) {				// 저장된거 중에 찾아야 되니까. cnt로 한다. 배열전체가 아니라.
-			if(pBooks[i].checkName(name)) {		// boolean 메서드다. 똑같은 이름이 있는지 없는지.
+			if(pBooks[i].checkName(name)) {		// boolean 메서드다. 똑같은 이름이 있는지 없는지.	// PhoneInfor에 메서드있다.
 				searchIndex = i;				// 이름이 true가 되면 그자리 인덱스 번호가 
 												// 저장되서 반환된다.
 				break;
@@ -167,7 +167,7 @@ public class PhoneBookManager {
 			// 삭제 : 검색한 index 부터 저장된 위치까지 왼쪽으로 시프트
 			for(int i=searchIndex; i<cnt-1; i++) {		// cnt는 내가 저장한 개수.
 				pBooks[i]=pBooks[i+1];					// i+1은 i기준으로 오른쪽에 있는 인덱스자리다.
-			}											// (오른쪽에 있던걸 왼쪽으로 옮겨서 대입하는거다.
+			}											// (오른쪽에 있던걸 왼쪽으로 옮겨서 대입하는거다.)
 			
 			
 			// 저장된 정보의 개수를 -1

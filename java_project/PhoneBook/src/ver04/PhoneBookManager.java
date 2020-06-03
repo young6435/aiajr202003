@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class PhoneBookManager {
 
 	// 1. 배열 선언
-	PhoneInfo[] books;
+	PhoneInfo[] books;		// PhoneInfo 타입으로 객체가 생성되니까, PhoneInfo 타입으로 만들어야 객체 담을수 있다.
 	// 배열에 저장된 요소의 개수
 	int numOfInfo;
 
@@ -47,7 +47,7 @@ public class PhoneBookManager {
 		// kb.nextLine();
 
 		// 사용자 선택 번호
-		int select = Integer.parseInt(kb.nextLine());
+		int select = Integer.parseInt(kb.nextLine());		// string타입의 숫자를 int 타입으로 변환시킨다.
 	
 		if(!(select>0 && select<5)) { // 1~4번
 			System.out.println("정상적인 메뉴 선택이 아닙니다.\n메뉴를 다시 선택해 주세요.");
@@ -77,6 +77,7 @@ public class PhoneBookManager {
 		case 2:	// 대학.
 			System.out.println("전공(학과)를 입력해주세요.");
 			String major = kb.nextLine();
+			
 			System.out.println("학년 정보를 입력해주세요.");
 			String grade = kb.nextLine();
 			
@@ -86,8 +87,10 @@ public class PhoneBookManager {
 		case 3:	// 회사.
 			System.out.println("회사의 이름을 입력해주세요.");
 			String company = kb.nextLine();
+			
 			System.out.println("부서의 이름을 입력해주세요.");
 			String dept = kb.nextLine();
+			
 			System.out.println("직무(직급)정보를 입력해주세요.");
 			String job = kb.nextLine();
 			
@@ -97,6 +100,7 @@ public class PhoneBookManager {
 		case 4:	// 동호회.
 			System.out.println("동호회 이름을 입력해주세요.");
 			String cafeName = kb.nextLine();
+			
 			System.out.println("닉네임을 입력해주세요.");
 			String nickName = kb.nextLine();
 			
@@ -119,7 +123,7 @@ public class PhoneBookManager {
 		
 		System.out.println("전체 정보를 출력합니다. ===========");
 		for(int i=0; i<numOfInfo ; i++) {
-			books[i].showAllInfo();
+			books[i].showAllInfo();					//books가 PhoneInfo 타입이고, PhoneInfo 안에 showAllInfo 있다.
 			System.out.println("----------------");
 		}
 		
@@ -157,7 +161,7 @@ public class PhoneBookManager {
 			System.out.println("검색하신 이름의 정보가 없습니다.");
 		} else {
 			System.out.println("----------------");
-			books[index].showBasicInfo();
+			books[index].showBasicInfo();				//books가 PhoneInfo 타입이고, PhoneInfo 안에  showBasicInfo 있다.
 			System.out.println("----------------");
 		}
 		
@@ -205,10 +209,13 @@ public class PhoneBookManager {
 			
 			System.out.println("수정 데이터 입력을 시작합니다.");
 			System.out.println("이름은 " + editName + "입니다.");
+			
 			System.out.println("전화번호를 입력해주세요.");
 			String phoneNumber = kb.nextLine();
+			
 			System.out.println("주소를 입력해주세요.");
 			String addr = kb.nextLine();
+			
 			System.out.println("이메일을 입력해주세요.");
 			String email = kb.nextLine();
 			
@@ -222,6 +229,7 @@ public class PhoneBookManager {
 			if(books[index] instanceof PhoneUnivInfo) {
 				System.out.println("전공을 입력해주세요.");
 				String major = kb.nextLine();
+				
 				System.out.println("학년을 입력해주세요.");
 				String grade = kb.nextLine();
 				
@@ -231,8 +239,10 @@ public class PhoneBookManager {
 				
 				System.out.println("회사 이름을 입력해주세요.");
 				String company = kb.nextLine();
+				
 				System.out.println("부서 이름을 입력해주세요.");
 				String dept = kb.nextLine();
+				
 				System.out.println("직급을 입력해주세요.");
 				String job = kb.nextLine();
 				
@@ -243,6 +253,7 @@ public class PhoneBookManager {
 				
 				System.out.println("동호회 이름을 입력해주세요.");
 				String cafeName = kb.nextLine();
+				
 				System.out.println("닉네임을 입력해주세요.");
 				String nickName = kb.nextLine();
 				
