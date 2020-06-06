@@ -60,7 +60,7 @@ insert into dept02 (deptno, dname, loc) values(10,'MARKETING', 'SEOUL');        
 insert into dept02 (deptno, dname) values (40,'DEV');       -- 생성
 
 
--- null 값 입력
+-- 명시적으로 null 값 입력.
 
 insert into dept02 (deptno, dname, loc) values(20,'MARKETING', null); --생성  -- 명시적으로 null 써도 된다.
 
@@ -133,6 +133,10 @@ select * from emp_mgr;
 drop table emp_hir;
 
 drop table emp_mgr;
+
+------------------------------------------------------------------------------------
+
+-- insert all.
 
 ------------------------------------------------------------------------------------
 
