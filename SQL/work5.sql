@@ -16,7 +16,7 @@ where job=(select job from emp where empno=7788)        --'ALALYST'
 ;
 
 
-44. 사원번호가 7499인 사원보다 급여가 많은 사원을 표시하시오. 사원이름과 감당 업무  
+44. 사원번호가 7499인 사원보다 급여가 많은 사원을 표시하시오. 사원이름과 담당 업무  
 
 select * from emp;
 
@@ -50,7 +50,8 @@ where sal <= all(select sal from emp)
 46. 평균급여가 가장 적은 직급의 
     직급 이름과 직급의 평균을 구하시오.    
 
-select job from emp where min(sal); 
+select job, avg(sal) from emp group by job;
+
 
 select job, avg(sal)            -- 1번
 from emp
