@@ -75,7 +75,7 @@ order by e.empno desc
 select e.ename, e.empno, m.ename       -- ansi 형태 sql 잘 알기.
 from emp e left outer join emp m       -- 내가 표현할께 e 라서 left 쓴다.
 on e.mgr = m.empno
-order by e.empno
+order by e.empno desc
 ;
 
 
@@ -107,13 +107,13 @@ where m.ename = 'WARD' and e.hiredate > m.hiredate      -- 기준이 m.ename = '
 
 42. SELF JOIN 을 사용하여 관리자보다 먼저 입사한 모든 사원의 이름 및 입사일을 관리자의 이름 및 입사일과 함께 출력하시오.
 
-select * from emp e, emp m;     -- 관리자가보다 먼저 입사니까, 부등호가 적은 쪽으로 해야된다.
+select * from emp e, emp m;     
 
 select * from emp;
 
 select e.ename, e.hiredate, m.ename, m.hiredate
-from emp e, emp m
-where e.mgr = m.empno and e.hiredate < m.hiredate
+from emp e, emp m     
+where e.mgr = m.empno and e.hiredate < m.hiredate        -- emp m 이 관리자 쪽이다. m쪽이 커야된다.
 ;
 
 
