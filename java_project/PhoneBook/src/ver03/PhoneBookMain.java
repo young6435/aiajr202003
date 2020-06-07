@@ -17,7 +17,7 @@ public class PhoneBookMain {
 			
 			int selectNum = sc.nextInt();
 			
-			sc.nextLine();					// 오류 방지용. 숫자 잘못 들어가는거. // int 다음에 써야되는거 같음.
+			sc.nextLine();		// 오류 방지용. 숫자 잘못 들어가는거. // int 다음에 써야되는거 같음.
 			
 			switch(selectNum) {
 			case 1:		// 1. 친구 정보 입력					

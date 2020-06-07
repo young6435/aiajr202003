@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class PhoneBookManager {
 	
 	
-	final PhoneInfor[] pBooks;
+	PhoneInfor[] pBooks;		//final PhoneInfor[] pBooks;  왜 final 있지?
 	
 	// 입력된 친구의 정보 개수 --> 입력된 배열의 요소 개수
 	// 1. 참조할 때 반복의 횟수
@@ -139,7 +139,7 @@ public class PhoneBookManager {
 			System.out.println("찾으시는 이름의 데이터가 존재하지 않습니다.");
 		} else {
 			pBooks[searchIndex].showInfo();		// pBooks에서 찾은 index 번호 보여준다.
-		}
+		}	// pBook가 phoneInfo 타입이고 phoneInfor 안에 showInfo 메서드 있다. 
 		
 	}	// searchInfo 메서드 끝.
 	
