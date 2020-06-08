@@ -6,6 +6,7 @@ public class PhoneBookMain {
 
 	public static void main(String[] args) {
 		
+		// 저장되어 있는 메서드 쓸라고 객체생성.
 		PhoneBookManager manager = new PhoneBookManager();
 		
 		Scanner sc = new Scanner(System.in);
@@ -16,7 +17,7 @@ public class PhoneBookMain {
 			
 			int select = sc.nextInt();
 			
-			sc.hasNextLine();
+			sc.nextLine();
 			
 			switch(select) {
 			

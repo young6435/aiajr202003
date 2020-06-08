@@ -63,7 +63,7 @@ public class PhoneBookManager {
 		
 	}
 	
-	void showAllData() {
+	void showAllData() {	// 저장되어있는 사람들 다 보여주는거.
 		
 		for(int i=0; i<cnt; i++) {
 			pBooks[i].showInfo();

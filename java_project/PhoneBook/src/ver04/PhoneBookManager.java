@@ -14,7 +14,7 @@ public class PhoneBookManager {
 	Scanner kb;
 
 	// 생성자를 통해서 배열 생성, 요소의 개수 초기화
-	PhoneBookManager(int num) {
+	PhoneBookManager(int num) {	// main에서 100개 줄꺼니까 int 타입으로 받는다.
 		// 배열의 생성
 		books = new PhoneInfo[num];		// main에서 100개 줄꺼다.
 		// 요소 개수의 초기화
