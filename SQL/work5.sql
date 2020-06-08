@@ -9,7 +9,7 @@ select * from emp;
 select job from emp where empno=7788;
 
 
-
+답
 select ename, job
 from emp
 where job=(select job from emp where empno=7788)        --'ALALYST' 
@@ -23,7 +23,8 @@ select * from emp;
 select sal from emp where empno=7499;   -- 1600
 
 
-select ename, job
+답
+select ename, job, sal
 from emp
 where sal>(select sal from emp where empno=7499)
 ;
@@ -35,6 +36,8 @@ select * from emp;
 
 select min(sal) from emp;
 
+
+답
 select ename, job, sal          -- 1번 방법(이거 추천)
 from emp
 where sal = (select min(sal) from emp);
@@ -50,9 +53,9 @@ where sal <= all(select sal from emp)
 46. 평균급여가 가장 적은 직급의 
     직급 이름과 직급의 평균을 구하시오.    
 
-select job, avg(sal) from emp group by job;
+select job, avg(sal) from emp group by job;     --CLERK 1037.5
 
-
+답
 select job, avg(sal)            -- 1번
 from emp
 group by job
@@ -76,7 +79,7 @@ from (select avg(sal) as avg           -- 인라인뷰
         group by job)
 ;
 
-
+답
 select job, avg(sal)            -- 2번
 from emp
 group by job
@@ -116,6 +119,7 @@ where sal in (select min(sal)
 select distinct sal from emp where job = 'ANALYST';     -- 3000
 
 
+답
 select empno, ename, job, sal
 from emp
 where sal < all(select distinct sal from emp where job = 'ANALYST')
@@ -132,6 +136,7 @@ select * from emp;
 select distinct mgr from emp where mgr is not null;     -- 부하직원 있는 애들. -- mgr 채워져있는 애들.
 
 
+답
 select ename, mgr
 from emp
 where empno not in (select distinct mgr from emp where mgr is not null)
