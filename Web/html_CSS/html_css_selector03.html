@@ -1,132 +1,225 @@
 <!--2020.06.09. 화요일.-->
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title> CSS3 선택자 Selector </title>
-        <meta charset="utf-8">
-       
-        <style> 
-        
-        /*
-            속성선택자
-            선택자[속성이름] : 특정속성을 가지는 태그들을 선택
-            ex) input[type]
-            
-            선택자[속성이름=속성값] : 특정 속성을 가지며, 속성에 특정 값을 가지는 태그들을 선택.
-            ex) input[type=password]
-        */    
-        
-        
-            input{
-                height: 30px;
-                margin: 10px 0;
-            }
-            
-            input[type]{
-                border: 1px solid blue;
-            }
-        
-            input[type=text]{
-                background-color: aqua;
-            }
-        
-            input[type=password]{
-                background-color: aquamarine;
-            }
-        
-            img[alt]{
-                width:100px;
-            }
-            
-            img[src$=jpg]{      
-                border: 3px solid red;
-            }
-            
-            img[src$=png]{
-                border: 3px solid green;
-            }
-            
-            
-            <hr>
-            
-            
-           /* 
-            
-                후손선택 : 선택의 범위를 제한
+<head>
+    <title>CSS3 선택자 Selector</title>
+    <meta charset="utf-8">
+    <style>
+        /*        
+        속성선택자
+        선택자[속성이름] : 특성속성을 가지는 테그들을 선택
+        ex) input[type] 
+        선택자[속성이름=속성값] : 특정 속성을 가지며, 속성에 특정 값을 가지는 테그들을 선택
+        ex) input[type=password]        
+        */
 
-                선택자 범위안의선택자
-                ex)     
-                div h1{
+        input {
+            height: 30px;
+            margin : 10px;
+            margin : 10px 0;
 
-                }
-           
-            */
-            
-            #header h1, #header h2{
-                color : red;
-            }
-            
-            form input{
-                width: 100%;
-            }
-                
-           
-            
-            
-                    
-        </style>
-    </head>
-    <body>
+        }
+        input[type] {
+            border: 1px solid blue;
+        }
         
-        <div id="header">
+        input[type=text] {
+            background-color: aqua;
+        }
         
-            <h1 class="title">Title</h1>
+        input[type=password]  {
+            background-color: aquamarine;
+        }
         
-            <div id="nav">
+/*
+        img[alt] {
+            width: 100px;
+        }
+*/
+        
+        img[src$=jpg] {
+            border: 3px solid red;
+        }
+        
+        img[src$=png] {
+            border : 3px solid green;
+        }
+        
+/*
+        
+        후손선택 : 선택의 범위를 제한
+        
+        선택자 범위안의선택자
+        ex)
+        div h1 {
             
-                <h1> Navigation </h1>
+        }
+        
+*/
+        #header h1.title {
+        #header h1 , #header h2 {
+            color : red;
+        }
+
+        form input {
+            width : 100%;
+        }
+
+/*
+        
+        자손선택자
+        
+        선택자>선택자
+        
+        div > h1 { 
             
-            </div>
-            <h1> etc </h1>
-            
-            <h2> h2 etc </h2>
+        } 
+        
+*/
+
+        #header>h1 {
+            background-color: aquamarine;
+        }
+
+
+        table>tbody>tr>td {
+            color: red;
+        }
+
+/*
+        
+        동위선택자 : 같은 레벨의(형제) 테그들을 기준으로 선택
+        
+        + : 바로뒤의 요소 선택
+        
+        ~ : 같은 레벨의 형제 테그들중 선택
         
         
+*/
+        h3+h4 {
+            color: blue;
+        }
+
+        h3~h4.aa {
+            background-color: antiquewhite;
+        }
+/*
+        반응선택자
+        
+        선택자:hover
+        -> 마우스 커서가 선택된 요소의 영역으로 들어갔을 때
+        
+        선택자:active
+        -> 마우스 커서는 선택된 요소 위에 존재하고, 마우스 왼쪽 버튼을 클릭한 상태
+        
+*/
+
+        h3 {
+            background-color: aqua;
+        }
+
+        h3:hover{
+            color : red;
+            font-size: 32px;
+        }
+
+        h3:active{
+            color: blue;
+            font-style: italic;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <h4 class="aa">header-4</h4>
+    <h3>header-3</h3>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+    <h4 class="aa">header-4</h4>
+
+
+
+
+    <hr>
+
+
+    <table border="1">
+        <tr>
+            <td>아이디</td>
+            <td><input></td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input></td>
+        </tr>
+    </table>
+
+
+
+
+    <hr>
+
+    <div id="header">
+
+        <h1 class="title">Title</h1>
+        
+        <div id="nav">
+        
+            <h1> Navigation </h1>
+            
         </div>
-        
-        
-        <div id="section">
-        
-            <h1 class="title">Title</h1>
-        
-            <p> 안녕하세요</p>
-        
-        </div>
-        
-        <h2> h2 etc </h2>
-        
-        <hr>
-        
-        <form>
-            <input>
-            <br>
-            <input type="text">
-            <br>
-            <input type="password">
-        </form>    
 
+        <h1> etc </h1>
 
-            <br>
+        <h2> h2 tag </h2>
 
-            <img src="../images/pink.jpg">
-            <img src="../images/pink.jpg" alt="pink">
-            <img src="../images/pink2.png">
+    </div>
 
-
+    <div id="section">
     
-    </body>
+        <h1 class="title"> Title </h1>
+        
+        <p>안녕하세요</p>
+        
+    </div>
 
 
+    <h2> h2 tag </h2>
+
+
+
+    <hr>
+
+
+    <h4>header-4</h4>
+
+    <form>
+        <input>
+        <br>
+        <input type="text">
+        <br>
+        <input type="password">
+
+    </form>
+
+    <br><input><input><input>
+    <br>
+    <input>
+    <input>
+    <input>
+
+    <img src="../images/pink.jpg">
+    <img src="../images/pink.jpg" alt="스타워즈">
+    <img src="../images/pink2.png">
+    
+</body>
 </html>
