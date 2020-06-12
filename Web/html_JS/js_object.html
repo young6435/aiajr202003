@@ -140,8 +140,8 @@
         students.push(new Student('A9',90,90,40));
         students.push(new Student('A10',90,90,90));
 
-        students[0].kor=9;
-        alert(students[0].kor);
+        // students[0].kor=9;
+        // alert(students[0].kor);
 
 
         var list = '';
@@ -158,24 +158,24 @@
 
         document.write(list); 
 
-        function Rectangle(w,h){
-            var width=w;
-            var heigh=h;
+        // function Rectangle(w,h){
+        //     var width=w;
+        //     var heigh=h;
 
-            this.getWidth = function(){
-                return width;
-            };
+        //     this.getWidth = function(){
+        //         return width;
+        //     };
 
-            this.setWidth = function(w){
-                width=w;
-            }
+        //     this.setWidth = function(w){
+        //         width=w;
+        //     }
 
-            this.getArea = function(){
-                return width*heigh;
-            }
-        }
+        //     this.getArea = function(){
+        //         return width*heigh;
+        //     }
+        // }
 
-        var rac = new Rectangle(10,4);
+        // var rac = new Rectangle(10,4);
 
         //alert(rac.width);
 
@@ -186,7 +186,16 @@
         //========================================================================
 
 
-        
+        // 배열의 정렬.
+        // array.sort()
+        students.sort(function(left, right){
+            return right.getSum() - left.getSum();
+
+        });
+
+        students = students.slice(0,3);         //0번지 부터 3개 뽑는다.
+
+
 
 
 
