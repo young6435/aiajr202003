@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이 로우 게임</title>
+    <script>
+        
+        var comNum = parseInt(Math.random()*100+1);
+        var cnt=1;
+        
+   while(true){
+        var myNum = prompt('1~100 사이의 숫자를 맞추세요. 총 10번의 기회를 드립니다. ');
+        
+        if(myNum==comNum){
+            alert('정답입니다');
+            alert('시도횟수는 '+cnt+'번 입니다.');
+            alert(comNum);
+            break;
+            
+        }else if(myNum>comNum){
+            alert('더 작은 수를 입력하세요');
+            alert('시도횟수는 '+cnt+'번 입니다.');
+            cnt ++;
+        }else if(comNum>myNum){
+            alert('더 큰 수를 입력하세요');
+            alert('시도횟수는 '+cnt+'번 입니다.');
+            cnt ++;
+        }
+           
+        if(cnt>10){
+            alert('정답을 맞추는데 실패 했습니다.');
+            alert(comNum);
+            break;
+        }
+
+    }
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
