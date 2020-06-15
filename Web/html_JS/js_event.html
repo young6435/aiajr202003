@@ -1,0 +1,45 @@
+<!-- 2020.06.15. 월요일. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript envent</title>
+    <style>
+        h1{
+            
+            border:3px solid;
+        
+        }
+
+
+
+    </style>
+    <script>
+
+        window.onload = function(){
+
+            var header1 = document.getElementById('header1');
+        
+            header1.onclick = function(){
+                alert(this.innerText);
+
+                this.style.color ='red';
+                this.style.backgroundColor='black';
+
+            };
+        
+        };
+
+
+    </script>
+</head>
+<body>
+    
+    <h1 id="header1">header</h1>
+
+
+
+</body>
+</html>
