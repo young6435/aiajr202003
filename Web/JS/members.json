@@ -1,0 +1,12 @@
+// 2020.06.15. 월요일.
+
+{
+    "memberid" :"cool",
+    "membername":"COOL",        // 문자열표현.
+    "age":27,                   // 숫자표현.
+    "program":["java", "python", "javascript"],
+    "dept":{
+        "deptname":"search",
+        "job":"programer"
+    }
+}
