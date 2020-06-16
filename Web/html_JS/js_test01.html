@@ -131,9 +131,9 @@
         // html_str += '<p>안녕하세요</p>\n';
         // html_str += '</div>\n';
 
-        //alert(html_str);
+        // alert(html_str);
 
-       // document.write(html_str);
+        //document.write(html_str);      // 이거 해야 body 부분에 나오는것 처럼 나온다.
 
         //=======================================================
 
@@ -148,10 +148,10 @@
         //     var list = '';
         //     list += '<ul>';
         //     if(check){    
-        //         list += '   <li>'+message+'</li>';
+        //         list += '   <li>'+message+'</li>';      // 1번째줄에 내가 입력한 이름 써진다.
         //     }
-        //     list += '   <li>javascript</li>';
-        //     list += '   <li>jquery</li>';
+        //     list += '   <li>javascript</li>';       // 2번째줄
+        //     list += '   <li>jquery</li>';           // 3번째줄
         //     list += '<ul>';
         
         //     document.body.innerHTML=list;
@@ -163,13 +163,13 @@
         
         //=======================================================
 
-        // + 연산의 경우 문자열 우선.
-        //alert('1'+2);     // '1'+'2' => '12'
+        // //+ 연산의 경우 문자열 우선.
+        // alert('1'+2);     // '1'+'2' => '12'
 
-        // + 연산자가 아닌 다른 연산의 경우 숫자 연산 우선.
-        //alert(10*'2');  // 7*5 => 35
+        // //+ 연산자가 아닌 다른 연산의 경우 숫자 연산 우선.
+        // alert(10*'2');  //   20 나온다.          // 7*5 => 35
 
-        //alert(7*'n');       // NaN 나온다.      NaN : not a number.
+        // alert(7*'n');       // NaN 나온다.      NaN : not a number.
 
 
         //=======================================================
@@ -196,59 +196,73 @@
         // alert(Boolean(undefined));
 
 
-        // 자동 형변환
+        // //자동 형변환
         // alert(!!0);             // 0 -> false
         // alert(!!NaN);           // NaN -> false
         // alert(!!'');            // '' -> false
         // alert(!!null);          // null -> false
         // alert(!!undefined);     // undefined -> false
 
-        // 자동형변환 케이스
+        // //자동형변환 케이스
         // alert(''==false);
         // alert(''==0);
         // alert(0==false);
         // alert('2'==2);
 
-        // 타입과 데이터 일치여부 확인
+        // //타입과 데이터 일치여부 확인
         // alert(''===false);
         // alert(''===0);
         // alert(0===false);
         // alert('2'===2);
 
 
+        //======================================================================
+        
+        
         // 날짜 시간을 정의하는 객체
 
         var now = new Date();
 
         //alert(now.getHours());
 
-        var msg = prompt('입력');
         
-        //true || alert('논리값이 참입니다.');
-        //false || alert('논리값이 거짓입니다.');     //거짓일때만 실행한다.
-        //null, NaN, ''
+        //=========================================================================
 
-        msg || alert('!!!!');
+        
+        // var msg = prompt('입력');
+        
+        // true || alert('논리값이 참입니다.');
+        // false || alert('논리값이 거짓입니다.');     //거짓일때만 실행한다.(false, null, NaN, '')
+        // null, NaN, ''
 
+        // msg || alert('!!!!');
+
+        
+        
+        //=========================================================================
+        
+        
+        
         // 반복문 : for(초기식; 조건식; 증감식){}
         // 배열의 요소를 일괄 참조 사용
 
         // 배열 : 여러개의 변수를 묶음으로 처리
         // 배열의 요소는 어떤 타입이어도 가능!!!
         // 배열의 생성 : []요소의 표현, 정의
-        var arr = [10,20,50,99,100];
+        
+        // var arr = [10,20,50,99,100];
 
-        for(var i=0; i<arr.length; i++){
-            //alert(arr[i]);
-        }
+        // for(var i=0; i<arr.length; i++){
+        //     alert(arr[i]);
+        // }
 
-        // 서로 다른 타입도 배열로 다룰수 있다.
-        var arr = [10,'string', true, function(){}, {}, [1,2]];
-        //alert(arr);
+        // //서로 다른 타입도 배열로 다룰수 있다.
+        // var arr = [10,'string', true, function(){}, {}, [1,2]];
+        // alert(arr);
 
-        for(var i in arr){
-            //alert(arr[i]);
-        }
+        // for(var i in arr){       // 위에 arr에서 인덱스 하나씩 보여준다.
+        //     alert(arr[i]);
+        // }
 
         
         //======================================================
