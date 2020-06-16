@@ -1,6 +1,6 @@
-<!--2020.06.08 월요일.-->
+<!-- 20.06.16. 화요일. -->
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>로그인 Form</title>
@@ -8,50 +8,47 @@
         
         <style>
         
-        
-            body, div, h1, form{
-                margin: 0;
+            body, div, h1, form {
+                margin:0;
                 padding:0;
-                
             }
             
-            h1{
+            h1 {
                 margin: 15px;
             }
             
             #form {
-                margin: 10px auto;
+                margin : 10px auto;
             }
             
-            td{
-                padding:10px;
+            td {
+                padding : 10px;
             }
             
             #btn_submit{
-                padding: 10px;
+                padding : 10px;
                 background-color: aquamarine;
                 font-weight: bold;
                 color: darkgreen;
-                border: 1px solid #EEEEEE;
+                border : 1px solid #EEEEEE;
             }
             
+            
         </style>
+
     </head>
-        
     <body>
         <h1>회원 로그인</h1>
         <hr>
-        
-        
-        <form action="" method="get">
+        <form action="" method="get" id="loginForm">
         <table id="form">
             <tr>
                 <td>아이디(이메일)</td>
-                <td><input type="text" name="id"></td>
+                <td><input type="text" name="id" id="id"></td>
             </tr>
             <tr>
                 <td>비밀번호</td>
-                <td><input type="password" name="pw"></td>
+                <td><input type="password" name="pw" id="pw"></td>
             </tr>
             <tr>
                 <td></td>
@@ -59,10 +56,10 @@
             </tr>
         </table>
         </form>
-    
-    
-    
+        
+        
+        
     </body>
-
+    <script src="../js/login_check.js"></script>
 
 </html>

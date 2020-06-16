@@ -56,7 +56,7 @@
             var output = 0;
             for(var i=0; i<arguments.length; i++){      // 밑에서 호출하면서 여기로 준다.
                 output += arguments[i];
-                console.log('output' +arguments[i]+ ' => '+output);
+                console.log('output ' +arguments[i]+ ' => '+output);
             }
 
             return output;
@@ -84,11 +84,12 @@
         
         var handler = function(){
             
-            console.log('handler function'+ ++cnt);
+            console.log('handler function '+ ++cnt);
         }
 
-        //callTenTimes(handler);
+        //callTenTimes(handler);      // 10번 반복한다.
 
+        
         //======================================================
         
         // javascript 내장함수
@@ -104,7 +105,7 @@
         //     document.body.innerHTML='<h1>'+new Date()+'</h1>';
         // },1000);
 
-        // setTimeout(function(){        // 1년 = 1000*60*60*24*365
+        // setTimeout(function(){        // 1년 = 1000*60*60*24*365  => 1초*60초*60분*24시간*365일
             
         //     clearInterval(intervalId);
 
