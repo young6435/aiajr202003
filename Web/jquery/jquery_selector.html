@@ -90,7 +90,43 @@
             $('h3').css('background-color','orange').filter(':even').css('color','white').end().css('font-weight','100').filter(':odd').css('color','blue');
 
             
+            //==============================================================
+            
+            var site = '';
 
+            site += '<sites>';
+            site += '   <site>';
+            site += '       <name>naver</name>';
+            site += '       <url>http://www.naver.com</url>'    
+            site += '   </site>';
+            site += '   <site>';
+            site += '       <name>daum</name>';
+            site += '       <url>http://www.daum.net</url>'    
+            site += '   </site>';
+            site += '   <site>';
+            site += '       <name>kakao</name>';
+            site += '       <url>http://www.kakao.com</url>'    
+            site += '   </site>';
+            site += '</sites>';
+
+            var xmlDoc = $.parseXML(site);
+
+            var siteHtml ='';
+            
+            $(xmlDoc).find('site').each(function(index){    // 각각의 site를 찾는다.
+
+                var name = $(this).find('name').text();        // 안에서 name을 찾는다.
+                var url = $(this).find('url').text();
+
+                siteHtml += '<div class="site">';
+                siteHtml += '   <h3>'+name+'</h3>';
+                siteHtml += '   <p>'+url+'</p>';
+                siteHtml += '</div>'
+
+
+            });
+
+            $('#sites').html(siteHtml);
 
 
         });
@@ -105,13 +141,41 @@
         .check{
             background-color: yellow;
         }
-
+        
         .title{
             font-style: italic;
         }
+
+        #sites{
+            overflow: hidden;
+        }
+
+        #sites>div.site{
+            width:200px;
+            padding: 20px;
+
+            border: 1px solid #DDD;
+            border-radius: 5px;
+
+            float:left;
+        }
+
     </style>
 </head>
 <body>
+
+    <div id="sites">
+
+
+    </div>
+        
+
+
+
+
+
+
+<!-- ======================================================== -->
 
     <h3>heading3 - 0</h3>
     <h3>heading3 - 1</h3>
