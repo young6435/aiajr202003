@@ -1,0 +1,220 @@
+<!-- 20.06.17. 수요일. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery selector</title>
+
+    <!-- jquery CDN -->
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+
+        $(document).ready(function(){           // 콜백함수??
+
+            //$('*').css('color','red');
+            //$('div').css('color','red');
+            //$('#wrap').css('color','red');
+            //$('.title').css('color','blue');
+            //$('h1.title').css('color','blue');
+            //$('.title.item').css('color','blue');
+            $('ul>li').css('color','green');        // 자손선택
+            $('#wrap li').css('background-color','black');      // 후손선택
+
+            $('#wrap>h1+p').css('font-weight','bold');  // wrap의 자손 h1 바로다음에 p가 바뀐다.
+            $('#wrap>h1~p').css('font-size','2em');     // p전부다 바뀐다.
+
+            //================================================================
+            
+            //var val = $('input[type=text]');//.val();
+            var val = $('input:text');
+           // alert(val.val());
+
+            //$('input[type=text]').val('hello~!!');
+            val.val('change~!!');
+
+            setTimeout(function(){
+
+                var selectedVal = $('select.loc>option:selected');
+                // alert(selectedVal.val());
+                $('h1').removeClass('title');
+
+            },5000);
+
+            
+            $('tr:odd').css('background-color','#F9F9F9');
+            $('tr:even').css('background-color','#9F9F9F');
+
+            $('tr:first').css('background-color','#000000').css('color','#FFFFFF');
+            $('tr:last').css('background-color','#000000').css('color','#FFFFFF');
+            
+            //============================================================
+            // 배열
+
+            var arr = [
+                {name:'naver', url:'http://www.naver.com'},
+                {name:'daum', url:'http://www.daum.net'},
+                {name:'kakao', url:'http://www.kakao.com'},
+            ];
+
+            var html = '';
+            
+            
+            $.each(arr,function(index, item){   //위에 객체 3개가 item 으로 들어간다.
+                html += '<h1><a href="'+item.url+'">'+item.name+'</a></h1>'
+
+            });
+
+            // innerhtml : html('test')
+
+            $('#list').html(html);
+
+
+            //==============================================================
+
+
+            $('h2').each(function(index, item){
+                
+                $(item).html($(item).html()+':'+index);
+                if(index%2==0){
+                    $(item).css('background-color','red');
+                }else{
+                    $(item).css('background-color','blue');
+                }
+
+            });
+
+            $('h1').addClass('check');
+
+            $('h3').css('background-color','orange').filter(':even').css('color','white').end().css('font-weight','100').filter(':odd').css('color','blue');
+
+            
+
+
+
+        });
+
+
+    </script>
+    <style>
+        table{
+            width:80%;
+        }
+
+        .check{
+            background-color: yellow;
+        }
+
+        .title{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>heading3 - 0</h3>
+    <h3>heading3 - 1</h3>
+    <h3>heading3 - 2</h3>
+    <h3>heading3 - 3</h3>
+    <h3>heading3 - 4</h3>
+    <h3>heading3 - 5</h3>
+    <h3>heading3 - 6</h3>
+    <h3>heading3 - 7</h3>
+
+
+<!-- ======================================================== -->
+
+
+    <h2>heading2 - 0</h2>
+    <h2>heading2 - 1</h2>
+    <h2>heading2 - 2</h2>
+    <h2>heading2 - 3</h2>
+    <h2>heading2 - 4</h2>
+    
+<!-- ======================================================== -->
+
+
+
+<div id="list">
+
+
+
+</div>
+
+
+
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>14</td>
+        </tr>
+
+
+
+    </table>
+
+
+    <!-- ======================================================== -->
+
+
+
+
+    <div id="wrap">
+
+        <select class="loc">
+            <option value="seoul">서울</option>
+            <option value="pusan">부산</option>
+            <option value="jeju">제주</option>
+
+
+        </select>
+
+        <!-- ======================================================== -->
+
+        <input type="text" id="uid" value="jquery">
+
+
+        <h1 class="title">안녕하세요</h1>
+        <p class="title item">반갑습니다</p>
+
+
+        <ul>
+            <li>10</li>
+            <li>20</li>
+            <li>30</li>
+            <li>40</li>
+
+
+        </ul>
+
+        <p>다음에 만나요.</p>
+
+    </div>
+    
+</body>
+</html>

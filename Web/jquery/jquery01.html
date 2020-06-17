@@ -1,0 +1,50 @@
+<!-- 20.06.17. 수요일. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery basic</title>
+    
+    <!-- jquery 라이브러리를 로드 : CDN 방식 -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script>
+
+        // $() => window
+        // $ => jquery
+
+        // $() : () => 객체를 생성해 준다. 선택자를 괄호안에 쓴다.
+
+       
+        // window.document
+        // window.onload = function(){}
+        $(document).ready(function(){       // 도큐먼트객체를 제이쿼리 객체로 바꿔준다.
+
+            //alert('ready method!');
+            
+            
+            $('div>h2').click(function(){
+            alert('h1 tag');
+            });
+
+        
+        });
+
+
+
+    </script>
+
+</head>
+<body>
+    
+    <div>
+        <h1 id="title">안녕하세요</h1>
+        <h2 id="title">니하오</h2>
+
+
+
+    </div>
+</body>
+</html>
