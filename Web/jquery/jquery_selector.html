@@ -1,4 +1,4 @@
-<!-- 20.06.17. 수요일. -->
+<!-- 20.06.17. 수요일. -->      
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,11 +28,11 @@
             //================================================================
             
             //var val = $('input[type=text]');//.val();
-            var val = $('input:text');
+            var val = $('input:text');                      // 나중에 이게 더 편할꺼다.
            // alert(val.val());
 
             //$('input[type=text]').val('hello~!!');
-            val.val('change~!!');
+            val.val('change~!!');       // 이게 세터다.     // 괄호안에 안쓰면 게터.
 
             setTimeout(function(){
 
@@ -49,7 +49,7 @@
             $('tr:first').css('background-color','#000000').css('color','#FFFFFF');
             $('tr:last').css('background-color','#000000').css('color','#FFFFFF');
             
-            //============================================================
+            //================================/ 자바스크립트안에 제이쿼리 가저다가 쓰는거다.
             // 배열
 
             var arr = [
@@ -63,10 +63,10 @@
             
             $.each(arr,function(index, item){   //위에 객체 3개가 item 으로 들어간다.
                 html += '<h1><a href="'+item.url+'">'+item.name+'</a></h1>'
-
+                // item이 객체가 된다.
             });
 
-            // innerhtml : html('test')
+            // innerhtml : html('test')     // 괄호안에 문자열 데이터 넣어주면 세터. 괄호안에 안쓰면 게터.
 
             $('#list').html(html);
 
@@ -113,9 +113,9 @@
 
             var siteHtml ='';
             
-            $(xmlDoc).find('site').each(function(index){    // 각각의 site를 찾는다.
+            $(xmlDoc).find('site').each(function(index){    // find 메소드로 각각의 site를 찾는다.
 
-                var name = $(this).find('name').text();        // 안에서 name을 찾는다.
+                var name = $(this).find('name').text();        // name을 찾아서 text메소드로 내용 가지고 온다.
                 var url = $(this).find('url').text();
 
                 siteHtml += '<div class="site">';

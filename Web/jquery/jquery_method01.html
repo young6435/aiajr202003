@@ -1,0 +1,140 @@
+<!-- 20.06.18. 목요일. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 문서객체 다루기</title>
+
+
+    <style>
+
+        .title{
+            background-color: black;
+            color: burlywood;
+        }
+
+        button.rmclass, button.attr{
+            padding: 10px;
+            font-size: 1.5em;
+        }
+
+        img{
+             display: block;     /* 이미지가 가진 영역을 블락처리하면 버튼이 밑으로 생기게 된다. */
+        }
+
+
+
+
+    </style>
+    
+    <!-- jquery lib CDN을 통해서 로드. -->
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            // 클래스 속성을 추가/삭제 해주는 메서드
+            // 추가 : addClass(클래스 속성값)
+            // 삭제 : removeClass(클래스 속성값)
+            $('h1').addClass('title');    //$(객체).addClass('title');    //f12 누르면 h1에 class="title"이라고 나온다. //title클래스 추가하는거다.
+            $('h1').addClass('font');     // font클래스 추가하는거다.
+
+            $('button.rmclass').click(function(){
+
+                $('h1').removeClass('title')        // 지우고자하는 클래스 이름 넣는다. // 클릭하면 지워진다.
+
+            });
+
+            //===================================================================
+
+            // 속성을 변경하는 attr()메서드
+            // getter : attr(속성이름)
+            var imgPath = $('img').attr('src'); // attr 메서드를 사용해서 src경로 가저온다.
+            console.log('imgPath : '+imgPath);
+
+            // setter : 
+            // jquery.attr(속성이름, 속성값)
+            // jquery.attr(속성이름, 함수)  => 함수는 속성에 들어갈 수 있는 데이터를 반환해야 한다.
+            // jquery.attr({})  => {}객체 안에는 속성이름:속성값 들을 정의.
+
+            var btn01 = $('button.attr.string');
+            var btn02 = $('button.attr.func');
+            var btn03 = $('button.attr.obj');
+            
+            var img01 = $('img').first();
+            
+            btn01.css('color','red');       // 밑에 주석처리한걸 줄여서 쓴거다.
+            btn02.css('color','blue');
+            btn03.css('color','green');
+
+             // $('button.attr.string').css('color','red');     // 클래스 이름 쓴다. css로 꾸며준다.
+            // $('button.attr.func').css('color','blue');
+            // $('button.attr.obj').css('color','green');
+            
+            // string - string
+            btn01.click(function(){
+                img01.attr('src','../images/ironman.jpg')     //string - string 이거 누르면 사진 바뀐다.
+            
+            });
+
+            // string - function(){}
+            btn02.click(function(){
+
+                $('img').attr('height',function(index){
+                    return (index+1)*100;    // index가 0부터 들어오니까 1부터쓴다.     // 높이값이 100,200,300 으로 바뀐다.
+                });
+
+            }); 
+
+            //{}
+            btn03.click(function(){
+
+                $('img:last').attr({
+                    src:'../images/john2.jpg',
+                    width:100,
+                    height:100,
+                    alt:'변경된 이미지입니다.'
+                });
+            });  
+            
+            
+           
+             
+            
+
+        });
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+    
+    
+    <img src="../images/pink.jpg" height="200">
+    <img src="../images/pink2.png" height="200">
+    <img src="../images/john.jpg" height="200">
+
+    
+    <button class='attr string'>string-string</button>
+    <button class='attr func'>string-function</button>
+    <button class='attr obj'>object{}</button>
+
+    
+    <!-- ========================================= -->
+
+    
+    <h1>안녕하세요</h1>
+    <button class="rmclass">removeClass</button>
+
+
+
+
+    
+</body>
+</html>
