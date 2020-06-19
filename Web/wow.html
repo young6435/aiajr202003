@@ -4,310 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jquery 문서객체 다루기</title>
+    <title>jQuery Form Control</title>
 
     <style>
-        .title {
-            background-color: black;
-            color: cornsilk;
-        }
-
-        button.rmclass,
-        button.attr,
-        button.css,
-        button.btn {
-            padding: 10px;
-            font-size: 1.5em;
-        }
-
-        img {
+        #myForm>label {
             display: block;
+            margin-top: 15px;
         }
 
-        div.memo {
-            padding: 10px;
-            border: 1px solid black;
-            margin: 10px;
-            color: blue;
-        }
-
-        #imglist {
-            width: 200px;
-            height: 100px;
-            padding:0;
-
-            overflow: hidden;
-        }
-
-        #imglist>img {
-            display: block;
-
-            width: 200px;
-            height: 100px;
+        input[type=submit] {
+            margin-top: 20px;
         }
     </style>
 
-    <!-- jquery lib CDN을 통해서 로드 -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
     <script>
 
         $(document).ready(function () {
 
-            // 클래스 속성을 추가/삭제
-            // 추가 : addClass(클래스 속성 값)
-            // 삭제 : removeClass(클래스 속성 값)
-            $('h1').addClass('title');
-            $('h1').addClass('font');
+            $('#memo').keyup(function () {
+                //alert($(this).val());
+                var strLength = $(this).val().length;
 
-            $('button.rmclass').click(function () {
+                if ((50 - strLength) < 0) {
+                    alert("50자 까지만 작성이 가능합니다.");
+                    // 사용자가 입력한 데이터에서 50글짜만 저장
+                    var strVal = $(this).val().substr(0, 50);
 
-                $('h1').removeClass('title');
+                    $(this).val(strVal);
+                    strLength = 50;
+                }
 
-            });
+                $('#memo+div.cnt').text(strLength);
 
-            // 속성을 변경하는 attr() 메서드
-            // getter : attr(속성이름)
-            var imgPath = $('img').attr('src');
-            console.log('imgPath : ' + imgPath);
 
-            // setter : 
-            // jQuery.attr(속성이름, 속성값)
-            // jQuery.attr(속성이름, 함수) !! 함수는 속성에 들어갈 수 있는 데이터를 반환
-            // jQuery.attr({}) {} 객체 안에는 속성이름:속성값 들을 정의
-
-            var btn01 = $('button.attr.string');
-            var btn02 = $('button.attr.func');
-            var btn03 = $('button.attr.obj');
-            var btn04 = $('button.attr.rm')
-
-            var img01 = $('img').first();
-
-            btn01.css('color', 'red');
-            btn02.css('color', 'blue');
-            btn03.css('color', 'green');
-
-            // string - string
-            btn01.click(function () {
-                img01.attr('src', '../images/starw.png');
-            });
-
-            // string - function(){}
-            btn02.click(function () {
-
-                $('img').attr('height', function (index) {
-                    return (index + 1) * 100;
-                });
-
-            });
-
-            // {}
-            btn03.click(function () {
-
-                $('img:last').attr({
-                    src: '../images/starwars.jpg',
-                    width: 100,
-                    height: 100,
-                    alt: '변경된 이미지입니다.'
-                });
-
-            });
-
-            // remove Attribute
-            btn04.click(function () {
-
-                $('img:last').removeAttr('src');
 
             });
 
 
 
-            // 속성값을 컨트롤 css() 
-            // jQuery.css(스타일속성이름) : getter -> 현재 속성값을 반환
-            var colorVal = $('div.memo').first().css('color');
-            console.log('colcor value : ' + colorVal);
-
-            //css()
-            // jQuery.css(스타일속성이름, 속성값)
-            // jQuery.css(스타일속성이름, 함수)
-            // jQuery.css(스타일속성이름, 객체)
-
-            var btn05 = $('button.css.string');
-            var btn06 = $('button.css.func');
-            var btn07 = $('button.css.obj');
-
-            // string , string
-            btn05.click(function () {
-                $('div.memo').css('color', 'red');
-            });
-
-            var colors = ['orange', 'black', 'green'];
-
-            // string, function(){}
-            btn06.click(function () {
-
-                $('div.memo').css('background-color', function (index) {
-                    return colors[index];
-                });
-            });
-
-            // {}
-            btn07.click(function () {
-
-                $('div.memo').css({
-                    fontSize: '2em',
-                    borderWidth: function (index) {
-                        return (index + 1) * 10;
-                    }
-                });
-            });
-
-            // jQuery.html()
-            // jQuery.text()
-
-            var headerDiv = $('div.header');
-
-            console.log('html() : ' + headerDiv.html());
-            console.log('text() : ' + headerDiv.text());
-
-            // jQuery.html(html 문자열)
-            // jQuery.text(믄자열)
-            //headerDiv.html('<h3>변경된 문자열입니다.</3>');
-            //headerDiv.text('<h3>변경된 문자열입니다.</3>');
-
-            var btn08 = $('button.btn.rm:eq(0)');
-            var btn09 = $('button.btn.rm').eq(1);
-
-            // jQuery.empty() : 객체 안의 내용을 지워준다
-            btn08.click(function () {
-                headerDiv.empty();
-            });
-
-            // jQuery.remove() : 케스팅된 객체를 삭제
-            btn09.click(function () {
-                headerDiv.remove();
-            });
-
-            var btn10 = $('button.btn.insert:first');
-            var btn11 = $('button.btn.insert:last');
-            var btn12 = $('button.btn.insert:eq(1)');
-
-            btn10.click(function () {
-
-                var txt = 'body 테그의 맨 아래에 요소가 추가됩니다.';
-
-                $('<h1></h1>').html(txt).appendTo('body');
-            });
-
-            btn11.click(function () {
-                var txt = '제목 요소가 추가됩니다.';
-
-                $('<h3></h3>').html(txt).appendTo('div.header');
-            });
-
-            btn12.click(function () {
-                //$('<img>').attr('src', '../images/droid.jpg').appendTo('div.header');
-                // $('<img>',{
-                //     src:'../images/droid.jpg',
-                //     width:100,
-                //     height:100
-                // }).appendTo('div.header');
-                /* $('<img>',{
-                    src:'../images/droid.jpg',
-                    width:100,
-                    height:100
-                }).prependTo('div.header'); */
-                //     $('<img>',{
-                //         src:'../images/droid.jpg',
-                //         width:100,
-                //         height:100
-                //     }).insertAfter('div.header');
-                // });
-                // $('<img>', {
-                //     src: '../images/droid.jpg',
-                //     width: 100,
-                //     height: 100
-                // }).insertBefore('div.header');
-
-                $('div.header').append($('<img>', {
-                    src: '../images/john1.jpg',
-                    width: 100,
-                    height: 100
-                }), $('<div></div>'));
+            for(var i=1; i<13;i++){
+                var selected = '';
+                if(i==6){
+                    selected = 'selected';
+                }
+                $('#month').append('<option value="'+i+'" '+selected+'>'+i+'</option>');
+            }
+            
 
 
-            });
-
-
-            setInterval(function () {
-
-                $('#imglist>img').first().appendTo('#imglist');
-
-            }, 3000);
 
         });
 
 
 
-    </script>
 
+    </script>
 </head>
 
 <body>
 
-    <div id="imglist">
-        <img src="../images/john1.jpg">
-        <img src="../images/john2.jpg">
-        <img src="../images/john3.jpg">
-        <img src="../images/john1.jpg">
-        <img src="../images/john2.jpg">
-        <img src="../images/john3.jpg">
-    </div>
+    <form id="myForm">
 
+        <label>우편번호</label>
+        <input type="text" pattern="[0-9]{5}" value="11111"> 숫자만 입력해주세요
+        
+        <label for="uid">아이디</label>
+        <input type="text" id="uid" pattern="[a-zA-Z0-9]{2,10}" 
+        placeholder="ID" autocomplete="off" autofocus required>
+        
+        <label for="age">age</label>
+        <input type="number" id="age" required>
 
+        <label for="date">date</label>
+        <input type="date" id="date" required>
 
-    <button class="btn insert">body tag에 요소 추가</button>
-    <button class="btn insert">div.header에 이미지 요소 추가</button>
-    <button class="btn insert">div.header에 요소 추가</button>
+        <label for="datetime">datetime</label>
+        <input type="datetime-local" id="datetime" required>
 
+        <label for="gender1">gender</label>
+        <input type="radio" id="gender1" name="gender" value="m" checked>남자
+        <input type="radio" id="gender2" name="gender" value="f">여자
 
-    <hr>
-    <button class="btn rm">내용 삭제</button>
-    <button class="btn rm">tag 삭제</button>
+        <label for="agree">개인정보 활용 동의</label>
+        <input type="checkbox" id="agree">개인정보 활용에 동의합니다.
 
-    <hr>
+        <label>년도</label>
+        <select id="year">
+            <option value="2020">2020</option>
+            <option>2019</option>
+            <option selected>2018</option>
+        </select>
 
-    <div class="header">
-        <h1>제목입니다.</h1>
-    </div>
+        <label>월</label>
+        <select id="month">
 
+        </select>
 
+        <label for="memo">memo</label>
+        <textarea id="memo"></textarea>
+        <div class="cnt">0</div>
 
+        <div>
+            <input type="submit" value="입력완성">
+        </div>
 
-    <div class="memo">안녕하세요</div>
-    <div class="memo">반갑습니다.</div>
-    <div class="memo">다음에만나요</div>
-
-    <button class='css string'>string-string</button>
-    <button class='css func'>string-function</button>
-    <button class='css obj'>Object {}</button>
-
-    <hr>
-
-    <img src="../images/john1.jpg" height="200">
-    <img src="../images/john2.jpg" height="200">
-    <img src="../images/john3.jpg" height="200">
-
-    <button class='attr string'>string-string</button>
-    <button class='attr func'>string-function</button>
-    <button class='attr obj'>Object {}</button>
-    <button class='attr rm'>removeAttr</button>
-
-
-    <hr>
-
-    <h1>안녕하세요</h1>
-    <button class="rmclass">removeClass</button>
+    </form>
 
 </body>
 
