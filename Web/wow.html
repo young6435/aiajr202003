@@ -1,116 +1,87 @@
-<!DOCTYPE html>
-<html lang="ko">
+ <!-- 20.06.17. 수요일. 선생님 과제.-->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery Form Control</title>
-
-    <style>
-        #myForm>label {
-            display: block;
-            margin-top: 15px;
-        }
-
-        input[type=submit] {
-            margin-top: 20px;
-        }
-    </style>
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script>
-
-        $(document).ready(function () {
-
-            $('#memo').keyup(function () {
-                //alert($(this).val());
-                var strLength = $(this).val().length;
-
-                if ((50 - strLength) < 0) {
-                    alert("50자 까지만 작성이 가능합니다.");
-                    // 사용자가 입력한 데이터에서 50글짜만 저장
-                    var strVal = $(this).val().substr(0, 50);
-
-                    $(this).val(strVal);
-                    strLength = 50;
-                }
-
-                $('#memo+div.cnt').text(strLength);
-
-
-
-            });
-
-
-
-            for(var i=1; i<13;i++){
-                var selected = '';
-                if(i==6){
-                    selected = 'selected';
-                }
-                $('#month').append('<option value="'+i+'" '+selected+'>'+i+'</option>');
-            }
-            
-
-
-
-        });
-
-
-
-
-    </script>
-</head>
-
-<body>
-
-    <form id="myForm">
-
-        <label>우편번호</label>
-        <input type="text" pattern="[0-9]{5}" value="11111"> 숫자만 입력해주세요
-        
-        <label for="uid">아이디</label>
-        <input type="text" id="uid" pattern="[a-zA-Z0-9]{2,10}" 
-        placeholder="ID" autocomplete="off" autofocus required>
-        
-        <label for="age">age</label>
-        <input type="number" id="age" required>
-
-        <label for="date">date</label>
-        <input type="date" id="date" required>
-
-        <label for="datetime">datetime</label>
-        <input type="datetime-local" id="datetime" required>
-
-        <label for="gender1">gender</label>
-        <input type="radio" id="gender1" name="gender" value="m" checked>남자
-        <input type="radio" id="gender2" name="gender" value="f">여자
-
-        <label for="agree">개인정보 활용 동의</label>
-        <input type="checkbox" id="agree">개인정보 활용에 동의합니다.
-
-        <label>년도</label>
-        <select id="year">
-            <option value="2020">2020</option>
-            <option>2019</option>
-            <option selected>2018</option>
-        </select>
-
-        <label>월</label>
-        <select id="month">
-
-        </select>
-
-        <label for="memo">memo</label>
-        <textarea id="memo"></textarea>
-        <div class="cnt">0</div>
-
-        <div>
-            <input type="submit" value="입력완성">
-        </div>
-
-    </form>
-
-</body>
-
-</html>
+ <!DOCTYPE html>
+ <html lang="ko">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>회원관리 프로그램</title>
+ 
+     <link href="membermgr.css" rel="stylesheet">
+     <script src="membermgr.js"></script>
+ </head>
+ 
+ <body>
+     <header>
+         <h1>회원관리 프로그램</h1>
+     </header>
+     <div id="content">
+         <div id="reg">
+             <h2 class="title">회원 저장</h2>
+             <form id="regForm">
+                 <table>
+                     <tr>
+                         <td>
+                             <label>아이디</label>
+                             <input type="text" id="uid" placeholder="아이디" required>
+                         </td>
+                         <td>
+                             <label>비밀번호</label>
+                             <input type="password" id="pw" placeholder="비밀번호" required>
+                         </td>
+                         <td>
+                             <label>이름</label>
+                             <input type="text" id="uname" placeholder="이름" required>
+                         </td>
+                         <td>
+                             <input type="submit" value="저장">
+                         </td>
+                     </tr>
+                 </table>
+ 
+             </form>
+         </div>
+ 
+         
+         <div id="edit">
+             <h2 class="title">회원 수정</h2>
+             <form id="editForm">
+                 <!-- <input type="text" id="idx"> -->
+                 <input type="hidden" id="idx" required>
+                 <table>
+                     <tr>
+                         <td>
+                             <label>아이디</label>
+                             <input type="text" id="eid" placeholder="아이디" required>
+                         </td>
+                         <td>
+                             <label>비밀번호</label>
+                             <input type="password" id="epw" placeholder="비밀번호" required>
+                         </td>
+                         <td>
+                             <label>이름</label>
+                             <input type="text" id="ename" placeholder="이름" required>
+                         </td>
+                         <td>
+                             <input type="submit" value="수정">
+                         </td>
+                     </tr>
+                 </table>
+ 
+             </form>
+         </div>
+ 
+         <div class="listarea">
+             <h2 class="title">회원 리스트</h2>
+             <div id="list">
+                 
+             </div>
+ 
+ 
+ 
+         </div>
+     </div>
+ </body>
+ 
+ </html>
