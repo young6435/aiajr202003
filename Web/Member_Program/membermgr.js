@@ -31,10 +31,10 @@ function addMember(member) {
     members.push(member);
 
     // 동기화
-    setStorage();
+    setStorage();       // 밑에 메서드있다.
     
     console.log(members);
-    displayTable();
+    displayTable();     // 밑에 메서드있다.
 }
 
 // 회원 데이터 저장 
@@ -44,7 +44,7 @@ function createMember() {
     var name = document.getElementById('uname').value;
     var pw = document.getElementById('pw').value;
     // 배열에 데이터 추가
-    addMember(new Member(id, name, pw));
+    addMember(new Member(id, name, pw));    // Member객체를 새로만들어서 Members 배열에 추가한다.
     
 
     this.reset();
@@ -118,7 +118,7 @@ function editMember() {
     // 리스트 테이블 갱신
     displayTable();
     // 동기화
-    setStorage();
+    setStorage();       
 
 
     alert("수정되었습니다.\n수정폼 화면을 숨깁니다.");
