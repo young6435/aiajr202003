@@ -1,20 +1,114 @@
-/* .hall{
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+#wrap {
+    width: 1024px;
+    height: 768px;
+    margin: 0px auto;
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+#logo {
+    width: 680px;
+    height: 360px;
+    margin: 10px auto;
+}
+
+#logo>img {
+    width: 659px;
+    height: 356px;
+}
+
+#footer_area {
+    width: 1024px;
+    height: 200px;
+    background-color:antiquewhite;
+    margin-top: 200px;
+    border-top: 1px solid lightgray;
+    display: none;
+}
+
+#cartin {
+    width: 800px;
+    height: 190px;
+    float: left;
+    position: relative;
+
+    
+}
+
+#cart_list {
+    width: 800px;
+    height: 190px;
+    overflow: scroll;
+    position:absolute;
+    font-size: 0.8em;
+}
+
+
+#event_area {
+    width: 210px;
+    height: 190px;
+    float:right;
+}
+
+input[type=button] {
+    width:206px;
+    height: 49px;
+    margin: 20px auto;
+    border-radius: 45%;
+    color: azure;
+    font-size: 20px;
+}
+
+#return_startscreen {
+    background-color: dimgray;
+}
+
+#payment {
+    background-color: orange;
+}
+
+#hall{ 
+    float: left;
+    margin: 50px 0 16px -12px;
+    width: 195px;
+    height: 140px;
+    /* border-radius: 20px; */
+}
+
+
+
+#takeout{
+    margin: 10px 10px 0px 10px;
+    width:150px; 
+    height:150px;
+    /* border-radius: 20px; */
+}
+
+.abc1{  /* 이미지 겉에꺼가 div인데, 거기다가 클래스 설정해서 바꿔주는거다. */
+    border: 20px solid dimgray;
+    border-radius: 20px;
+    width:168px;
+    height:188px;
     text-align: center;
-} */
-.hall{ 
-    display: block; 
-    margin: 0px auto;
     float: left;
-    margin: 0px 168px 0px 0px;
-    
-    
+    margin-left: 300px;
 }
 
-.takeout{
-    display: block;
-    margin: 0px auto;
-    float: left;
-    
-
+.abc2{
+    border: 20px solid dimgray;
+    border-radius: 20px;
+    width:200px;                                 
+    height:188px;
+    text-align: center;
+    float: right;
+    margin-right: 250px;
 }
+
 

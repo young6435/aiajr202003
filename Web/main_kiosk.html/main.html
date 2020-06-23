@@ -3,24 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="main.css" type="text/css">
-    <style>
-
-    </style>
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="main2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="index_button.js"></script>
+    <script src="index_cart.js"></script>
+    <script src="index_payment.js"></script>
 </head>
 <body>
+    <div id="wrap">
+        <div id="logo">
+            <img src="food.PNG">
+        </div>
+        <div id="content">
+        <div id="choice1" class="abc1">
+            <img src="hall.png" id="hall">
+            <h4 class="font_hall" style="font-size: 20px;">매장</h4>
+        </div>
+        <div id="choice2" class="abc2">
+            <img src="takeout.png" id="takeout">
+            <h4 class="font_takeout" style="font-size: 20px;">포장</h4>
+        </div>
+    </div>
 
-    <div class="choice">
-        <img src="hall.png" class="hall" width="168" height="188">매장
-    
+        <div id="footer_area">
+            <div id="cartin">
+                <table id="cart_list">
+                    <tr>
+                        <th>번호</th>
+                        <th>분류</th>
+                        <th>메뉴</th>
+                        <th>수량</th>
+                        <th>금액</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="event_area">
+                <input type="button" id="return_startscreen" href="#" value="처음으로">
+                <input type="button" id="payment" href="#" value="결제하기">
 
-        <class="box" width="168" height="188"></class>
-    
-
-        
-        <img src="takeout.png" class="takeout" width="168" height="188">포장
-        
+            </div>
+        </div>
 
 
     </div>
