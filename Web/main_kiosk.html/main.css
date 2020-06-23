@@ -1,0 +1,20 @@
+/* .hall{
+    text-align: center;
+} */
+.hall{ 
+    display: block; 
+    margin: 0px auto;
+    float: left;
+    margin: 0px 168px 0px 0px;
+    
+    
+}
+
+.takeout{
+    display: block;
+    margin: 0px auto;
+    float: left;
+    
+
+}
+
