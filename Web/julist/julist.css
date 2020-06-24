@@ -15,12 +15,14 @@ h3{
 }
 
 #content{
-    width:300px;
+    width:690px;
     height:540px;
     overflow-x: hidden;
     overflow-y: scroll;
 
 }
+
+
 
 #header{
     /* background-color: palegoldenrod; */
