@@ -1,0 +1,238 @@
+
+/* 전체간격초기화 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+#kiosk {
+    width: 1084px;
+    height: 1100px;
+    background-color: dimgray;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+}
+
+#card_in {
+    width: 150px;
+    height: 30px;
+    size: 3em;
+    color: white;
+    /* background-color: turquoise; */
+
+    position: absolute;
+    top:850px;
+    right: 100px;
+
+    float: left;
+}
+
+#receipt {
+    width: 150px;
+    height: 30px;
+    size: 3em;
+    color: white;
+    /* background-color: turquoise; */
+
+    position: absolute;
+    top:850px;
+    right: 10px;
+}
+
+.card_box {
+    width: 50px;
+    height: 30px;
+    background-color: black;
+
+    position: absolute;
+    top:850px;
+    right: 10px;
+}
+
+.receipt_box {
+    width: 50px;
+    height: 30px;
+    background-color: black;
+
+    position: absolute;
+    top:850px;
+    right: 10px;
+}
+
+/* ------------------------------------------------ */
+/* 키오스크 화면프레임 */
+#wrap {
+    width: 1024px;
+    height: 768px;
+    border: 2px solid black;
+    background-color: white;
+
+    margin: 0 auto;
+    position: relative;
+    top: 30px;
+}
+
+/* 타이틀 nav 영역 */
+#title_area {
+    width: 1024px;
+    height: 100px;
+    /* 영역확인용 배경색 */
+    /* background-color: ivory; */
+
+}
+
+/* 타이틀 - 메인로고 */
+.logo {
+    height: 90px;
+
+    padding-top: 10px;
+    padding-left: 40px;
+
+    float: left;
+    overflow: hidden;
+}
+
+
+
+
+/* 메뉴선택 탭 */
+#menu_tab {
+    width: 700px;
+    height: 80px;
+    
+    background-color: DimGray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+    margin-top: 20px;
+    margin-right: 50px;
+
+    float: right;
+    
+    
+}
+
+/* 메뉴 아이콘 그룹 */
+#menu_imges {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* 메뉴 아이콘 */
+#menu_imges>img {
+    width: 80px;
+    height: 55px;
+
+    border-radius: 5px;
+    background-color: white;
+    
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+/* ------------------------------------------------ */
+/* 상세메뉴영역 검은배경*/
+#content_area {
+    width: 984px;
+    height: 478px;
+    margin: 0 auto;
+    background-color: DimGray;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* 상세메뉴영역 흰배경 */
+#content_background {
+    width: 964px;
+    height: 466px;
+
+    /* text-align: center; */
+    margin: 0 auto;
+    top: 12px;
+
+    background-color:white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    position: relative;
+    
+    /* 스크롤 */
+    /* overflow: auto; */
+}
+
+/* 상세메뉴 테이블 div */
+#icons {
+    position: relative;
+    margin: 0 auto;
+}
+
+/* 상세메뉴 table */
+#menu_table {
+    width: 964px;
+    height: 450px;
+
+    margin: 0 auto;
+    /* margin-top: 20px; */
+    padding-left: 5px;
+    padding-right: 5px;
+
+    /* 영역확인용 배경색 */
+    /* background-color: chartreuse; */
+}
+
+/* 상세메뉴 셀 */
+.menu_cell {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    
+
+}
+
+
+/* 상세메뉴 이미지들 */
+.menu_img {
+    display: block;
+    width: 303px;
+    height: 160px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* 상세메뉴 이름 */
+.menu_name {
+    font-weight: 100;
+    color: dimgrey;
+    /* margin-bottom: 10px; */
+    margin-right: 20px;
+    padding-bottom: 10px;
+
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+/* 상세메뉴 가격 */
+.menu_price {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 10px;
+
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+
+
+
+
