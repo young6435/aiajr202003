@@ -1,108 +1,130 @@
 * {
-    margin :0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
+#wrap {
+    width: 1024px;
+    height: 768px;
+    margin: 0 auto;
 
-h1{
-    font-size: 36px;
-    color: orangered;
-    margin: 0px 0px 0px 20px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
+.outside{
+    width: 680px;
+    height: 700px;
+    margin: 0 auto;
+    position: relative;
+    top: 30px;
 
-h3{
-    display: inline;
-    margin: 0px 0px 0px 20px;
-}
-
-#content{
-    width:690px;
-    height:540px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-
-}
-
-
-
-#header{
-    /* background-color: palegoldenrod; */
-}
-
-
-#takeout {
-    width: 74px;
-    height: 40px;
-    background-color: dimgray;
-    color: white;
-    border-radius: 10px;
-    border:dimgray;
-    font-size: 15px;
-    margin: 0px -7px 0px 120px;
-}
-
-#hall{
-    width: 74px;
-    height: 40px;
-    background-color: orange; 
-    color: white;
-    border-radius: 10px;
-    border: orange;
-    font-size: 15px;
-    margin: 0px;
-}
-
-#button1{
-    float: right;
-    margin: 0px 20px 0px 0px;
-    
-
-}
-
-#cancel {
-    width: 235px;
-    height: 57px;
-    background-color: dimgray;
-    color: white;
-    border-radius: 30px;
-    margin:0px 150px 0px 30px;
-    border: dimgray;
-    font-size: 20px;
-    
-}
-
-#pay {
-    width: 235px;
-    height: 57px;
     background-color: orange;
-    color: white;
-    border-radius: 30px;
-    border: orange;
-    font-size: 20px;
-   
-    
+    border-radius: 15px;
 }
+.inside{
+    width: 650px;
+    height: 670px;
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
 
-#button2 {
-    /* margin: 0px 0px 300px 0px; */
-    
-
-}
-
-#wrap{
-    border: 5px solid #ffa500;
-    border-radius: 20px;
-    width: 700px;
-    height: 680px;
     background-color: white;
-    /* margin: 0 auto; */
+    border-radius: 15px;
 }
-
-#footer{
-   
-
+.header{
+    margin: 0 30px;
 }
+.title{
+    padding-top: 20px;
 
-input{
-    /* margin-right: 0px; */
+    letter-spacing: 10px;
+    color: orange;
+    font-size: 36px;
+}
+.header h3{
+    margin-left: 90px;
+    margin-top: 10px;
+    display: inline-block;
+
+    letter-spacing: 5px;
+    font-weight: lighter;
+}
+.header button{
+    width: 74px;
+    height: 40px;
+
+    border-radius: 10px;
+    color: white;
+
+    vertical-align: middle;
+    float: right;
+}
+.header2{
+    clear: both;
+    margin: 0 30px;
+}
+ul>li{
+    float: left;
+    list-style: none;
+    width: 50px;
+
+    margin: 0 20px;
+    padding-top: 10px;
+
+    text-align: center;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+}
+ ul>li:nth-child(3){        /* 메뉴 */
+    width: 180px;
+    text-align: left;
+    color: blue;
     
+}
+.content{
+    clear: both;
+    margin: 0 30px;
+    height: 300px;
+
+    display: block;
+}
+.content table{
+    margin: 0 20px;
+    height: 100px;
+}
+.content td{
+    width: 30px;
+    padding: 10px;
+    text-align: center;
+}
+.content td:nth-child(3){       /* 메뉴밑에 내용*/
+    width: 200px;
+    text-align: left;
+    color: blue;
+}
+.footer{
+    margin: 0 30px;
+}
+.footer table{
+    width: 500px;
+
+    font-size: 25px;
+    text-align: center;
+}
+.footer button{
+    width: 235px;
+    height: 57px;
+
+    border-radius: 40px;
+
+    font-size: 20px;
+    color: white;
+}
+button.togo, button.cancel{
+    background-color: dimgray;
+    border: 1px solid dimgray;
+}
+button.hall, button.credit{
+    border: 1px solid orange;
+    background-color: orange;
+
+    float: right;
 }

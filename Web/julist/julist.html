@@ -1,42 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="julist.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
     <title>Document</title>
+
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="julist.css">
 </head>
+
 <body>
+
     <div id="wrap">
-        <div id="header">
-            <h1>주 문 목 록</h1>
-            <h3>***내용을 확인해주세요***<h3>
-                <div id="button1">
-                    <input type="submit" id="takeout" value="포 장">
-                    <input type="submit" id="hall" value="매 장">
+        <div class="outside">
+            <div class="inside">
+                <div class='header'>
+                    <h1 class='title'><img src='img/orderlist.png' class='list' width="60px" style="vertical-align: middle"> 주문목록</h1>
+                    <!-- <br> -->
+                    <h3>***내용을 확인해주세요***</h3>
+                    <button type='button' class='hall'>매장</button>
+                    <button type='button' class='togo'>포장</button>
                 </div>
-        </div>
-        
-        <div id="content">
-            <table id="memo">
-                <tr>
-                    <td>번호</td>
-                    <td>분류</td>
-                    <td>메뉴</td>
-                    <td>수량</td>
-                    <td>금액</td>
-                </tr>
-            </table>
-        </div>
-        
-        <div id="footer">
-            <div id="button2">
-                <input type="submit" id="cancel" value="결 제 취 소">
-                <input type="submit" id="pay" value="카 드 결 제">
+                <div class='header2'>
+                    <br>
+                    <hr>
+                    <ul>
+                        <li>번호</li>
+                        <li>분류</li>
+                        <li>메뉴</li>
+                        <li>수량</li>
+                        <li>금액</li>
+                    </ul>
+                </div>
+                <div class="content" style="overflow: auto;">
+                    <table>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                        <tr>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                            <td>content 1</td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div class="footer">
+                    <table>
+                        <tr>
+                            <td>주문 수량</td>
+                            <td class='numoforder'>?</td>
+                            <td>주문 금액</td>
+                            <td class='total'>?</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <button type='button' class='cancel'>결제취소</button>
+                    <button type='button' class='credit'>카드결제</button>
+                </div>
             </div>
-        </div>
-    </div>  
+        </div> <!-- 주문목록팝업div -->
+
+    </div> <!-- wrap -->
+    
+
+
+
 </body>
 </html>
