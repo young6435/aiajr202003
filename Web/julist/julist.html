@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="julist.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <div id="header">
-        <h1>주 문 목 록</h1>
-        <h3>***내용을 확인해주세요***<h3>
-        <input type="submit" id="takeout" value="포 장">
-        <input type="submit" id="hall" value="매 장">
-    
-    </div>
-    <div id="content">
+    <div id="wrap">
+        <div id="header">
+            <h1>주 문 목 록</h1>
+            <h3>***내용을 확인해주세요***<h3>
+                <div id="button1">
+                    <input type="submit" id="takeout" value="포 장">
+                    <input type="submit" id="hall" value="매 장">
+                </div>
+        </div>
         
-
-    </div>
-    <div id="footer">
-        <input type="submit" id="cancel" value="결 제 취 소">
-        <input type="submit" id="pay" value="카 드 결 제">
-
-    </div>
-
+        <div id="content">
+            <table id="memo">
+                <tr>
+                    <td>번호        </td>
+                    <td>분류        </td>
+                    <td>메뉴        </td>
+                    <td>수량        </td>
+                    <td>금액        </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="footer">
+            <div id="button2">
+                <input type="submit" id="cancel" value="결 제 취 소">
+                <input type="submit" id="pay" value="카 드 결 제">
+            </div>
+        </div>
+    </div>  
 </body>
 </html>
