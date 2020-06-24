@@ -1,0 +1,71 @@
+* {
+    margin :0px;
+    padding: 0px;
+}
+
+h1{
+    font-size: 36px;
+}
+
+h3{
+    display: inline;
+}
+
+#content{
+    width:600px;
+    height:300px;
+}
+
+#header{
+    
+}
+
+
+#takeout {
+    width: 74px;
+    height: 40px;
+    background-color: dimgray;
+    color: white;
+    border-radius: 10px;
+    border: dimgray;
+    font-size: 15px;
+    margin: 0px 0px 0px 140px;
+   
+
+}
+
+#hall{
+    width: 74px;
+    height: 40px;
+    background-color: orange; 
+    color: white;
+    border-radius: 10px;
+    border: orange;
+    font-size: 15px;
+
+}
+
+#cancel {
+    width: 235px;
+    height: 57px;
+    background-color: dimgray;
+    color: white;
+    border-radius: 30px;
+    margin:0px 50px 0px 0px;
+    border: dimgray;
+    font-size: 20px;
+    
+}
+
+#pay {
+    width: 235px;
+    height: 57px;
+    background-color: orange;
+    color: white;
+    border-radius: 30px;
+    border: orange;
+    font-size: 20px;
+    
+    
+
+}
