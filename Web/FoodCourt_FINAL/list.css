@@ -1,0 +1,44 @@
+
+
+
+
+
+#cartin {
+    width: 800px;
+    height: 190px;
+    float: left;
+    position: relative;
+  
+    
+  }
+
+
+  
+#cart_list {
+    width: 800px;
+    height: 190px;
+    overflow: auto;
+    position:absolute;
+    font-size: 0.8em;
+    text-align: center;
+  }
+  
+  
+  #event_area {
+    width: 210px;
+    height: 190px;
+    float:right;
+  }
+  
+  input[type=button] {
+    width:206px;
+    height: 49px;
+    margin: 20px auto;
+    border-radius: 30px;
+    color: azure;
+    font-size: 20px;
+  }
+  
+  #return_startscreen {
+    background-color: dimgray;
+  }
